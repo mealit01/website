@@ -1,0 +1,183 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    padding: 2rem;
+
+    &-title {
+        font-size: 2.6rem;
+        font-weight: 400;
+        font-family: $lobster;
+        color: $ksa;
+        margin-bottom: 3rem;
+
+        &:after {
+            content: url(../../assets/images/spark-right.svg);
+            padding-left: 1rem;
+        }
+
+        &:before {
+            content: url(../../assets/images/spark-left.svg);
+            padding-right: 1rem;
+
+        }
+    }
+}
+
+.search-box {
+    background-color: $silver;
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1.5rem;
+
+    input {
+        background-color: transparent;
+        border: none;
+        outline-color: transparent;
+        font-size: 1.6rem;
+        font-weight: 400;
+        font-family: $proximaNova;
+        color: $black;
+        width: 100%;
+        padding: 1rem 2rem;
+
+        &:focus {
+            outline-width: 0;
+        }
+    }
+}
+
+.btn-add {
+    background-color: $white;
+    border-radius: 1.5rem;
+    width: 4.6rem;
+    height: 4rem;
+    background-image: url('../../assets/images/Plus\ icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-search {
+    border-radius: 1.5rem;
+    width: 4.6rem;
+    height: 4rem;
+    background-image: url('../../assets/images/Search\ icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ingredients-suggestions {
+    background-color: $white;
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 3rem 1.2rem;
+    border-radius: 1.5rem;
+    margin-top: 2rem;
+    gap: 1rem;
+    transition: all .3s ease-in-out;
+    animation: smooth-bounce .5s ease-in-out;
+
+
+    button {
+        background-color: $silver;
+        border-radius: 2rem;
+        padding: .5rem 1.5rem;
+        font-size: 1.4rem;
+        color: $gray;
+
+        &.selected {
+            background-color: $ksa;
+            color: $white;
+        }
+    }
+}
+
+.selected-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .selected-ingredient {
+        //smooth transition
+        // transition: all .3s ease-in-out;
+        //animation in
+        // animation: fade-in .3s ease-in-out;
+        // animation-fill-mode: forwards;
+        box-shadow: 0 0 3px 1px $ksa, 0 0 0 3px $silver;
+    }
+}
+
+// animation
+// @keyframes fade-in {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(1rem);
+//     }
+
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+// }
+
+// @keyframes fade-out {
+//     0% {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+
+//     100% {
+//         opacity: 0;
+//         transform: translateY(1rem);
+//     }
+// }
+
+@keyframes smooth-bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bounce-enter {
+    transform: translateY(1rem);
+    opacity: 0;
+}
+
+.bounce-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+.bounce-exit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.bounce-exit-active {
+    transform: translateY(1rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+// Path: src\sass\components\_search-results.scss
+// Compare this snippet from src\sass\abstracts\_variables.scss:

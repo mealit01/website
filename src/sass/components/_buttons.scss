@@ -1,0 +1,19 @@
+.btn{
+    background-color: $ksa;
+    color: $silver;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.6rem;
+
+    &:hover{
+        background-color: lighten($color: $ksa, $amount: 5%);
+        color: $silver;
+        transition: all 0.3s ease-in-out;
+    }
+
+    //desktop
+    @media screen and (min-width: $large-screen){
+        font-size: 1.8rem;
+    }
+}

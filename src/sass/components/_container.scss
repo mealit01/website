@@ -1,0 +1,125 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+
+    h2{
+        color: $dark-gray;
+        font-size: 1.8rem;
+    }
+}
+
+.container.shopLocal{
+    background-color: $light-gray;
+
+    .shopLocal-brands{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+        padding: 2rem;
+        justify-items: center;
+        align-items: center;
+    }
+    .marsool-logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .carrefour{
+        filter: grayscale(100%);
+    }
+
+    @media screen and (min-width: $medium-screen){
+        .shopLocal-brands{
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}
+
+.container.features{
+    margin: 10rem 0;
+    h2{
+        color: $ksa;
+        font-family: $proximaNova-bold;
+        font-size: 2.4rem;
+        margin-bottom: 5rem;
+        &::after{
+            //hight effect
+            content: '';
+            background-image: url('../../assets/images/Line.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 0.5rem;
+            display: block;
+            margin: 0.3rem 0;
+        }
+    }
+
+    h3{
+        color: $dark-gray;
+        font-size: 2rem;
+    }
+
+    p{
+        margin-top: 1rem;
+        color: #a29c97;
+        font-size: 1.6rem;
+    }
+
+    @media screen and (min-width: $medium-screen){
+        h2{
+            font-size: 3.2rem;
+        }
+    }
+
+}
+
+.features-container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 4rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+
+    .feature{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        width: 80%;
+
+        &-img{
+            width: 8rem;
+            height: 8rem;
+            border-radius: 2rem;
+            background-color: #f2ece6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            
+            img{
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+    }
+    @media screen and (min-width: $large-screen){
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2rem;
+        .feature{
+            width: 100%;
+            margin-top: 3rem;
+        }
+    }
+}

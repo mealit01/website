@@ -1,0 +1,27 @@
+//abstracts
+@import "abstracts/_variables.scss";
+@import "abstracts/_mixins.scss";
+@import "abstracts/_functions.scss";
+
+//base
+@import "base/_reset.scss";
+@import "base/_typography.scss";
+
+//components
+
+@import "components/_buttons.scss";
+@import "components/_cards.scss";
+@import "components/_container.scss";
+@import "components/_search.scss";
+@import "components/_poster.scss";
+
+//layout
+@import "layout/_footer.scss";
+@import "layout/_navbar.scss";
+
+//pages
+@import "pages/_home.scss";
+@import "pages/_login.scss";
+@import "pages/_signup.scss";
+
+//vendors

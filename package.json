@@ -1,8 +1,8 @@
 {
+  "home": "https://mealit01.github.io/website/",
   "name": "mealit",
   "version": "0.1.0",
   "private": true,
-  "home": "https://mealit01.github.io/website/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

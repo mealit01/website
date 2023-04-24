@@ -67,7 +67,10 @@ const SearchBar = () => {
       setFilteredIngredients([]);
       return;
     }
-    const filtered = ingredients.filter((ingredient) => ingredient.includes(searchValue));
+
+    //convert searchValue to lowercase
+    const searchValueLower = searchValue.toLowerCase();
+    const filtered = ingredients.filter((ingredient) => ingredient.includes(searchValueLower));
 
     if (filtered.length === 0) {
       setFilteredIngredients([]);

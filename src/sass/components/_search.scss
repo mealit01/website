@@ -83,6 +83,8 @@
 
 .ingredients-suggestions {
     background-color: $white;
+    width: 100%;
+    max-width: 60rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

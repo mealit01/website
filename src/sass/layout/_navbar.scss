@@ -14,7 +14,7 @@
     z-index: 1000;
     transition: all 0.1s ease-in;
 
-    &--open {
+    &--open{
         background-color: $silver;
         box-shadow: 0 4px 1rem rgba($silver, 0.25);
     }
@@ -125,6 +125,11 @@
             gap: 1rem;
         }
     }
+}
+
+.desktop-nav:hover{
+    background-color: $silver;
+    box-shadow: 0 4px 1rem rgba($silver, 0.25);
 }
 
 

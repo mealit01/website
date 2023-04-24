@@ -44,7 +44,7 @@ const Navbar = ({ className }) => {
     )
 
     return (
-        <div className={`navbar ${isMenuOpen ? "navbar--open" : ""}`}>
+        <div className={`navbar ${isMenuOpen ? "navbar--open" : ""} ${className}`}>
             <div className="navbar__logo">
                 <Link to="/">
                     Mealit

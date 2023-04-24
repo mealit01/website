@@ -64,8 +64,9 @@
     @media screen and (min-width: $medium-screen) {
         margin: 2.5rem 3rem;
         .hero {
-            height: 100vh;
-            &-text { 
+            height: 90vh;
+            &-text {
+                height: 90vh;
                 p {
                     width: 60%;
                 }

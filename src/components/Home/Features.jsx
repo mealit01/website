@@ -15,7 +15,7 @@ export default function Features() {
           </div>
           <div className="feature-text">
             <h3>Enter ingredients</h3>
-            <p>Enter the ingredients you have in your pantry and fridge.</p>
+            <p>Save time and effort with customize recipe and meal planner with what you </p>
           </div>
         </div>
         <div className="feature">
@@ -24,7 +24,7 @@ export default function Features() {
           </div>
           <div className="feature-text">
             <h3>Find best recipe match</h3>
-            <p>Find your favorite recipe with what you already have.</p>
+            <p>Save time and effort with customize recipe and meal planner with what you </p>
           </div>
         </div>
         <div className="feature">

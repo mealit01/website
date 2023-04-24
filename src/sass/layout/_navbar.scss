@@ -68,10 +68,35 @@
         }
     }
 
+    &__links__list {
+
+        a:after {
+            content: "";
+            background-image: url('../../assets/images/arrow.svg');
+            background-repeat: no-repeat;
+            
+            width: 1rem;
+            height: 1.2rem;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: $medium-screen) {
+            a:after {
+                display: none;
+            }
+        }
+    }
+
     &__links__auth {
         display: flex;
         justify-content: center;
         gap: 1rem;
+        margin: 2rem 0;
 
         .signup{
             background-color: $ksa;
@@ -91,7 +116,7 @@
 
     //tablet
     @media screen and (min-width: $large-screen) {
-        padding: 1.5rem 3rem;
+        padding: 0 3rem;
         width: 80%;
         left: 10%;
 

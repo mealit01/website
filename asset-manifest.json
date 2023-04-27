@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.cb9f5835.css",
-    "main.js": "/website/static/js/main.e2ae2872.js",
+    "main.css": "/website/static/css/main.993b401d.css",
+    "main.js": "/website/static/js/main.76284f67.js",
     "static/js/787.13e5a273.chunk.js": "/website/static/js/787.13e5a273.chunk.js",
     "static/media/hero-bg.svg": "/website/static/media/hero-bg.88b8c9509d0577fa20a8.svg",
     "static/media/ProximaNova-Bold.otf": "/website/static/media/ProximaNova-Bold.fcaab2524c5baabd71f6.otf",
@@ -26,12 +26,12 @@
     "static/media/email.svg": "/website/static/media/email.19d90341e2c50b4e971f.svg",
     "static/media/person.svg": "/website/static/media/person.8c141ebece95f5359021.svg",
     "static/media/arrow.svg": "/website/static/media/arrow.90343163e21e6a846992.svg",
-    "main.cb9f5835.css.map": "/website/static/css/main.cb9f5835.css.map",
-    "main.e2ae2872.js.map": "/website/static/js/main.e2ae2872.js.map",
+    "main.993b401d.css.map": "/website/static/css/main.993b401d.css.map",
+    "main.76284f67.js.map": "/website/static/js/main.76284f67.js.map",
     "787.13e5a273.chunk.js.map": "/website/static/js/787.13e5a273.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb9f5835.css",
-    "static/js/main.e2ae2872.js"
+    "static/css/main.993b401d.css",
+    "static/js/main.76284f67.js"
   ]
 }

@@ -87,6 +87,11 @@
             cursor: pointer;
         }
 
+        @media screen and (min-width: $large-screen) {
+            a:after {
+                display: none;
+            }
+        }
     }
 
     &__links__auth {

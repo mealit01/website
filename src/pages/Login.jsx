@@ -15,7 +15,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container auth-container">
+        <div className="auth-container">
             <nav className="navbar-logo">
                 <Link to="/" className="logo">
                     Mealit

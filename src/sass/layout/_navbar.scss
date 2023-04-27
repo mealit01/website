@@ -1,4 +1,13 @@
+.logo{
+    font-size: 3.2rem;
+    font-family: lobster;
+    color: #327052;
+    text-transform: lowercase;
 
+    @media screen and (min-width: $medium-screen){
+        font-size: 3.6rem;
+    }
+}
 .navbar {
     background-color: rgba($silver, 0.75);
     border-radius: 2rem;
@@ -17,13 +26,6 @@
     &--open{
         background-color: $silver;
         box-shadow: 0 4px 1rem rgba($silver, 0.25);
-    }
-
-    &__logo a {
-        font-size: 3.2rem;
-        font-family: lobster;
-        color: #327052;
-        text-transform: lowercase;
     }
 
     &__menu {
@@ -121,10 +123,6 @@
         left: 10%;
 
         &__logo {
-            a {
-                font-size: 3.6rem;
-            }
-
             width: 35%
         }
 

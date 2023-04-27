@@ -1,0 +1,178 @@
+.auth-form {
+    background-color: $ksa;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 60rem;
+
+    .close-btn {
+        background-color: lighten($color: $ksa, $amount: 10%);
+        color: $silver;
+        border-radius: 1rem;
+        padding: 0.4rem 0;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+        width: 12rem;
+
+        &:before {
+            content: "";
+            background-image: url('../../assets/images/back-btn.svg');
+            background-repeat: no-repeat;
+            width: 1.5rem;
+            height: 2rem;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        &:hover {
+            background-color: lighten($color: $ksa, $amount: 5%);
+        }
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 3rem 0;
+        text-align: center;
+
+        h3 {
+            color: $silver;
+            font-size: 2.8rem;
+            font-family: $proximaNova-regular;
+
+            span {
+                //bold effect
+                font-family: $proximaNova-black;
+            }
+        }
+
+        p {
+            color: $silver;
+            font-size: 1.4rem;
+            font-family: $proximaNova-thin;
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        input {
+            
+            border: 1px solid $silver;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            font-size: 1.6rem;
+            background-color: rgba($color: #E5E5E5, $alpha: 0.1);
+            color: $silver;
+            transition: all 0.3s ease-in-out;
+            background-repeat: no-repeat;
+            background-position: 3% 50%;
+            padding-left: 4.4rem;
+
+
+            &::placeholder {
+                color: $silver;
+            }
+
+            &:focus {
+                outline: none;
+                background-color: rgba($color: #E5E5E5, $alpha: 0.2);
+                box-shadow: 0 0 10px 0 $silver;
+            }
+
+            &:-webkit-autofill {
+                -webkit-text-fill-color: $ksa;
+                font-family: $proximaNova-bold;
+            }
+        }
+
+        .name{
+            background-image: url('../../assets/images/person.svg');
+        }
+
+        .email, &:-webkit-autofill {
+            background-image: url('../../assets/images/email.svg');
+            
+        }
+
+        .password {
+            background-image: url('../../assets/images/lock.svg');
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin: .5rem 0 2.5rem 0;
+
+            a {
+                color: $silver;
+                font-size: 1.4rem;
+                font-family: $proximaNova-thin;
+                text-decoration: underline;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+
+        .error {
+            color: $silver;
+            font-size: 1.4rem;
+            font-family: $proximaNova-thin;
+        }
+    }
+
+    .auth-form-footer {
+        text-align: center;
+
+        p {
+            color: $silver;
+            font-size: 1.4rem;
+            
+            a {
+                color: $silver;
+                text-decoration: underline;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        padding: 4rem 6rem;
+
+        &-header {
+            h3 {
+                font-size: 3.2rem;
+            }
+
+            p {
+                font-size: 1.6rem;
+                margin-top: 0;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 3rem;
+        }
+
+        .auth-form-footer {
+            p {
+                font-size: 1.6rem;
+            }
+        }
+
+    }
+}

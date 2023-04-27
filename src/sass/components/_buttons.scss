@@ -1,19 +1,32 @@
 .btn{
-    background-color: $ksa;
-    color: $silver;
     border-radius: 1rem;
     padding: 1.5rem;
     transition: all 0.3s ease-in-out;
     font-size: 1.6rem;
+    font-family: $proximaNova-bold;
 
     &:hover{
-        background-color: lighten($color: $ksa, $amount: 5%);
-        color: $silver;
-        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 10px 0 $silver;
     }
 
+    &-primary{
+        background-color: $silver;
+        color: $ksa;
+        margin-top: 2.5rem;
+    }
+
+    
     //desktop
     @media screen and (min-width: $large-screen){
         font-size: 1.8rem;
+    }
+}
+
+.disabled{
+    opacity: 0.7;
+
+    &:hover{
+        box-shadow: none;
+        cursor: not-allowed;
     }
 }

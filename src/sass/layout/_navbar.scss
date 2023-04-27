@@ -87,11 +87,6 @@
             cursor: pointer;
         }
 
-        @media screen and (min-width: $medium-screen) {
-            a:after {
-                display: none;
-            }
-        }
     }
 
     &__links__auth {
@@ -115,8 +110,6 @@
         }
     }
 
-
-    //tablet
     @media screen and (min-width: $large-screen) {
         padding: 0 3rem;
         width: 80%;

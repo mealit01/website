@@ -15,6 +15,18 @@
         margin-top: 2.5rem;
     }
 
+    &-link{
+        background-color: transparent;
+        color: $silver;
+        padding-left: .4rem;
+        font-family: $proximaNova-bold;
+        text-decoration: underline;
+        text-transform: capitalize;
+
+        &:hover{
+            color: $white;
+        }
+    }
     
     //desktop
     @media screen and (min-width: $large-screen){

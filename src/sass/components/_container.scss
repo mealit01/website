@@ -162,3 +162,69 @@
         }
     }
 }
+
+.our-idea {
+    margin: 10rem 0;
+    text-align: center;
+    gap: 2rem;
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+        padding: 2.5rem;
+    }
+
+    &__header {
+        h4 {
+            font-size: 3.6rem;
+            color: #343434;
+            font-family: $proximaNova-bold;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__img {
+        img {
+            width: 80%;
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        text-align: left;
+        width: 100%;
+        max-width: 1000px;
+        margin: 10rem auto;
+        padding: 0 2rem;
+
+        .row {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+
+            &:nth-child(2) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        &__header{
+            flex: 1;
+            h4{
+                font-size: 4.8rem;
+            }
+            p{
+                font-size: 1.8rem;
+            }
+        }
+
+        &__img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+    }
+}

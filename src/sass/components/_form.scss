@@ -1,9 +1,9 @@
-.auth-form {
+.auth-form, .auth-form-done {
     background-color: $ksa;
     padding: 4rem 2rem;
     border-radius: 1rem;
     width: 100%;
-    max-width: 60rem;
+    max-width: 50rem;
 
     .close-btn {
         background-color: lighten($color: $ksa, $amount: 10%);
@@ -99,7 +99,6 @@
 
         .email, &:-webkit-autofill {
             background-image: url('../../assets/images/email.svg');
-            
         }
 
         .password {
@@ -130,7 +129,7 @@
         }
     }
 
-    .auth-form-footer {
+    .auth-form-footer, .auth-form-done-footer{
         text-align: center;
 
         p {
@@ -177,5 +176,22 @@
             }
         }
 
+    }
+}
+
+.auth-form-done-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+    text-align: center;
+    gap: 1rem;
+    img{
+        width: 5rem;
+    }
+    .email{
+        font-size: 1.6rem;
+        font-family: $proximaNova-bold;
+        padding-left: .4rem;
     }
 }

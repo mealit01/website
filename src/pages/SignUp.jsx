@@ -29,7 +29,7 @@ function SignUp() {
                 onSubmit={handleSignUp}
             >
                 {({ isSubmitting, isValid }) => (
-                    <Form action="" className="auth-form" onSubmit={handleSignUp}>
+                    <Form action="" className="auth-form">
                         <Link to="/" className="close-btn">
                             Back to home
                         </Link>

@@ -126,20 +126,26 @@ const Slider = () => {
     }
 
     useEffect(() => {
-        if (window.innerWidth < 320) {
-            setvisibleSlides(1.25);
-        } else if (window.innerWidth < 480) {
-            setvisibleSlides(1.75);
-        } else if (window.innerWidth < 768) {
-            setvisibleSlides(2.25);
-        } else if (window.innerWidth < 1024) {
-            setvisibleSlides(3.5);
-        } else if (window.innerWidth < 1200) {
-            setvisibleSlides(4.5);
-        } else if (window.innerWidth < 1400) {
-            setvisibleSlides(5.5);
-        } else {
-            setvisibleSlides(6);
+        const handleResize = () => {
+            if (window.innerWidth < 320) {
+                setvisibleSlides(1.25);
+            } else if (window.innerWidth < 480) {
+                setvisibleSlides(1.75);
+            } else if (window.innerWidth < 768) {
+                setvisibleSlides(2.25);
+            } else if (window.innerWidth < 1024) {
+                setvisibleSlides(3.5);
+            } else if (window.innerWidth < 1200) {
+                setvisibleSlides(4.5);
+            } else if (window.innerWidth < 1400) {
+                setvisibleSlides(5.5);
+            } else {
+                setvisibleSlides(6);
+            }
+        }
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
         }
     }, []);
 

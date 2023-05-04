@@ -5,6 +5,7 @@ import Hero from '../components/Home/Hero';
 import Features from '../components/Home/Features';
 import Search from '../components/Search/Search';
 import Idea from '../components/Home/Idea';
+import FavRecipes from '../components/Home/FavRecipes';
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <Features />
       <Search />
       <Idea />
+      <FavRecipes />
     </div>
   )
 }

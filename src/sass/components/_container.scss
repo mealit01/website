@@ -4,13 +4,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2.5rem 1.5rem;
+    margin: 10rem 0;
 
     h2 {
         color: $ksa;
         font-family: $proximaNova-bold;
         font-size: 2.4rem;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
 
         &::after {
             //hight effect
@@ -87,7 +87,7 @@
 }
 
 .features-container {
-    margin: 10rem 0;
+
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 5rem;
@@ -101,7 +101,7 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        width: 80%;
+        padding: 0 3rem;
 
         &-img {
             width: 8rem;
@@ -234,7 +234,7 @@
     justify-content: center;
     width: 100%;
     margin: 5rem 0;
-    
+
     &__content {
         width: 90%;
         background-color: $ksa;
@@ -243,8 +243,136 @@
     }
 }
 
+.what-people-think {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 3rem;
+    margin: 5rem 0;
+    padding: 0 2rem;
 
-  
-  
+    &__title {
+        justify-self: center;
+        align-self: center;
 
-  
+        h2 {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .review {
+        background-color: #429E71;
+        padding: 1rem 2rem 2rem 2rem;
+        border-radius: 1.5rem;
+        position: relative;
+        max-width: 30rem;
+
+        p {
+            color: $silver;
+            font-size: 1.6rem;
+        }
+
+        &__img {
+            position: absolute;
+            bottom: -2rem;
+            right: -3rem;
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 0 6px 0 rgba(0, 0, 0, 0.02);
+            width: 4rem;
+            height: 4rem;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        //odd children
+        &-1, &-3, &-5 {
+            align-self: flex-end;
+            justify-self: flex-end;
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        grid-gap: 5rem;
+        margin: 10rem auto;
+        width: 80%;
+
+        .review {
+            padding: 2rem 3rem 3rem 3rem;
+            max-width: 40rem;
+
+            p {
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+
+    @media screen and (min-width: $large-screen) {
+        width: 100%;
+        margin: 20rem auto;
+
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+
+        .review {
+            width: 100%;
+
+            &__img {
+                //top left
+                top: -2rem;
+                left: 0;
+            }
+
+            &-1,
+            &-3,
+            &-5 {
+                align-self: flex-end;
+                justify-self: flex-end;
+            }
+
+            &-2,
+            &-6 {
+                align-self: flex-start;
+                justify-self: flex-start;
+            }
+
+            &-1 {
+                grid-area: 1 / 1 / 2 / 4;
+            }
+
+            &-2 {
+                grid-area: 1 / 4 / 2 / 7;
+            }
+
+            &-3 {
+                grid-area: 2 / 1 / 3 / 3;
+            }
+
+            &-4 {
+                grid-area: 2 / 5 / 3 / 7;
+                justify-self: flex-start;
+            }
+
+            &-5 {
+                grid-area: 3 / 1 / 4 / 4;
+            }
+
+            &-6 {
+                grid-area: 3 / 4 / 4 / 7;
+            }
+        }
+
+        &__title {
+            grid-column: 2 / 6;
+            grid-row: 2 / 3;
+            justify-self: center;
+            align-self: center;
+        }
+    }
+}

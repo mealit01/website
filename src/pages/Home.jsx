@@ -6,6 +6,7 @@ import Features from '../components/Home/Features';
 import Search from '../components/Search/Search';
 import Idea from '../components/Home/Idea';
 import FavRecipes from '../components/Home/FavRecipes';
+import WhatPeopleThink from '../components/Reviwes/WhatPeopleThink';
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <Search />
       <Idea />
       <FavRecipes />
+      <WhatPeopleThink />
     </div>
   )
 }

@@ -139,8 +139,10 @@ const Slider = () => {
                 setvisibleSlides(4.5);
             } else if (window.innerWidth < 1400) {
                 setvisibleSlides(5.5);
+            } else if (window.innerWidth < 1600) {
+                setvisibleSlides(6.5);
             } else {
-                setvisibleSlides(6);
+                setvisibleSlides(7.5);
             }
         }
         window.addEventListener('resize', handleResize);

@@ -6,7 +6,8 @@ import Features from '../components/Home/Features';
 import Search from '../components/Search/Search';
 import Idea from '../components/Home/Idea';
 import FavRecipes from '../components/Home/FavRecipes';
-import WhatPeopleThink from '../components/Reviwes/WhatPeopleThink';
+import WhatPeopleThink from '../components/Home/Reviwes/WhatPeopleThink';
+import Poster from '../components/Home/Poster';
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Idea />
       <FavRecipes />
       <WhatPeopleThink />
+      <Poster />
     </div>
   )
 }

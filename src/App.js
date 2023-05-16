@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPass';
 import SetNewPassword from './pages/SetNewPass';
+import Planner from './pages/Planner';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="recipes" element={<h1>Recipes</h1>} />
-        <Route path="plnner" element={<h1>Planner</h1>} />
+        <Route path="planner" element={<Planner />} />
         <Route path="pantry" element={<h1>Pantry</h1>} />
         <Route path="shopping" element={<h1>Shopping</h1>} />
         <Route path="login" element={<Login />} />

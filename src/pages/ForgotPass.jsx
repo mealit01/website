@@ -6,7 +6,6 @@ import ForgotPasswordForm from '../components/Login/ForgotPassword';
 
 
 const ForgotPassword = () => {
-    //   const navigate = useNavigate();
     const [email, setEmail] = React.useState('');
 
     const handleForgotPassword = (values, { setSubmitting }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Slider from '../Slider/Slider'
+import Cards from '../Card/Cards';
 
 function FavRecipes() {
     return (
@@ -9,7 +9,7 @@ function FavRecipes() {
                 <h2>Our Favourite Recipes</h2>
             </div>
             <div className="fav-recipes__content">
-                <Slider />
+                <Cards />
             </div>
         </div>
     )

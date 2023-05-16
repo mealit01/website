@@ -1,0 +1,151 @@
+.planner {
+    margin: 0 2rem;
+    max-width: 90%;
+    width: 100rem;
+    margin: 0 auto;
+
+    h1 {
+        color: $ksa;
+        font-size: 3rem;
+        align-self: flex-start;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+        font-weight: 900;
+    }
+
+    .days {
+        //swipe on mobile
+        overflow-x: scroll;
+        //hide scrollbar
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+
+        /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari and Opera */
+        }
+
+        scroll-behavior: smooth;
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        grid-template-rows: 1fr;
+        grid-gap: 1.5rem;
+        width: 100%;
+        max-width: 80rem;
+        background-color: $silver;
+        padding: 1rem;
+        border-radius: 1.5rem;
+
+        .day {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            text-transform: uppercase;
+            color: $dark-gray;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 700;
+            width: 6rem;
+            transition: all 0.3s ease-in-out;
+
+            &.active {
+                background-color: $ksa;
+                color: $white;
+
+                .day-number {
+                    background-color: rgba($color: $silver, $alpha: 0.12);
+                }
+            }
+
+            &-number {
+                background-color: rgba($color: $gray, $alpha: 0.12);
+                width: 90%;
+                padding: 1rem;
+                text-align: center;
+                border-radius: 1rem;
+            }
+        }
+    }
+
+    .day-meals {
+        margin-top: 5rem;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 80rem;
+        width: 100%;
+
+        &__meal{
+            background-color: #EDE9E5;
+            padding: 1rem;
+            border-radius: 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        &__header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem;
+            width: 100%;
+            
+            h3{
+                color: $gray;
+                font-size: 1.8rem;
+                display: flex;
+                align-items: center;
+            }
+
+            .btn-add{
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        h1 {
+            font-size: 4rem;
+        }
+
+        .days {
+            gap: 2rem;
+
+            .day {
+                width: 8rem;
+                font-size: 1.6rem;
+
+                &-number {
+                    padding: 2rem;
+                }
+            }
+        }
+
+        .day-meals {
+
+            &__meal{
+                padding: 2rem 4rem;
+            }
+            &__header{
+                h3{
+                    font-size: 2.4rem;
+                }
+            }
+        }
+    }
+}

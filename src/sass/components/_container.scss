@@ -8,7 +8,7 @@
 
     h2 {
         color: $ksa;
-        font-family: $proximaNova-bold;
+        font-family: $main-font;
         font-size: 2.4rem;
         margin-bottom: 3rem;
 
@@ -177,7 +177,7 @@
         h4 {
             font-size: 3.6rem;
             color: #343434;
-            font-family: $proximaNova-bold;
+            font-family: $main-font;
             margin-bottom: 1rem;
         }
     }
@@ -233,7 +233,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 5rem 0;
+    margin: 10rem 0;
 
     &__content {
         width: 90%;
@@ -247,13 +247,13 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 3rem;
-    margin: 5rem 0;
+    margin: 10rem 0;
     padding: 0 2rem;
 
     &__title {
         justify-self: center;
         align-self: center;
-
+        text-align: center;
         h2 {
             margin-bottom: 2rem;
         }
@@ -375,4 +375,8 @@
             align-self: center;
         }
     }
+}
+
+.container-planner{
+    margin: 15rem 0;
 }

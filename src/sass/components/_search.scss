@@ -35,7 +35,7 @@
         outline-color: transparent;
         font-size: 1.6rem;
         font-weight: 400;
-        font-family: $proximaNova;
+        font-family: $main-font;
         color: $black;
         width: 100%;
         padding: 1rem 2rem;
@@ -59,16 +59,6 @@
             top: -7rem;
         }
     }
-}
-
-.btn-add {
-    background-color: $white;
-    border-radius: 1rem;
-    width: 4.6rem;
-    height: 4rem;
-    background-image: url('../../assets/images/Plus\ icon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .btn-search {

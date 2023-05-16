@@ -21,19 +21,19 @@
             text-align: center;
             color: $silver;
             h1 {
-                font-family: $proximaNova-black;
                 font-size: 4.8rem;
                 margin-bottom: -1.5rem;
                 text-transform: capitalize;
+                font-weight: 900;
             }
 
             span {
-                font-size: 4.8rem;
+                font-size: 4.5rem;
+                font-weight: 600;
             }
 
             p {
                 font-size: 1.6rem;
-                font-family: $proximaNova-thin;
                 margin-top: 1rem;
                 color: #d6d6d6;
                 text-transform: lowercase;
@@ -43,10 +43,10 @@
         }
 
         .btn {
-            width: 20rem;
-            font-family: 'proximaNova-bold';
+            width: 22rem;
             background-color: $silver;
             color: $ksa;
+            font-weight: 600;
             margin-top: 2.5rem;
             border-radius: 1rem;
             padding: 1.5rem 0;

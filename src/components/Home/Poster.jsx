@@ -1,29 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import phoneApp from '../../assets/images/phone-app.png';
+import logoMealit from '../../assets/images/logo-mealit.png'
 
 const Poster = () => {
     return (
         <div className="poster">
             <div className="poster__content">
                 <div className="poster__image">
-                    <img src={phoneApp} alt="phone app" />
+                    <img src={logoMealit} alt='mealit' />
                 </div>
                 <div className="poster__text">
-                    <h2>Download Our App Now! </h2>
-                    <div className="poster__links">
-                        <Link to="/" className="poster__logo">
-                            mealit
-                        </Link>
-                        <div className="poster__apps">
-                            <Link to="/" className="poster__app google">
-                                Google Play
-                            </Link>
-                            <Link to="/" className="poster__app apple">
-                                App Store
-                            </Link>
-                        </div>
-                    </div>
+                    <h2>
+                        For Better Experience <br/> Download our App
+                    </h2>
+                </div>
+                <div className='poster__btns'>
+                    <Link className='poster__app google'>
+                        Google Play
+                    </Link>
+                    <Link className='poster__app apple'>
+                        App Store
+                    </Link>
                 </div>
             </div>
         </div>

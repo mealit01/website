@@ -1,13 +1,14 @@
-.logo{
+.logo {
     font-size: 3.2rem;
     font-family: lobster;
     color: #327052;
     text-transform: lowercase;
 
-    @media screen and (min-width: $medium-screen){
+    @media screen and (min-width: $medium-screen) {
         font-size: 3.6rem;
     }
 }
+
 .navbar {
     background-color: rgba($silver, 0.75);
     border-radius: 2rem;
@@ -23,9 +24,10 @@
     z-index: 1000;
     transition: all 0.1s ease-in;
 
-    &--open{
+    &--open {
         background-color: $silver;
         box-shadow: 0 4px 1rem rgba($silver, 0.25);
+        border-radius: 2rem 2rem 0 0;
     }
 
     &__menu {
@@ -46,7 +48,7 @@
 
         //display under the menu
         position: absolute;
-        top: 5.4rem;
+        top: 5.7rem;
         left: 0;
         width: 100%;
         z-index: 999;
@@ -57,8 +59,9 @@
 
         a {
             display: block;
-            color: $dark-gray;
-            font-family: $proximaNova-semibold;
+            color: $gray;
+            font-style: normal;
+            font-weight: 600;
             border-radius: 1rem;
             font-size: 1.6rem;
             padding: 1rem;
@@ -76,7 +79,7 @@
             content: "";
             background-image: url('../../assets/images/arrow.svg');
             background-repeat: no-repeat;
-            
+
             width: 1rem;
             height: 1.2rem;
             display: inline-block;
@@ -100,7 +103,7 @@
         gap: 1rem;
         margin: 2rem 0;
 
-        .signup{
+        .signup {
             background-color: $ksa;
             color: $silver;
             border-radius: .8rem;
@@ -121,7 +124,7 @@
         left: 10%;
 
         &__logo {
-            width: 35%
+            width: 30%
         }
 
         &__links {
@@ -148,7 +151,7 @@
     }
 }
 
-.desktop-nav:hover{
+.desktop-nav:hover {
     background-color: $silver;
     box-shadow: 0 4px 1rem rgba($silver, 0.25);
 }

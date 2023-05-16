@@ -1,11 +1,11 @@
 import React from 'react';
 import Review from './Review';
 
-import person1 from '../../assets/images/person-1.png';
-import person2 from '../../assets/images/person-2.png';
-import person3 from '../../assets/images/person-3.png';
-import person4 from '../../assets/images/person-4.png';
-import person5 from '../../assets/images/person-5.png';
+import person1 from '../../../assets/images/person-1.png';
+import person2 from '../../../assets/images/person-2.png';
+import person3 from '../../../assets/images/person-3.png';
+import person4 from '../../../assets/images/person-4.png';
+import person5 from '../../../assets/images/person-5.png';
 
 const reviews = [
     {

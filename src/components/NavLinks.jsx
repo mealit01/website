@@ -23,6 +23,9 @@ const Navbar = ({ className }) => {
         <div className="navbar__links">
             <ul className="navbar__links__list">
                 <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
                     <Link to="/recipes">Recipes</Link>
                 </li>
                 <li>

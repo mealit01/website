@@ -13,7 +13,9 @@ function Home() {
   return (
     <div className="home">
       <Navbar />
-      <Hero />
+      <Hero heading="Cooking" subheading="made easy" description="Save time with customize recipe and meal planner with our app's innovative features for enjoyable experience with customize recipe and meal planner.">
+        <button className="btn">Start Cooking Now</button>
+      </Hero>
       <Features />
       <Search />
       <Idea />

@@ -88,35 +88,15 @@ const Cards = ({ nav = true }) => {
     }
 
     useEffect(() => {
-        // console.log(cardsPerentWidth);
         const handleResize = () => {
-            const cardsPerentWidth = document.querySelector('.cards').offsetWidth;
-            console.log(cardsPerentWidth);
-            if (cardsPerentWidth < 400) 
-                setvisibleSlides(1);
-            else if (cardsPerentWidth < 450)
-                setvisibleSlides(1.25);
-            else if (cardsPerentWidth < 500)
-                setvisibleSlides(1.5);
-            else if (cardsPerentWidth < 768)
-                setvisibleSlides(2.25);
-            else if (cardsPerentWidth < 900)
-                setvisibleSlides(2.5);
-            else if (cardsPerentWidth < 1000)
-                setvisibleSlides(3);
-            else if (cardsPerentWidth < 1200)
-                setvisibleSlides(3.5);
-            else if (cardsPerentWidth < 1400)
-                setvisibleSlides(4);
-            else if (cardsPerentWidth < 1500)
-                setvisibleSlides(4.5);
-            else
-                setvisibleSlides(5);
+            const cardsPerentWidth = document.querySelector('.cards__content').offsetWidth;
+            const cardWidth = document.querySelector('.meal-card').offsetWidth;
+            const addedMargin = 50;
+            const visibleSlides = cardsPerentWidth / (cardWidth + addedMargin);
+            setvisibleSlides(visibleSlides);
         }
        
-        //add event listener 
         window.addEventListener('resize', handleResize);
-        //call the function
         handleResize();
     
         return () => {

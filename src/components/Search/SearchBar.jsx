@@ -82,9 +82,6 @@ const SearchBar = () => {
 
   return (
     <section className="search">
-      <h2 className="search-title">
-        Try our magic recipe search
-      </h2>
       <div className="search-box">
         <button className="btn-add" type="button" onClick={handleAdd}>
 

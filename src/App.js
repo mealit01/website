@@ -6,13 +6,17 @@ import Signup from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPass';
 import SetNewPassword from './pages/SetNewPass';
 import Planner from './pages/Planner';
+import Recipes from './pages/Recipes';
+import Recipe from './pages/Recipe';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="recipes" element={<h1>Recipes</h1>} />
+        <Route path="recipes" element={<Recipes />} />
+        <Route path="recipes/:id" element={<Recipe />} />
+
         <Route path="planner" element={<Planner />} />
         <Route path="pantry" element={<h1>Pantry</h1>} />
         <Route path="shopping" element={<h1>Shopping</h1>} />

@@ -31,7 +31,7 @@ const Login = () => {
                     {({ isSubmitting, isValid }) => (
                         <Form action="" className="auth-form" onSubmit={handleLogin}>
                             <Link to="/" className="close-btn">
-                                Back to home
+                                go back
                             </Link>
                             <div className="auth-form-header">
                                 <h3>Welcome to <span>mealit</span></h3>

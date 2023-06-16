@@ -90,3 +90,31 @@
         cursor: not-allowed;
     }
 }
+
+.close-btn {
+    background-color: lighten($color: $ksa, $amount: 10%);
+    color: $silver;
+    border-radius: 1rem;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    width: 10rem;
+    box-shadow: 0 0 10px 0 rgba($color: $gray, $alpha: 0.5);
+
+    &:before {
+        content: "";
+        background-image: url('../../assets/images/back-btn.svg');
+        background-repeat: no-repeat;
+        width: 1.5rem;
+        height: 2rem;
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        background-color: lighten($color: $ksa, $amount: 5%);
+    }
+}

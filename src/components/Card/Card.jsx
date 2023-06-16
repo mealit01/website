@@ -29,7 +29,7 @@ const Card = ({ item }) => {
                 <button className="btn-save" title="Save" onClick={handleSave} />
             </div>
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <Link to={`/recipe/${item.id}`} className="meal-card__img-link">
+                <Link to={`/recipes/${item.id}`} className="meal-card__img-link">
                     <img src={item.img} alt={item.name} />
                 </Link>
                 <CSSTransition
@@ -81,7 +81,7 @@ const Card = ({ item }) => {
                 >
                     <div className="meal-card__info--rating">
                         <span className="rating">{item.rating}</span>
-                        <Link to={`/recipe/${item.id}`} className="btn btn-dark" title="See the recipe">More info</Link>
+                        <Link to={`/recipes/${item.id}`} className="btn btn-dark" title="See the recipe">More info</Link>
                     </div>
                 </CSSTransition>
             </div>

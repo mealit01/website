@@ -1,0 +1,178 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    max-width: 60rem;
+    margin: 5rem auto;
+
+    h2{
+        &::after{
+            height: 0.7rem;
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        padding: 2rem;
+    }
+}
+
+.search-box {
+    background-color: $silver;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    position: relative;
+
+    input {
+        background-color: transparent;
+        border: none;
+        outline-color: transparent;
+        font-size: 1.6rem;
+        font-weight: 400;
+        font-family: $main-font;
+        color: $black;
+        width: 100%;
+        padding: 1rem 2rem;
+
+        &:focus {
+            outline-width: 0;
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        &:after {
+            content: '';
+            position: absolute;
+            width: 8rem;
+            height: 8rem;
+            background-image: url('../../assets/images/tryit.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            right: -7rem;
+            top: -7rem;
+        }
+    }
+}
+
+.btn-search {
+    border-radius: 1.5rem;
+    width: 4.6rem;
+    height: 4rem;
+    background-color: transparent; 
+    background-image: url('../../assets/images/Search\ icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ingredients-suggestions {
+    background-color: $white;
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 3rem 1.2rem;
+    border-radius: 1.5rem;
+    margin-top: 2rem;
+    gap: 1rem;
+    transition: all .3s ease-in-out;
+    animation: smooth-bounce .5s ease-in-out;
+    position: relative;
+
+    button {
+        background-color: $silver;
+        border-radius: 2rem;
+        padding: .5rem 1.5rem;
+        font-size: 1.4rem;
+        color: $gray;
+
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+
+        &.selected {
+            background-color: $ksa;
+            color: $white;
+        }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+        &:after{
+            //spark at bottom left
+            content: '';
+            background-image: url('../../assets/images/spark.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            left: -3rem;
+            bottom: -3rem;
+            width: 5rem;
+            height: 5rem;
+    
+        }
+    }
+}
+
+.selected-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .selected-ingredient {
+        box-shadow: 0 0 3px 1px $ksa, 0 0 0 3px $silver;
+    }
+}
+
+
+@keyframes smooth-bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bounce-enter {
+    transform: translateY(1rem);
+    opacity: 0;
+}
+
+.bounce-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+.bounce-exit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.bounce-exit-active {
+    transform: translateY(1rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+// Path: src\sass\components\_search-results.scss
+// Compare this snippet from src\sass\abstracts\_variables.scss:

@@ -1,0 +1,120 @@
+.btn{
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    
+    &:hover{
+        box-shadow: 0 0 10px 0 $silver;
+    }
+    
+    &-primary{
+        font-size: 1.6rem;
+        background-color: $silver;
+        color: $ksa;
+        margin-top: 2.5rem;
+    }
+
+    &-dark{
+        background-color: $ksa;
+        color: $silver;
+        font-weight: 600;
+        font-size: 1.4rem;
+        padding: 1.2rem 1rem;
+        
+        &:hover{
+            color: $white;
+            box-shadow: 0 0 1rem 0.5rem rgba($color: $ksa, $alpha: 0.2);
+        }
+    }
+
+    &-link{
+        background-color: transparent;
+        color: $silver;
+        padding-left: .4rem;
+        text-decoration: underline;
+        text-transform: capitalize;
+
+        &:hover{
+            color: $white;
+        }
+    }
+
+    &-add{
+        background-color: $white;
+        border-radius: 1rem;
+        width: 4.6rem;
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        &:after{
+            content: '';
+            background-image: url('../../assets/images/Plus\ icon.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+            width: 2rem;
+            height: 2rem;
+        }
+
+        &:hover{
+            box-shadow: 0 0 10px 0 $silver;
+        }
+
+        &.dark{
+            background-color: $ksa;
+            &:after{
+                filter: invert(1) brightness(100);
+            }
+
+            &:hover{
+                box-shadow: 0 0 10px 0 rgba($color: $gray, $alpha: 0.5);
+            }
+        }
+    }
+    
+    //desktop
+    @media screen and (min-width: $large-screen){
+        &-primary{
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.disabled{
+    opacity: 0.7;
+
+    &:hover{
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+}
+
+.close-btn {
+    background-color: lighten($color: $ksa, $amount: 10%);
+    color: $silver;
+    border-radius: 1rem;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    width: 10rem;
+    box-shadow: 0 0 10px 0 rgba($color: $gray, $alpha: 0.5);
+
+    &:before {
+        content: "";
+        background-image: url('../../assets/images/back-btn.svg');
+        background-repeat: no-repeat;
+        width: 1.5rem;
+        height: 2rem;
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        background-color: lighten($color: $ksa, $amount: 5%);
+    }
+}

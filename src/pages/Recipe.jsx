@@ -142,7 +142,7 @@ function Recipe() {
                         </div>
                         <div className="recipe__header--info--info--ingNum">
                             <img src={ingredientsIcon} alt="Ingredients" />
-                            <span className="ingNum">{placeholderRecipe.ingredients.length} ings</span>
+                            <span className="ingNum">{Object.keys(placeholderRecipe.ingredients).length} ings</span>
                         </div>
                     </div>
                 </div>

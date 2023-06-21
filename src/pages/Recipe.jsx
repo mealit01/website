@@ -6,6 +6,9 @@ import kcalIcon from '../assets/images/kcals.svg'
 import timeIcon from '../assets/images/time.svg'
 import difficultyIcon from '../assets/images/difficulty.svg'
 import ingredientsIcon from '../assets/images/ings.svg'
+import Ingredients from '../components/Recipes/recipe/Ingredients'
+import Steps from '../components/Recipes/recipe/Steps'
+
 const placeholderRecipe = {
     id: 1,
     name: 'Pasta Margaretta with soup and butterfly',
@@ -13,18 +16,40 @@ const placeholderRecipe = {
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
     img: img,
     time: 30,
-    ingredients: ['Chicken', 'Tomato', 'Onion', 'Garlic', 'Paprika', 'Salt', 'Pepper'],
+    //name, quantity
+    ingredients: {
+        1: {
+            id: 1,
+            name: 'Flour',
+            quantity: '1 cup',
+        },
+        2: {
+            id: 2,
+            name: 'Baking powder',
+            quantity: '1 tsp',
+        },
+        3: {
+            id: 3,
+            name: 'Baking soda',
+            quantity: '1/2 tsp',
+        },
+        4: {
+            id: 4,
+            name: 'Salt',
+            quantity: '1/2 tsp',
+        }
+    },
     fav: false,
     meal: 'breakfast',
     difficulty: 'Easy',
     tags: ['easy', 'breakfast', 'healthy', 'low-carb', 'low-fat', 'low-sodium', 'low-sugar', 'low-calories'],
     nurtition: {
-        calories: 300,
-        fat: 20,
-        carbs: 20,
-        protein: 20,
-        sugar: 20,
-        sodium: 20,
+        calories: '300kcal',
+        fat: '20g',
+        carbs: '20g',
+        protein: '20g',
+        sugar: '20g',
+        sodium: '20g',
     },
     steps: [
         {
@@ -113,7 +138,7 @@ function Recipe() {
                         </div>
                         <div className="recipe__header--info--info--calories">
                             <img src={kcalIcon} alt="Calories" />
-                            <span className="calories">{placeholderRecipe.nurtition.calories} kcal</span>
+                            <span className="calories">{placeholderRecipe.nurtition.calories} </span>
                         </div>
                         <div className="recipe__header--info--info--ingNum">
                             <img src={ingredientsIcon} alt="Ingredients" />
@@ -123,45 +148,8 @@ function Recipe() {
                 </div>
             </div>
             <div className="recipe__body">
-                <div className="recipe__body--ingredients">
-                    <h3>Ingredients</h3>
-                    <ul>
-                        {
-                            placeholderRecipe.ingredients.map((ingredient, index) => {
-                                return (
-                                    <li key={index}>{ingredient}</li>
-                                )
-                            })
-                        }
-                    </ul>
-                </div>
-                <div className="recipe__body--steps">
-                    <h3>Steps</h3>
-                    <ol>
-                        {
-                            placeholderRecipe.steps.map((step, index) => {
-                                return (
-                                    <li key={index}>{step.description}</li>
-                                )
-                            })
-                        }
-                    </ol>
-                </div>
-                <div className="recipe__body--nutrition">
-                    <h3>Nutrition</h3>
-                    <div className="nutritions">
-                        {
-                            Object.keys(placeholderRecipe.nurtition).map((key, index) => {
-                                return (
-                                    <div key={index} className="nutrition">
-                                        <span className="nutrition__name">{key}</span>
-                                        <span className="nutrition__value">{placeholderRecipe.nurtition[key]}</span>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+                <Ingredients ingredients={placeholderRecipe.ingredients} nurtition={placeholderRecipe.nurtition} steps={placeholderRecipe.steps} />
+                <Steps steps={placeholderRecipe.steps} />
             </div>
         </div>
     )

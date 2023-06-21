@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/SignUp';
+import Profile from './pages/Profile';
 import ForgotPassword from './pages/ForgotPass';
 import SetNewPassword from './pages/SetNewPass';
 import Planner from './pages/Planner';
@@ -20,8 +21,10 @@ function App() {
         <Route path="planner" element={<Planner />} />
         <Route path="pantry" element={<h1>Pantry</h1>} />
         <Route path="shopping" element={<h1>Shopping</h1>} />
+
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="profile" element={<Profile />} />
 
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="set-new-password" element={<SetNewPassword />} />

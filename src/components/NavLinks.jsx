@@ -4,8 +4,27 @@ import { CSSTransition } from "react-transition-group";
 import hamburger from "../assets/images/hamburger.png";
 import close from "../assets/images/close.png";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { useGetUserDetailsQuery } from '../state/features/auth/authService';
+import { setCredentials, logout } from '../state/features/auth/authSlice';
+
+
+
 const Navbar = ({ className }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const dispatch = useDispatch();
+    const { userInfo } = useSelector((state) => state.auth);
+
+    const { data, isFetching } = useGetUserDetailsQuery('userDetails', {
+        pollingInterval: 900000,
+    });
+
+    console.log(data, isFetching);
+
+    useEffect(() => {
+        if (data) dispatch(setCredentials(data));
+    }, [data, dispatch]);
 
     // if user clicks outside of menu, close menu
     useEffect(() => {
@@ -40,8 +59,24 @@ const Navbar = ({ className }) => {
             </ul>
 
             <div className="navbar__links__auth">
-                <Link to="/login">Login</Link>
-                <Link to="/signup" className="signup">Sign Up</Link>
+                {
+                    userInfo ? (
+                        <>
+                        <Link to="/profile" className="btn btn--primary">
+                            {userInfo.firstName}
+                        </Link>
+
+                        <button className="btn btn--primary signup" onClick={() => dispatch(logout())}>
+                            Logout
+                        </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/signup" className="signup">Sign Up</Link>
+                        </>
+                    )
+                }
             </div>
         </div>
     )
@@ -54,31 +89,31 @@ const Navbar = ({ className }) => {
                 </Link>
             </div>
 
-           
-                {className === "mobile-nav" ? (
-                    <div className="navbar__menu">
-                        <CSSTransition
-                            in={!isMenuOpen}
-                            timeout={100}
-                            classNames="hamburger"
-                            unmountOnExit
-                        >
-                            <img src={hamburger} alt="hamburger menu" onClick={() => setIsMenuOpen(true)} />
-                        </CSSTransition>
 
-                        <CSSTransition
-                            in={isMenuOpen}
-                            timeout={100}
-                            classNames="close"
-                            unmountOnExit
-                        >
-                            <img src={close} alt="close menu" onClick={() => setIsMenuOpen(false)} />
-                        </CSSTransition>
-                   </div>
-                ) : (
-                    className === "desktop-nav" && renderLinks
-                )}
-            
+            {className === "mobile-nav" ? (
+                <div className="navbar__menu">
+                    <CSSTransition
+                        in={!isMenuOpen}
+                        timeout={100}
+                        classNames="hamburger"
+                        unmountOnExit
+                    >
+                        <img src={hamburger} alt="hamburger menu" onClick={() => setIsMenuOpen(true)} />
+                    </CSSTransition>
+
+                    <CSSTransition
+                        in={isMenuOpen}
+                        timeout={100}
+                        classNames="close"
+                        unmountOnExit
+                    >
+                        <img src={close} alt="close menu" onClick={() => setIsMenuOpen(false)} />
+                    </CSSTransition>
+                </div>
+            ) : (
+                className === "desktop-nav" && renderLinks
+            )}
+
 
             {className === "mobile-nav" && (
                 <CSSTransition

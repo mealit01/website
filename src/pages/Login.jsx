@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../state/features/auth/authActions";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -9,9 +11,25 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const { loading, userInfo, error, success } = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (userInfo) {
+            navigate("/profile");
+        }
+        console.log(userInfo);
+    }, [userInfo, navigate]);
+
 
     const handleLogin = (values) => {
-       
+        console.log(values);
+        dispatch(login(values));
+
+        if (success) {
+            navigate("/");
+        }
     };
 
     return (
@@ -23,13 +41,15 @@ const Login = () => {
             </nav>
 
             <div className="auth-inner">
+                {error && <div className="alert alert-danger">{error}</div>}
                 <Formik
                     initialValues={{ email: "", password: "" }}
                     validationSchema={LoginSchema}
                     onSubmit={handleLogin}
                 >
                     {({ isSubmitting, isValid }) => (
-                        <Form action="" className="auth-form" onSubmit={handleLogin}>
+
+                        <Form action="" className="auth-form">
                             <Link to="/" className="close-btn">
                                 go back
                             </Link>
@@ -52,7 +72,7 @@ const Login = () => {
                                 </div>
 
                                 <button type="submit" className={`btn btn-primary ${isValid ? "" : "disabled"}`} disabled={!isValid}>
-                                    {isSubmitting ? "Loading..." : "Login"}
+                                    {loading ? "Loading..." : "Login"}
                                 </button>
 
 

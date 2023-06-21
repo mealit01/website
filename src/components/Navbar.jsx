@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavLinks from './NavLinks';
 
+
 function Navbar() {
     const [isMobile, setIsMobile] = useState(false);
 
@@ -15,7 +16,7 @@ function Navbar() {
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-    
+
     return (
         <div>
             <nav>

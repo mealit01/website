@@ -9,6 +9,8 @@ import SetNewPassword from './pages/SetNewPass';
 import Planner from './pages/Planner';
 import Recipes from './pages/Recipes';
 import Recipe from './pages/Recipe';
+import ShoppingList from './pages/ShoppingList';
+import Pantry from './pages/Pantry';
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
         <Route path="recipes/:id" element={<Recipe />} />
 
         <Route path="planner" element={<Planner />} />
-        <Route path="pantry" element={<h1>Pantry</h1>} />
-        <Route path="shopping" element={<h1>Shopping</h1>} />
+        <Route path="pantry" element={<Pantry />} />
+        <Route path="shoppinglist" element={<ShoppingList />} />
 
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />

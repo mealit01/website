@@ -1,0 +1,111 @@
+.shopping-list, .pantry{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 16rem 2rem;
+}
+
+.list{
+    background-color: #EDE9E5;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 90rem;
+
+    h1{
+        font-size: 2.4rem;
+        color: $ksa;
+        font-weight: 800;
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 2rem;
+        
+    }
+
+    &__filter{
+        background-color: $silver;
+        border-radius: 1rem;
+        padding: 0.75rem;
+        display: grid;
+        //scroll x axis
+        overflow-x: scroll;
+        grid-auto-flow: column;
+        grid-gap: 1rem;
+        align-items: center;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: $silver;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: $ksa;
+        }
+
+        &--btn{
+            background-color: rgba(70,70,70,0.2);
+            border: none;
+            color: $gray;
+            font-size: 1.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease-in-out;
+            &:active{
+                transform: scale(0.9);
+            }
+        }
+    }
+
+    &__items{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    &__item{
+        background-color: $white;
+        border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $gray;
+        &:hover{
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+        }
+        &--title{
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        &--body{
+            font-size: 1.4rem;
+
+        }
+    }
+
+    @media only screen and (min-width: $medium-screen) {
+        padding: 5rem;
+
+        h1{
+            font-size: 3.2rem;
+        }
+        &__item{
+            padding: 1.5rem;
+            &--title{
+                font-size: 1.8rem;
+            }
+            &--body{
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

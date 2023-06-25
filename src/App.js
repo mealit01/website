@@ -17,7 +17,6 @@ import Pantry from './pages/Pantry';
 import NotFound from './pages/NotFound';
 
 function App() {
-
   return (
     <div className="App">
       <Routes>

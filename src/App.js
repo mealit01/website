@@ -15,7 +15,6 @@ import Recipe from './pages/Recipe';
 import ShoppingList from './pages/ShoppingList';
 import Pantry from './pages/Pantry';
 import NotFound from './pages/NotFound';
-import ResetPassword from './pages/ResetPassword';
 
 function App() {
   const userInfo = useSelector(state => state.userInfo);

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../state/features/auth/authActions";
+import { useNavigate } from 'react-router-dom';
+import Spinner from '../components/Loader/Spinner';
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -19,17 +21,12 @@ const Login = () => {
         if (userInfo) {
             navigate("/profile");
         }
-        console.log(userInfo);
     }, [userInfo, navigate]);
 
 
     const handleLogin = (values) => {
         console.log(values);
         dispatch(login(values));
-
-        if (success) {
-            navigate("/");
-        }
     };
 
     return (
@@ -72,7 +69,7 @@ const Login = () => {
                                 </div>
 
                                 <button type="submit" className={`btn btn-primary ${isValid ? "" : "disabled"}`} disabled={!isValid}>
-                                    {loading ? "Loading..." : "Login"}
+                                    {loading ? <Spinner width="20px" height="20px" /> : "Login"}
                                 </button>
 
 

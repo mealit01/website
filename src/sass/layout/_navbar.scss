@@ -74,7 +74,6 @@
     }
 
     &__links__list {
-
         a:after {
             content: "";
             background-image: url('../../assets/images/arrow.svg');
@@ -99,9 +98,8 @@
 
     &__links__auth {
         display: flex;
-        justify-content: center;
         gap: 1rem;
-        margin: 2rem 0;
+        justify-content: center;
 
         .signup {
             background-color: $ksa;
@@ -116,10 +114,14 @@
                 transition: all 0.3s ease-in-out;
             }
         }
+
+        &__info{
+            justify-content: flex-start;
+        }
     }
 
     @media screen and (min-width: $large-screen) {
-        padding: 0 3rem;
+        padding: 1.5rem 3rem;
         width: 80%;
         left: 10%;
 

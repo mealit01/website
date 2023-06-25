@@ -8,6 +8,7 @@ const ForgotPasswordSchema = Yup.object().shape({
 });
 
 function ForgotPassword({ handleForgotPassword }) {
+
   return (
     <Formik
       initialValues={{ email: '' }}

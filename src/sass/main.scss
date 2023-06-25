@@ -17,15 +17,19 @@
 @import "components/_form.scss";
 @import "components/_slider.scss";
 @import "components/_list.scss";
+@import "components/_modal.scss";
+@import "components/_loader.scss";
 
 //layout
 @import "layout/_footer.scss";
 @import "layout/_navbar.scss";
+@import "layout/_dropdown.scss";
 
 //pages
 @import "pages/_home.scss";
-@import "pages/_login.scss";
 @import "pages/_planner.scss";
 @import "pages/_recipes.scss";
+@import "pages/_notFound.scss";
+@import "pages/_profile.scss";
 
 //vendors

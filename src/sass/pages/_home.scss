@@ -74,7 +74,7 @@
     @media screen and (min-width: $medium-screen) {
         padding: 8rem 0;
         &-text {
-            height: 90vh;
+            height: 70vh;
             
             h1 {
                 font-size: 5rem;
@@ -89,6 +89,25 @@
                 font-size: 2rem;
             }
         }
+    }
 
+    //desktop
+    @media screen and (min-width: $large-screen) {
+        padding: 10rem 0;
+        &-text {
+            height: 65vh;
+            h1 {
+                font-size: 6rem;
+                line-height: 6rem;
+            }
+
+            span {
+                font-size: 6rem;
+            }
+
+            p {
+                font-size: 2.5rem;
+            }
+        }
     }
 }

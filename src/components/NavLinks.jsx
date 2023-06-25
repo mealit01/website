@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import hamburger from "../assets/images/hamburger.png";
 import close from "../assets/images/close.png";
+import ProfileDropdown from "../components/Login/ProfileDropdown";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetUserDetailsQuery } from '../state/features/auth/authService';
-import { setCredentials, logout } from '../state/features/auth/authSlice';
-
+import { setCredentials } from "../state/features/auth/authSlice";
 
 
 const Navbar = ({ className }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const userInfo = useSelector((state) => state.auth.userInfo);
     const dispatch = useDispatch();
-    const { userInfo } = useSelector((state) => state.auth);
 
-    const { data, isFetching } = useGetUserDetailsQuery('userDetails', {
-        pollingInterval: 900000,
+    const { data, isFetching } = useGetUserDetailsQuery('userDetails',{
+        pollingInterval: 900000, // 15 minutes
+        skip: !userInfo,
     });
 
-    console.log(data, isFetching);
-
     useEffect(() => {
-        if (data) dispatch(setCredentials(data));
-    }, [data, dispatch]);
+        if (data !== undefined) {
+            dispatch(setCredentials(data));
+        }
+    }, [dispatch, data]);
 
     // if user clicks outside of menu, close menu
     useEffect(() => {
@@ -58,23 +58,27 @@ const Navbar = ({ className }) => {
                 </li>
             </ul>
 
-            <div className="navbar__links__auth">
+            <div className={`navbar__links__auth ${userInfo ? "navbar__links__auth__info" : ""}`}>
                 {
-                    userInfo ? (
-                        <>
-                        <Link to="/profile" className="btn btn--primary">
-                            {userInfo.firstName}
-                        </Link>
-
-                        <button className="btn btn--primary signup" onClick={() => dispatch(logout())}>
-                            Logout
-                        </button>
-                        </>
+                    isFetching ? (
+                        <div className="navbar__links__auth__loading">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div>
                     ) : (
-                        <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup" className="signup">Sign Up</Link>
-                        </>
+                        userInfo ? (
+                            <ProfileDropdown className={className} />
+                        ) : (
+                            <div className="navbar__links__auth">
+                                <Link to="/login" className="btn">
+                                    Login
+                                </Link>
+                                <Link to="/signup" className="btn signup">
+                                    Signup
+                                </Link>
+                            </div>
+                        )
                     )
                 }
             </div>

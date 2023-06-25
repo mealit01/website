@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom';
 import EmailSent from '../components/Login/EmailSent';
 import ForgotPasswordForm from '../components/Login/ForgotPassword';
 
+import { useDispatch } from 'react-redux';
+import { forgotPassword } from '../state/features/auth/authActions';
+
 
 const ForgotPassword = () => {
     const [email, setEmail] = React.useState('');
-
+    const dispatch = useDispatch();
+    
     const handleForgotPassword = (values, { setSubmitting }) => {
         setSubmitting(false);
         setEmail(values.email);
+        dispatch(forgotPassword(values));
     };
 
 

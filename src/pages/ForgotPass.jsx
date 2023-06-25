@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import EmailSent from '../components/Login/EmailSent';
-import ForgotPasswordForm from '../components/Login/ForgotPassword';
 
 import { useDispatch } from 'react-redux';
 import { forgotPassword } from '../state/features/auth/authActions';
@@ -29,11 +28,7 @@ const ForgotPassword = () => {
             </nav>
 
             <div className="auth-inner">
-                {email ? (
-                    <EmailSent email={email} setEmail={setEmail} />
-                ) : (
-                    <ForgotPasswordForm handleForgotPassword={handleForgotPassword} />
-                )}
+                {email && <EmailSent email={email} />}
             </div>
         </div>
     );

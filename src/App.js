@@ -1,7 +1,7 @@
 import './sass/main.scss';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -15,8 +15,12 @@ import Recipe from './pages/Recipe';
 import ShoppingList from './pages/ShoppingList';
 import Pantry from './pages/Pantry';
 import NotFound from './pages/NotFound';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
+  const userInfo = useSelector(state => state.userInfo);
+  const resetPassword = useSelector(state => state.resetPassword);
+
   return (
     <div className="App">
       <Routes>
@@ -25,17 +29,17 @@ function App() {
         <Route path="recipes/:id" element={<Recipe />} />
 
         <Route path="planner" element={
-          <PrivateRoute>
+          <PrivateRoute condition={userInfo}>
             <Planner />
           </PrivateRoute>
         } />
         <Route path="pantry" element={
-          <PrivateRoute>
+          <PrivateRoute condition={userInfo}>
             <Pantry />
           </PrivateRoute>
         } />
         <Route path="shoppinglist" element={
-          <PrivateRoute>
+          <PrivateRoute condition={userInfo}>
             <ShoppingList />
           </PrivateRoute>
         } />
@@ -43,7 +47,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={
-          <PrivateRoute>
+          <PrivateRoute condition={userInfo}>
             <Profile />
           </PrivateRoute>
         } />
@@ -53,7 +57,9 @@ function App() {
             <ForgotPassword />
         } />
         <Route path="set-new-password" element={
-          <SetNewPassword />
+          // <PrivateRoute condition={resetPassword}>
+            <SetNewPassword />
+          // </PrivateRoute>
         } />
 
         <Route path="*" element={<NotFound />} />

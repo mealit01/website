@@ -1,14 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import Modal from './Modal/Modal';
 
-function PrivateRoute({ children }) {
-    const userInfo = useSelector((state) => state.auth.userInfo);
-
+function PrivateRoute({ children, condition }) {
     return (
         <>
-            <Modal show={!userInfo} >
+            <Modal show={!condition}>
                 <div className="modal-header">
                     <h3>Oops!</h3>
                 </div>

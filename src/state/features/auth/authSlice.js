@@ -11,6 +11,7 @@ const initialState = {
     userToken,
     error: null,
     success: false,
+    resetPassword: false,
 };
 
 
@@ -73,6 +74,7 @@ const authSlice = createSlice({
         builder.addCase(forgotPassword.fulfilled, (state, action) => {
             state.loading = false;
             state.success = action.payload.message;
+            state.resetPassword = true;
         }
         );
         builder.addCase(forgotPassword.rejected, (state, action) => {
@@ -87,11 +89,13 @@ const authSlice = createSlice({
         builder.addCase(resetPassword.fulfilled, (state, action) => {
             state.loading = false;
             state.success = action.payload.message;
+            state.resetPassword = false;
         }
         );
         builder.addCase(resetPassword.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
+            state.resetPassword = false;
         }
         );
         builder.addCase(deleteAccount.pending, (state) => {

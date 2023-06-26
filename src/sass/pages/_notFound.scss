@@ -15,18 +15,28 @@
 
         
         h1{
-            font-size: 3.2rem;
+            font-size: 2.4rem;
         }
         p{
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 400;
             margin-bottom: 2rem;
         }
         img{
-            width: 100%;
-            max-width: 35rem;
+            width: 60%;
+            max-width: 30rem;
             margin-bottom: 2rem;
         }
-        
+    }
+
+    @media screen and (min-width: $medium-screen){  
+        &__content{
+            h1{
+                font-size: 3.2rem;
+            }
+            p{
+                font-size: 1.8rem;
+            }
+        }
     }
 }

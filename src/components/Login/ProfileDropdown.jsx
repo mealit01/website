@@ -4,6 +4,11 @@ import { logout } from '../../state/features/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import ProfilePic from '../../assets/images/profile-pic.svg'
 
+import Profile from '../../assets/images/profile.svg'
+import Bookmark from '../../assets/images/bookmark.svg'
+import Settings from '../../assets/images/settings.svg'
+import Logout from '../../assets/images/logout.svg'
+
 function ProfileDropdown({ className }) {
     const [isListOpen, setIsListOpen] = useState(false);
     const dispatch = useDispatch();
@@ -31,15 +36,19 @@ function ProfileDropdown({ className }) {
             </div>
             <ul className={`profile-dropdown__list ${isListOpen ? "profile-dropdown__list__active" : ""}`}>
                 <li>
+                    <img src={Profile} alt="profile" />
                     <Link to="/profile">Profile</Link>
                 </li>
                 <li>
+                    <img src={Bookmark} alt="bookmark" />
                     <Link to="/bookmarks">Bookmarks</Link>
                 </li>
                 <li>
-                    <Link to="/settings">Settings</Link>
+                    <img src={Settings} alt="settings" />
+                    <Link to="/profile-settings">Settings</Link>
                 </li>
                 <li>
+                    <img src={Logout} alt="logout" />
                     <Link onClick={handleLogout}>Logout</Link>
                 </li>
             </ul>

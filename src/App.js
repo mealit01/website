@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/SignUp';
 import Profile from './pages/Profile';
+import ProfileSettings from './pages/ProflieSettings';
 import ForgotPassword from './pages/ForgotPass';
 import SetNewPassword from './pages/SetNewPass';
 import Planner from './pages/Planner';
@@ -17,9 +18,6 @@ import Pantry from './pages/Pantry';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const userInfo = useSelector(state => state.userInfo);
-  const resetPassword = useSelector(state => state.resetPassword);
-
   return (
     <div className="App">
       <Routes>
@@ -28,17 +26,17 @@ function App() {
         <Route path="recipes/:id" element={<Recipe />} />
 
         <Route path="planner" element={
-          <PrivateRoute condition={userInfo}>
+          <PrivateRoute>
             <Planner />
           </PrivateRoute>
         } />
         <Route path="pantry" element={
-          <PrivateRoute condition={userInfo}>
+          <PrivateRoute>
             <Pantry />
           </PrivateRoute>
         } />
         <Route path="shoppinglist" element={
-          <PrivateRoute condition={userInfo}>
+          <PrivateRoute>
             <ShoppingList />
           </PrivateRoute>
         } />
@@ -46,8 +44,14 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={
-          <PrivateRoute condition={userInfo}>
+          <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        } />
+
+        <Route path="profile-settings" element={
+          <PrivateRoute>
+            <ProfileSettings />
           </PrivateRoute>
         } />
 
@@ -56,7 +60,7 @@ function App() {
             <ForgotPassword />
         } />
         <Route path="set-new-password" element={
-          // <PrivateRoute condition={resetPassword}>
+          // <PrivateRouteword}>
             <SetNewPassword />
           // </PrivateRoute>
         } />

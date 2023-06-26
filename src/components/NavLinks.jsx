@@ -10,7 +10,7 @@ import { useGetUserDetailsQuery } from '../state/features/auth/authService';
 import { setCredentials } from "../state/features/auth/authSlice";
 
 
-const Navbar = ({ className }) => {
+const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const userInfo = useSelector((state) => state.auth.userInfo);
     const dispatch = useDispatch();
@@ -37,6 +37,21 @@ const Navbar = ({ className }) => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [isMenuOpen]);
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check screen size on mount and on resize
+    useEffect(() => {
+        function handleResize() {
+            setIsMobile(window.innerWidth < 1024);
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
     const renderLinks = (
         <div className="navbar__links">
@@ -68,7 +83,7 @@ const Navbar = ({ className }) => {
                         </div>
                     ) : (
                         userInfo ? (
-                            <ProfileDropdown className={className} />
+                            <ProfileDropdown className={isMobile ? "mobile-nav" : "desktop-nav"} userInfo={userInfo} />
                         ) : (
                             <div className="navbar__links__auth">
                                 <Link to="/login" className="btn">
@@ -86,7 +101,7 @@ const Navbar = ({ className }) => {
     )
 
     return (
-        <div className={`navbar ${isMenuOpen ? "navbar--open" : ""} ${className}`}>
+        <div className={`navbar ${isMenuOpen ? "navbar--open" : ""} ${isMobile ? "mobile-nav" : "desktop-nav"}`}>
             <div className="navbar__logo">
                 <Link to="/" className="logo">
                     Mealit
@@ -94,7 +109,7 @@ const Navbar = ({ className }) => {
             </div>
 
 
-            {className === "mobile-nav" ? (
+            {isMobile ? (
                 <div className="navbar__menu">
                     <CSSTransition
                         in={!isMenuOpen}
@@ -115,11 +130,11 @@ const Navbar = ({ className }) => {
                     </CSSTransition>
                 </div>
             ) : (
-                className === "desktop-nav" && renderLinks
+                !isMobile && renderLinks
             )}
 
 
-            {className === "mobile-nav" && (
+            {isMobile && (
                 <CSSTransition
                     in={isMenuOpen}
                     timeout={300}

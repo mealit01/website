@@ -79,7 +79,16 @@ const placeholderRecipe = {
         {
             id: 7,
             description: 'Add the dry ingredients to the wet ingredients and mix well.',
-        }
+        },
+        {
+            id: 8,
+            description: 'Add the batter to the cupcake tray and bake for 15-20 minutes.',
+        },
+        {
+            id: 9,
+            description: 'Let it cool down and enjoy!',
+        },
+        
     ]
 }
 

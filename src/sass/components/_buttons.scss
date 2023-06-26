@@ -1,45 +1,45 @@
-.btn{
+.btn {
     border-radius: 1rem;
     padding: 1.5rem;
     transition: all 0.3s ease-in-out;
-    
-    &:hover{
+
+    &:hover {
         box-shadow: 0 0 10px 0 $silver;
     }
-    
-    &-primary{
+
+    &-primary {
         font-size: 1.6rem;
         background-color: $silver;
         color: $ksa;
         margin-top: 2.5rem;
     }
 
-    &-dark{
+    &-dark {
         background-color: $ksa;
         color: $silver;
         font-weight: 600;
         font-size: 1.4rem;
         padding: 1.2rem 1rem;
-        
-        &:hover{
+
+        &:hover {
             color: $white;
             box-shadow: 0 0 1rem 0.5rem rgba($color: $ksa, $alpha: 0.2);
         }
     }
 
-    &-link{
+    &-link {
         background-color: transparent;
         color: $silver;
         padding-left: .4rem;
         text-decoration: underline;
         text-transform: capitalize;
 
-        &:hover{
+        &:hover {
             color: $white;
         }
     }
 
-    &-add{
+    &-add {
         background-color: $white;
         border-radius: 1rem;
         width: 4rem;
@@ -48,7 +48,8 @@
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease-in-out;
-        &:after{
+
+        &:after {
             content: '';
             background-image: url('../../assets/images/Plus\ icon.svg');
             background-repeat: no-repeat;
@@ -58,34 +59,35 @@
             height: 2rem;
         }
 
-        &:hover{
+        &:hover {
             box-shadow: 0 0 10px 0 $silver;
         }
 
-        &.dark{
+        &.dark {
             background-color: $ksa;
-            &:after{
+
+            &:after {
                 filter: invert(1) brightness(100);
             }
 
-            &:hover{
+            &:hover {
                 box-shadow: 0 0 10px 0 rgba($color: $gray, $alpha: 0.5);
             }
         }
     }
-    
+
     //desktop
-    @media screen and (min-width: $large-screen){
-        &-primary{
+    @media screen and (min-width: $large-screen) {
+        &-primary {
             font-size: 1.8rem;
         }
     }
 }
 
-.disabled{
+.disabled {
     opacity: 0.7;
 
-    &:hover{
+    &:hover {
         box-shadow: none;
         cursor: not-allowed;
     }
@@ -116,5 +118,24 @@
 
     &:hover {
         background-color: lighten($color: $ksa, $amount: 5%);
+    }
+}
+
+.expand {
+    background-color: $ksa;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    transition: all .2s ease-in-out;
+    padding: 0.75rem;
+
+    img {
+        width: 100%;
+    }
+
+    &:hover {
+        background-color: darken($ksa, 10%);
     }
 }

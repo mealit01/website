@@ -1,28 +1,64 @@
 .profile{
     &-page{
         margin-top: 15rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 4rem;
     }
     width: 100%;
     max-width: 80rem;
-    margin: 0 auto;
-    background-color: $silver;
-    padding: 2rem;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
-    justify-content: center;
+    
+    background-color: $silver;
     
     &__header{
+        padding: 3rem 2rem;
+        h2{
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+        }
         &__details{
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 2rem;
             &__item{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                font-size: 1.4rem;
+                color: #858585;
+                p{
+                    color: #343434;
+                }
+                img{
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    background-color: $ksa;
+                }
+
+                &:last-child{
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: $large-screen){
+        &__header{
+            padding: 3rem 5rem;
+
+            &__details{
+                &__item{
+                    font-size: 1.6rem;
+                }
             }
         }
     }

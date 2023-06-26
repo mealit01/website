@@ -15,6 +15,9 @@ export const signup = createAsyncThunk(
         password,
         passwordConfirm
       })
+      localStorage.setItem('userToken', response.data.token)
+      localStorage.setItem('userInfo', JSON.stringify(response.data.userInfo))
+      
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data.message)
@@ -31,6 +34,7 @@ export const login = createAsyncThunk(
         password
       })
       localStorage.setItem('userToken', response.data.token)
+      localStorage.setItem('userInfo', JSON.stringify(response.data.userInfo))
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data.message)

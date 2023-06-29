@@ -45,18 +45,20 @@ export const login = createAsyncThunk(
 
 export const updateUserDetails = createAsyncThunk(
   'auth/updateUserDetails',
-  async ({ name, email }, { rejectWithValue, getState }) => {
+  async ({ firstName, lastName, email }, { rejectWithValue, getState }) => {
     //get token from state
-    const { token } = getState().auth || localStorage.getItem('userToken')
+    const token = getState().auth.userToken || localStorage.getItem('userToken')
     try {
-      const response = await axios.patch(`${backendURL}api/user/updateMe`, {
-        name,
+      const response = await axios.patch(`${backendURL}api/user/updateInfo`, {
+        firstName,
+        lastName,
         email
       }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
+      console.log(response.data);
       return response.data
     }
     catch (error) {
@@ -73,7 +75,6 @@ export const forgotPassword = createAsyncThunk(
       const response = await axios.post(`${backendURL}api/user/forgetPassword`, {
         email
       })
-      console.log(response.data);
       return response.data
     }
     catch (error) {

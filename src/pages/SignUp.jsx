@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../state/features/auth/authActions";
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../components/Loader/Spinner';
 
 const LoginSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -42,7 +43,6 @@ function SignUp() {
 
             <div className="auth-inner">
                 {error && <div className="alert alert-danger">{error}</div>}
-                {success && <div className="alert alert-success">{success}</div>}
                 <Formik
                     initialValues={{ email: "", password: "", name: "", passwordConfirm: "" }}
                     validationSchema={LoginSchema}
@@ -74,7 +74,7 @@ function SignUp() {
                                 <ErrorMessage name="passwordConfirm" component="div" className="error" />
 
                                 <button type="submit" className={`btn btn-primary ${isValid ? "" : "disabled"}`} disabled={!isValid}>
-                                    {loading ? "Loading..." : "Sign Up"}
+                                    {loading ? <Spinner width="20px" height="20px" /> : "Sign Up"}
                                 </button>
 
                                 <div className="auth-form-footer">

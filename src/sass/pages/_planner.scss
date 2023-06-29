@@ -109,11 +109,40 @@
                 font-size: 1.8rem;
                 display: flex;
                 align-items: center;
+
+                &::before{
+                    content: "";
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    width: 4rem;
+                    height: 4rem;
+                    margin-right: 1rem;
+                }
             }
 
             .btn-add{
                 width: 4rem;
                 height: 4rem;
+            }
+
+            &.breakfast{
+                h3::before{
+                    background-image: url(../../assets/images/breakfast.svg);
+                }
+            }
+
+            &.lunch{
+                h3::before{
+                    background-image: url(../../assets/images/lunch.svg);
+                }
+            }
+
+            &.dinner{
+                h3::before{
+                    background-image: url(../../assets/images/dinner.svg);
+                }
             }
         }
     }

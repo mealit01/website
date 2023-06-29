@@ -56,7 +56,6 @@ function App() {
         } />
 
         <Route path="forgot-password" element={
-    
             <ForgotPassword />
         } />
         <Route path="set-new-password" element={

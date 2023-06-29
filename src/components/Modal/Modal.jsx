@@ -1,18 +1,20 @@
 import React from 'react'
+import closeX from '../../assets/images/close.png'
 
-import expandLess from '../../assets/images/expand-close.svg'
-function Modal({ children, show, onClose, closeIcon, iconName }) {
+function Modal({ children, show, onClose, closeIcon, close, title }) {
     if (!show) {
         return null;
     }
+
     return (
         <>
             <div className="modal-overlay" onClick={onClose}>
                 <div className="modal" onClick={(e) => e.stopPropagation()}>
-                    {closeIcon && (
+                    {close && (
                         <div className="modal-header">
-                            <button className={`modal-header__close ${iconName}`} onClick={onClose}>
-                                <img src={expandLess} alt="close" />
+                            <h2 className="modal-title">{title}</h2>
+                            <button className={`${closeIcon ? '' : 'close'}`} onClick={onClose}>
+                                <img src={closeIcon ? closeIcon : closeX} alt="close modal" />
                             </button>
                         </div>
                     )}

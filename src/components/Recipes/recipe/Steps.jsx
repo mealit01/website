@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import ExpandMoreIcon from '../../../assets/images/expand-open.svg'
 import Modal from '../../Modal/Modal'
+import expandLess from '../../../assets/images/expand-close.svg'
 
 function Steps({ steps }) {
     const [show, setShow] = useState(false)
@@ -19,7 +20,7 @@ function Steps({ steps }) {
             </div>
 
             {show && (
-                <Modal onClose={() => setShow(false)} show={show} closeIcon={true} iconName="expand">
+                <Modal onClose={() => setShow(false)} show={show} closeIcon={true} closIcon={expandLess}>
                     <ol className="steps__list">
                         {
                             steps.map((step, index) => {

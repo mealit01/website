@@ -1,6 +1,6 @@
 import React from 'react'
 import Cards from '../Card/Cards';
-import Card from '../Card/Card';
+
 
 function Meals({ meals }) {
   return (
@@ -23,13 +23,6 @@ function Meals({ meals }) {
                     <div className="day-meals__header dinner">
                         <h3>Dinner</h3>
                         <button className="day-meals__header btn-add dark" title="Add a dinner"></button>
-                    </div>
-                    {/* <Slider /> */}
-                </div>
-                <div className="day-meals__meal">
-                    <div className="day-meals__header snack">
-                        <h3>Snack</h3>
-                        <button className="day-meals__header btn-add dark" title="Add a snack"></button>
                     </div>
                     {/* <Slider /> */}
                 </div>

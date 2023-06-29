@@ -8,6 +8,7 @@ import ProfileDropdown from "../components/Login/ProfileDropdown";
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetUserDetailsQuery } from '../state/features/auth/authService';
 import { setCredentials } from "../state/features/auth/authSlice";
+import Spinner from "./Loader/Spinner";
 
 
 const Navbar = () => {
@@ -57,10 +58,7 @@ const Navbar = () => {
         <div className="navbar__links">
             <ul className="navbar__links__list">
                 <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/recipes">Recipes</Link>
+                    <Link to="/recipes">Explore Recipes</Link>
                 </li>
                 <li>
                     <Link to="/planner">Planner</Link>
@@ -77,9 +75,7 @@ const Navbar = () => {
                 {
                     isFetching ? (
                         <div className="navbar__links__auth__loading">
-                            <div className="spinner-border text-primary" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
+                            <Spinner width="20px" height="20px" />
                         </div>
                     ) : (
                         userInfo ? (

@@ -5,7 +5,7 @@ function ListItems({ items }) {
   return (
     <>
         {
-            items.map((item, index) => (
+            items?.map((item, index) => (
                 <ListItem key={index} item={item} />
             ))
         }

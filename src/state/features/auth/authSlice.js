@@ -66,8 +66,10 @@ const authSlice = createSlice({
         });
         builder.addCase(updateUserDetails.fulfilled, (state, action) => {
             state.loading = false;
-            state.userInfo = action.payload.user;
-            state.success = action.payload.message;
+            state.success = true;
+            const { firstName, lastName, email } = action.payload.data.user;
+            state.userInfo = { firstName, lastName, email };
+            localStorage.setItem('userInfo', JSON.stringify({ firstName, lastName, email }));
         });
         builder.addCase(updateUserDetails.rejected, (state, action) => {
             state.loading = false;
@@ -78,7 +80,7 @@ const authSlice = createSlice({
         });
         builder.addCase(forgotPassword.fulfilled, (state, action) => {
             state.loading = false;
-            state.success = action.payload.message;
+            state.success = true;
             state.resetPassword = true;
         }
         );
@@ -93,7 +95,7 @@ const authSlice = createSlice({
         );
         builder.addCase(resetPassword.fulfilled, (state, action) => {
             state.loading = false;
-            state.success = action.payload.message;
+            state.success = true;
             state.resetPassword = false;
         }
         );

@@ -61,6 +61,10 @@
                     width: 100%;
                     max-width: 20rem;
                 }
+
+                &.submit{
+                    align-self: flex-end;
+                }
             }
             &.actions{
                 gap: 0.5rem;

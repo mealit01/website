@@ -66,7 +66,7 @@ function ProfileSettings() {
                                             <label htmlFor="email">Email</label>
                                             <Field type="email" id="email" name="email" />
                                         </div>
-                                        <div className="profile__header__details__item">
+                                        <div className="profile__header__details__item submit">
                                             <button className="btn btn-dark" type="submit">
                                                 {loading ? 'Loading...' : 'Update'}
                                             </button>

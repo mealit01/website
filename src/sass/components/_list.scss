@@ -42,7 +42,8 @@
         align-items: center;
 
         &::-webkit-scrollbar {
-            display: none;
+            width: 0.5rem;
+            height: 0.75rem;
         }
 
         &::-webkit-scrollbar-track {
@@ -50,7 +51,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: $ksa;
+            background-color: rgba(70, 70, 70, 0.2);
         }
 
         &--btn {
@@ -61,6 +62,8 @@
             padding: 0.5rem 1rem;
             border-radius: 1rem;
             transition: all 0.3s ease-in-out;
+            //dont break line
+            white-space: nowrap;
 
             &:active {
                 transform: scale(0.9);
@@ -80,8 +83,48 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 6rem;
+        height: 7rem;
         gap: 1rem;
+
+        &--title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.5rem;
+
+            &--name {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+
+                h2 {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    color: $gray;
+                    text-transform: capitalize;
+                }
+
+                span {
+                    font-size: 1.2rem;
+                    background-color: #57575750;
+                    color: $gray;
+                    padding: 0.25rem 1rem;
+                    border-radius: 1rem;
+                }
+            }
+
+            &--expiry {
+                font-size: 1.2rem;
+                font-weight: 400;
+                color: $gray;
+            }
+        }
+
+        &--body {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: $gray;
+        }
 
         &--details {
             border-radius: 1rem;
@@ -95,18 +138,6 @@
             gap: 0.5rem;
             width: 100%;
 
-            &--title {
-                font-size: 1.4rem;
-                font-weight: 800;
-                color: $ksa;
-            }
-
-            &--body {
-                font-size: 1.2rem;
-                font-weight: 600;
-                color: $gray;
-            }
-
             &:hover {
                 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
             }
@@ -115,12 +146,10 @@
         &--options {
             display: flex;
             height: 100%;
-            width: 50%;
-            max-width: 10rem;
-            gap: 1rem;
-
+            
             button {
-                padding: 0.25rem 0.75rem;
+                width: 4rem;
+                padding: 1rem;
                 background-color: white;
                 display: flex;
                 justify-content: center;
@@ -186,17 +215,26 @@
 
             &--options {
                 width: auto;
+                button {
+                    width: 6rem;
+                    img {
+                        width: 80%;
+                    }
+                }
             }
         }
 
         &__empty {
             &--message {
+                margin-top: 3rem;
+
                 h2 {
                     font-size: 3.2rem;
                 }
 
                 p {
                     font-size: 2rem;
+                    font-weight: 500;
                 }
             }
         }
@@ -221,7 +259,7 @@
 
     &--form {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-gap: 1rem;
 
         &--group {
@@ -244,9 +282,11 @@
                 color: $gray;
                 width: 100%;
                 border-color: transparent;
-               
+
                 outline-color: transparent;
-                &:active, &:focus {
+
+                &:active,
+                &:focus {
                     box-shadow: 0 0 10px 0 rgba($ksa, 0.3);
                 }
 
@@ -260,11 +300,12 @@
                 //date input
                 &[type="date"] {
                     content: attr(placeholder) !important;
-                    
-                    &:focus:before, &:valid:before {
+
+                    &:focus:before,
+                    &:valid:before {
                         content: "Expiry Date: ";
                         margin-right: 0.5rem;
-                        font-weight: 400;    
+                        font-weight: 400;
                     }
                 }
             }
@@ -282,27 +323,76 @@
             }
 
             option.placeholder {
-              color: #999999;
+                color: #999999;
             }
         }
     }
 
-    &--footer{
+    .add {
+        grid-column: 1 / -1;
+        margin-top: 2rem;
         display: flex;
         justify-content: flex-end;
-        width: 100%;
-        .add{
-            background-color: $silver;
-            color: $ksa;
+        align-items: center;
+        gap: 1rem;
+        
+        button {
             font-size: 1.4rem;
             font-weight: 600;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.04);
             border: none;
             padding: 1rem 2rem;
             border-radius: 1rem;
             transition: all 0.3s ease-in-out;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.04);
+            color: $ksa;
+
+            &.delete {
+                color: #E53E3E;
+                background-color: $silver;
+
+                &:hover {
+                    background-color: lighten($silver, 10%);
+                }
+            }
+            
+            &.edit {
+                color: $white;
+                background-color: $ksa;
+                &:hover {
+                    background-color: lighten($ksa, 10%);
+                }
+            }
+
             &:active {
                 transform: scale(0.9);
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: $medium-screen) {
+        &--form {
+            grid-template-columns: 1fr 1fr;
+           
+            &--group {
+                label {
+                    font-size: 1.6rem;
+                }
+
+                input {
+                    font-size: 1.6rem;
+                }
+
+                select {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .add {
+            button {
+                font-size: 1.6rem;
+                padding: 1rem 2rem;
             }
         }
     }

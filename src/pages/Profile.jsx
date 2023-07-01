@@ -36,7 +36,7 @@ const Profile = () => {
                   Email
                   <p>{userInfo.email}</p>
                 </div>
-                <div className="profile__header__details__item">
+                <div className="profile__header__details__item submit">
                   <Link className="btn btn-dark" to="/profile-settings">
                     Edit Profile
                   </Link>

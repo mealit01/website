@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateUserDetails } from '../state/features/auth/authActions'
 import { useNavigate, Link } from 'react-router-dom'
 import ProfileIcon from '../assets/images/settings.svg'
-
 import * as Yup from 'yup'
 import { Formik, Form, Field } from 'formik'
+
+import { useGetUserDetailsQuery } from '../state/features/auth/authService'
+import { setCredentials } from '../state/features/auth/authSlice'
 
 const validationSchema = Yup.object({
     firstName: Yup.string().required('Required'),
@@ -17,7 +19,7 @@ const validationSchema = Yup.object({
 function ProfileSettings() {
     const { userInfo, loading, error, success } = useSelector(state => state.auth)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+   
 
     const initialValues = {
         firstName: userInfo.firstName,
@@ -25,11 +27,13 @@ function ProfileSettings() {
         email: userInfo.email,
     }
 
+    const { data } = useGetUserDetailsQuery();
+
     React.useEffect(() => {
-        if (success) {
-            navigate('/profile')
+        if (success && data) {
+            dispatch(setCredentials(data))
         }
-    }, [success, navigate])
+    }, [data, dispatch])
 
     return (
         <div className="profile-page">
@@ -45,14 +49,13 @@ function ProfileSettings() {
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                onSubmit={(values, onSubmitProps) => {
+                                onSubmit={(values) => {
                                     dispatch(updateUserDetails(values))
-                                    onSubmitProps.resetForm()
                                 }}
                             >
                                 <Form>
                                     {error && <div className="alert alert-danger">{error}</div>}
-                                    {success && <div className="alert alert-success">{success}</div>}
+                                    {success && <div className="alert alert-success">Profile updated successfully</div>}
                                     <div className="profile__header__details">
                                         <div className="profile__header__details__item">
                                             <label htmlFor="firstName">First Name</label>

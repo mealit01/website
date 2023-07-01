@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
+import moment from 'moment'
 import editIcon from '../../assets/images/edit-icon.svg'
-import ListEdit from './ListEdit'
-function ListItem({ item, deleteItem, editItem }) {
+import ShoppingEdit from './ShoppingEdit'
+
+
+function ShoppingItem({ item }) {
   const [showOptions, setShowOptions] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
 
@@ -14,7 +16,14 @@ function ListItem({ item, deleteItem, editItem }) {
     <div className={`list__item ${showOptions ? 'show-options' : ''}`} onMouseEnter={() => setShowOptions(true)} onMouseLeave={() => setShowOptions(false)}>
       <div className="list__item--details">
         <div className="list__item--title">
-          <h2>{item.name}</h2>
+          <div className="list__item--title--name">
+            <h2>{item.name}</h2>
+            {item.category && <span>{item.category}</span>}
+          </div>
+          {item.expiryDate && <p
+            className={`list__item--title--expiry ${moment(item.expiryDate).isBefore(moment(), 'day') ?
+              'expired' : ''}`}>
+            {moment(item.expiryDate).fromNow('day')} left</p>}
         </div>
         <div className="list__item--body">
           <p>{item.quantity}</p>
@@ -26,7 +35,6 @@ function ListItem({ item, deleteItem, editItem }) {
             <button className="btn btn-edit" onClick={() => setShowEdit(true)}>
               <img src={editIcon} alt="edit" />
             </button>
-            <button className="btn btn-delete" onClick={() => deleteItem(item.id)}>D</button>
           </div>
         )
       }
@@ -34,7 +42,7 @@ function ListItem({ item, deleteItem, editItem }) {
       {
         showEdit && (
           <div className="list__item--edit">
-            <ListEdit item={item} close={() => setShowEdit(false)} editItem={editItem} />
+            <ShoppingEdit item={item} close={() => setShowEdit(false)} />
           </div>
         )
       }
@@ -42,4 +50,4 @@ function ListItem({ item, deleteItem, editItem }) {
   )
 }
 
-export default ListItem
+export default ShoppingItem

@@ -55,12 +55,12 @@ export const shoppingListApi = createApi({
         }),
         // delete
         deleteShoppingListItem: build.mutation({
-            query: ({ _id }) => ({
-                url: `api/shopping/delete/${_id}`,
+            query: (id) => ({
+                url: `api/shopping/delete/${id}`,
                 method: 'DELETE'
             }),
             //after delete, refetch shopping list items
-            invalidatesTags: (result, error, arg) => [{ type: 'ShoppingList', id: arg._id }],
+            invalidatesTags: (result, error, arg) => [{ type: 'ShoppingList', id: arg }],
         }),
     })
 });

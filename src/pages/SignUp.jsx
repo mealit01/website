@@ -20,9 +20,6 @@ function SignUp() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (success) {
-            navigate("/login");
-        }
         if (userInfo) {
             navigate("/profile");
         }

@@ -160,7 +160,6 @@
 
         &--details {
             display: grid;
-            grid-template-rows: repeat(2, 1fr);
         }
     }
 
@@ -346,8 +345,7 @@
 }
 
 .steps {
-    margin-top: 3rem;
-
+    margin-top: 5rem;
     &__title {
         color: $ksa;
         font-size: 2.4rem;
@@ -356,7 +354,7 @@
         align-items: center;
         justify-content: space-between;
     }
-
+    
     &__list {
         margin-top: 2rem;
         counter-reset: custom-counter;
@@ -378,7 +376,7 @@
             min-height: 6rem;
             text-align: left;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.04);
-
+            
             &::before {
                 content: counter(custom-counter);
                 position: absolute;
@@ -399,7 +397,7 @@
             }
         }
     }
-
+    
     @media screen and (min-width: $medium-screen) {
         h2 {
             font-size: 3.2rem;

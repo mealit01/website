@@ -90,21 +90,22 @@
 
             &--rating {
                 .rating {
-                    font-size: 1.2rem;
+                    font-size: 1.4rem;
                     font-weight: 500;
                     margin-right: .5rem;
 
                     &:before {
-                        content: "❤";
-                        margin-right: .5rem;
+                        //star icon
+                        content: "\2605";
+                        font-size: 1.8rem;
+                        margin-right: .75rem;
                         color: $silver;
                         background: rgba($silver, 0.4);
                         border-radius: 50%;
-                        width: 2.5rem;
-                        height: 2.5rem;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
+                        width: 3rem;
+                        height: 3rem;
+                        display: inline-block;
+                        text-align: center;
                     }
                 }
             }

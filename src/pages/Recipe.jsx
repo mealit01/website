@@ -37,7 +37,13 @@ function Recipe() {
 
 
     const handleBack = () => {
-        navigate(-1);
+        //if there's a previous page, go back to it, otherwise go to home
+        if (location.state && location.state.from) {
+            navigate(location.state.from);
+        }
+        else {
+            navigate('/');
+        }
     }
 
     return (

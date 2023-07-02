@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.0f4b39c9.css",
-    "main.js": "/website/static/js/main.3880c482.js",
+    "main.css": "/website/static/css/main.5be99544.css",
+    "main.js": "/website/static/js/main.1242213f.js",
     "static/js/787.13e5a273.chunk.js": "/website/static/js/787.13e5a273.chunk.js",
     "static/media/hero-bg.svg": "/website/static/media/hero-bg.88b8c9509d0577fa20a8.svg",
     "static/media/our-idea3.png": "/website/static/media/our-idea3.680d7d1bd403064edc76.png",
@@ -10,8 +10,6 @@
     "static/media/our-idea2.png": "/website/static/media/our-idea2.ff728867c613803be7fe.png",
     "static/media/google-play.svg": "/website/static/media/google-play.5b0a715664b74198637d.svg",
     "static/media/404.png": "/website/static/media/404.da440459a0fd31de0bcd.png",
-    "static/media/tryit.svg": "/website/static/media/tryit.e17ed33030f68fb5cdc2.svg",
-    "static/media/spark.svg": "/website/static/media/spark.d859de175c9355ae89d6.svg",
     "static/media/profile.svg": "/website/static/media/profile.92dac0c216669950875911d979eef259.svg",
     "static/media/app-store.svg": "/website/static/media/app-store.d0fc87e2668aa925c5b8.svg",
     "static/media/lunch.svg": "/website/static/media/lunch.61bc23cf3d4641b7b451.svg",
@@ -45,12 +43,12 @@
     "static/media/save.svg": "/website/static/media/save.d6714bd9f8c5a9210e22.svg",
     "static/media/list-empty.svg": "/website/static/media/list-empty.33cbf403300440e00903e35594d3f101.svg",
     "static/media/arrow.svg": "/website/static/media/arrow.90343163e21e6a846992.svg",
-    "main.0f4b39c9.css.map": "/website/static/css/main.0f4b39c9.css.map",
-    "main.3880c482.js.map": "/website/static/js/main.3880c482.js.map",
+    "main.5be99544.css.map": "/website/static/css/main.5be99544.css.map",
+    "main.1242213f.js.map": "/website/static/js/main.1242213f.js.map",
     "787.13e5a273.chunk.js.map": "/website/static/js/787.13e5a273.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f4b39c9.css",
-    "static/js/main.3880c482.js"
+    "static/css/main.5be99544.css",
+    "static/js/main.1242213f.js"
   ]
 }

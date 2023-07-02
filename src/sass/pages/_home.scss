@@ -24,7 +24,7 @@
     
     &-text {
         width: 100%;
-        max-width: 60rem;
+        max-width: 80rem;
         padding: 0 1rem;
         display: flex;
         flex-direction: column;
@@ -93,9 +93,9 @@
 
     //desktop
     @media screen and (min-width: $large-screen) {
-        padding: 10rem 0;
+        padding: 10rem 0 0 0;
         &-text {
-            height: 65vh;
+            height: 75vh;
             h1 {
                 font-size: 6rem;
                 line-height: 6rem;

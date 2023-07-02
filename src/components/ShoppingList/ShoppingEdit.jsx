@@ -22,7 +22,6 @@ function PantryEdit({close, item}) {
 
     const onSubmit = async (values) => {
         try {
-            console.log({ ...values, _id: item._id });
             await updateShoppingListItem({ ...values, _id: item._id });
         } catch (error) {
             console.log(error);

@@ -25,7 +25,6 @@ const Login = () => {
 
 
     const handleLogin = (values) => {
-        console.log(values);
         dispatch(login(values));
     };
 

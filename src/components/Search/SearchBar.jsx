@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchResults from './SearchResults';
 import SearchSuggestions from './SearchSuggestions';
+import SearchModal from './SearchModal';
 
 const ingredients = [
   'apple',
@@ -82,23 +83,33 @@ const SearchBar = () => {
 
   return (
     <section className="search">
-      <div className="search-box">
-        <button className="btn-add" type="button" onClick={handleAdd}>
+      {showSuggestions ? (
+        <SearchModal onClose={() => setShowSuggestions(false)} show={showSuggestions}>
+          <div className="search-box">
+            <input type="text" placeholder="Enter ingredients that you have" onChange={handleSearch} ref={inputRef} onClick={handleAdd} />
+            <button className="btn-search">
+              <img src="" alt="" />
+            </button>
+          </div>
 
-        </button>
-        <input type="text" placeholder="Enter ingredients that you have" onChange={handleSearch} ref={inputRef} />
-        <button className="btn-search">
-          <img src="" alt="" />
-        </button>
-      </div>
+          <SearchSuggestions
+            ingredients={filteredIngredients.length > 0 ? filteredIngredients : ingredients}
+            handleSelect={handleSelect}
+            handleRemove={handleRemove}
+            selectedIngredients={selectedIngredients}
+            handleAdd={handleAdd}
+          />
 
-      {showSuggestions &&
-        <SearchSuggestions
-          ingredients={filteredIngredients.length > 0 ? filteredIngredients : ingredients}
-          handleSelect={handleSelect}
-          handleRemove={handleRemove}
-          selectedIngredients={selectedIngredients}
-        />}
+        </SearchModal>
+      ) : (
+        <>
+          <div className="search-box">
+            <input type="text" placeholder="Enter ingredients that you have" onChange={handleSearch} ref={inputRef} onClick={handleAdd} />
+            <button className="btn-search">
+              <img src="" alt="" />
+            </button>
+          </div>
+        </>)}
 
       <SearchResults />
     </section>

@@ -26,7 +26,6 @@ function SignUp() {
     }, [userInfo, success, navigate]);
             
     const handleSignUp = (values) => {
-        console.log(values);
         dispatch(signup(values));
     };
 

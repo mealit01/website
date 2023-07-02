@@ -58,7 +58,6 @@ export const updateUserDetails = createAsyncThunk(
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response.data);
       return response.data
     }
     catch (error) {
@@ -71,7 +70,6 @@ export const forgotPassword = createAsyncThunk(
   'auth/forgotPassword',
   async ({ email }, { rejectWithValue }) => {
     try {
-      console.log(email);
       const response = await axios.post(`${backendURL}api/user/forgetPassword`, {
         email
       })

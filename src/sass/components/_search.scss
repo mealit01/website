@@ -3,13 +3,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     width: 100%;
     max-width: 60rem;
     margin: 5rem auto;
 
-    h2{
-        &::after{
+    h2 {
+        &::after {
             height: 0.7rem;
         }
     }
@@ -51,7 +51,7 @@
             position: absolute;
             width: 8rem;
             height: 8rem;
-            background-image: url('../../assets/images/tryit.svg');
+            // background-image: url('../../assets/images/tryit.svg');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -65,16 +65,16 @@
     border-radius: 1.5rem;
     width: 4.6rem;
     height: 4rem;
-    background-color: transparent; 
+    background-color: transparent;
     background-image: url('../../assets/images/Search\ icon.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.ingredients-suggestions {
+.suggestions {
     background-color: $white;
     width: 100%;
-    max-width: 60rem;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -86,32 +86,69 @@
     animation: smooth-bounce .5s ease-in-out;
     position: relative;
 
-    button {
-        background-color: $silver;
-        border-radius: 2rem;
-        padding: .5rem 1.5rem;
-        font-size: 1.4rem;
-        color: $gray;
+    &__search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 2rem;
+        gap: 1rem;
 
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome and Opera */
+        &--input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid $ksa;
+            outline-color: transparent;
+            font-size: 1.6rem;
+            margin-left: 1rem;
+        }
 
-        &.selected {
+        &--btn {
+            border-radius: 1rem;
             background-color: $ksa;
             color: $white;
+            padding: .5rem 1.5rem;
+            font-size: 1.6rem;
+            text-transform: capitalize;
+        }
+
+
+    }
+
+    &__tabs {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        //scroll x
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        button {
+            border-radius: 1rem;
+            padding: .5rem 1.5rem;
+            font-size: 1.6rem;
+            text-transform: capitalize;
+            white-space: nowrap;
+
+            &.active {
+                background-color: $ksa;
+                color: $white;
+            }
         }
     }
 
     @media screen and (min-width: $medium-screen) {
-        &:after{
+        &:after {
             //spark at bottom left
             content: '';
-            background-image: url('../../assets/images/spark.svg');
+            // background-image: url('../../assets/images/spark.svg');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -120,7 +157,7 @@
             bottom: -3rem;
             width: 5rem;
             height: 5rem;
-    
+
         }
     }
 }
@@ -134,6 +171,30 @@
 
     .selected-ingredient {
         box-shadow: 0 0 3px 1px $ksa, 0 0 0 3px $silver;
+    }
+}
+
+.search__options {
+    &--buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+        // justify-content: space-around;
+
+        button {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            font-size: 1.6rem;
+            text-transform: capitalize;
+            white-space: nowrap;
+            text-align: left;
+            
+            &.active {
+                border: 1px solid $ksa;
+            }
+        }
     }
 }
 

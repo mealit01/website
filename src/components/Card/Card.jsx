@@ -29,7 +29,7 @@ const Card = ({ item }) => {
                 <button className="btn-save" title="Save" onClick={handleSave} />
             </div>
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <Link to={`/recipes/${item.id}`} className="meal-card__img-link">
+                <Link to={`/recipes/${item._id}`} className="meal-card__img-link">
                     <img src={item.img} alt={item.name} />
                 </Link>
                 <CSSTransition
@@ -41,7 +41,7 @@ const Card = ({ item }) => {
                     <div className="meal-card__tags">
                         <div className="meal-card__tags--tag">
                             <img src={timeIcon} alt="Time" />
-                            <span className="time">{item.time} mins</span>
+                            <span className="time">{item.preparation_time || item.cooking_time} </span>
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={difficultyIcon} alt="Difficulty" />
@@ -49,7 +49,7 @@ const Card = ({ item }) => {
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={caloriesIcon} alt="Calories" />
-                            <span className="calories">{item.calories} kcal</span>
+                            <span className="calories">{item.calories.toFixed(0)} kcal</span>
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={ingredientsIcon} alt="Ingredients" />
@@ -70,7 +70,7 @@ const Card = ({ item }) => {
                     unmountOnExit
                 >
                     <div className="meal-card__info--description">
-                        <p>{item.description}</p>
+                        <p>{item.summary}</p>
                     </div>
                 </CSSTransition>
                 <CSSTransition
@@ -81,7 +81,7 @@ const Card = ({ item }) => {
                 >
                     <div className="meal-card__info--rating">
                         <span className="rating">{item.rating}</span>
-                        <Link to={`/recipes/${item.id}`} className="btn btn-dark" title="See the recipe">More info</Link>
+                        <Link to={`/recipes/${item._id}`} className="btn btn-dark" title="See the recipe">More info</Link>
                     </div>
                 </CSSTransition>
             </div>

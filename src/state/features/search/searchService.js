@@ -40,4 +40,4 @@ export const searchApi = createApi({
     })
 });
 
-export const { useFetchSearchResultsQuery } = searchApi;
+export const { useFetchSearchResultsQuery, useFetchRecipeByIdQuery, useFetchFilterOptionsQuery } = searchApi;

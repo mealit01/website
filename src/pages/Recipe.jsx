@@ -1,169 +1,113 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import img from '../assets/images/meal-rec.png'
-import Navbar from '../components/Navbar'
-import kcalIcon from '../assets/images/kcals.svg'
-import timeIcon from '../assets/images/time.svg'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 import difficultyIcon from '../assets/images/difficulty.svg'
 import ingredientsIcon from '../assets/images/ings.svg'
+import kcalIcon from '../assets/images/kcals.svg'
+import timeIcon from '../assets/images/time.svg'
+import Spinner from '../components/Loader/Spinner'
+import Navbar from '../components/Navbar'
 import Ingredients from '../components/Recipes/recipe/Ingredients'
 import Steps from '../components/Recipes/recipe/Steps'
-
-const placeholderRecipe = {
-    id: 1,
-    name: 'Pasta Margaretta with soup and butterfly',
-    rating: 4.5,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-    img: img,
-    time: 30,
-    //name, quantity
-    ingredients: {
-        1: {
-            id: 1,
-            name: 'Flour',
-            quantity: '1 cup',
-        },
-        2: {
-            id: 2,
-            name: 'Baking powder',
-            quantity: '1 tsp',
-        },
-        3: {
-            id: 3,
-            name: 'Baking soda',
-            quantity: '1/2 tsp',
-        },
-        4: {
-            id: 4,
-            name: 'Salt',
-            quantity: '1/2 tsp',
-        }
-    },
-    fav: false,
-    meal: 'breakfast',
-    difficulty: 'Easy',
-    tags: ['easy', 'breakfast', 'healthy', 'low-carb', 'low-fat', 'low-sodium', 'low-sugar', 'low-calories'],
-    nurtition: {
-        calories: '300kcal',
-        fat: '20g',
-        carbs: '20g',
-        protein: '20g',
-        sugar: '20g',
-        sodium: '20g',
-    },
-    steps: [
-        {
-            id: 1,
-            description: 'Preheat your oven at 180 degree celcius and line your cupcake tray with cupcake liners.',
-        },
-        {
-            id: 2,
-            description: 'In a bowl, add flour, baking powder, baking soda, salt and mix well.',
-        },
-        {
-            id: 3,
-            description: 'In another bowl, add butter and sugar and mix well.',
-        },
-        {
-            id: 4,
-            description: 'Add vanilla essence and mix well.',
-        },
-        {
-            id: 5,
-            description: 'Add egg and mix well.',
-        },
-        {
-            id: 6,
-            description: 'Add milk and mix well.',
-        },
-        {
-            id: 7,
-            description: 'Add the dry ingredients to the wet ingredients and mix well.',
-        },
-        {
-            id: 8,
-            description: 'Add the batter to the cupcake tray and bake for 15-20 minutes.',
-        },
-        {
-            id: 9,
-            description: 'Let it cool down and enjoy!',
-        },
-        
-    ]
-}
+import { fetchRecipeById } from '../state/features/recipes/recipesActions'
 
 function Recipe() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const [ tags, setTags ] = useState([]);
+
+    const recipeId = location.pathname.split('/')[2];
+    const { recipe, loading } = useSelector((state) => state.recipes);
+    
+    useEffect(() => {
+        dispatch(fetchRecipeById(recipeId));
+    }, [dispatch, recipeId]);
+
+    useEffect(() => {
+        if (recipe) {
+            const dietTypes = recipe.diet_type;
+            const cuisines = recipe.cuisine === 'unknown' ? [] : [recipe.cuisine];
+            const categories = recipe.category;
+            const tags = [...dietTypes, cuisines, categories].flat();
+
+            setTags(tags);
+        }
+    }, [recipe, setTags]);
+
 
     const handleBack = () => {
         navigate(-1);
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-    
     return (
         <div className="recipe">
             <Navbar />
-            <div className="recipe__header">
-                <div className="recipe__header--back">
-                    <button className="close-btn" onClick={handleBack}>
-                      go back
-                    </button>
-                </div>
-                <div className="recipe__header--img">
-                    <img src={placeholderRecipe.img} alt={placeholderRecipe.name} />
-                </div>
-                <div className="recipe__header--info">
-                    <div className="recipe__header--info--title">
-                        <h3>{placeholderRecipe.name}</h3>
-                    </div>
-                    <div className="recipe__header--info--description">
-                        <p>{placeholderRecipe.description}</p>
-                    </div>
-                    <div className="recipe__header--info--tags">
-                        {
-                            placeholderRecipe.tags.map((tag, index) => {
-                                return (
-                                    <span key={index} className="tag">{tag}</span>
-                                )
-                            })
-                        }
-                    </div>
+            {loading ? (
+                <Spinner />
+            ) : !loading && recipe ? (
+                <>
+                    <div className="recipe__header">
+                        <div className="recipe__header--back">
+                            <button className="close-btn" onClick={handleBack}>
+                                Go back
+                            </button>
+                        </div>
+                        <div className="recipe__header--img">
+                            <img src={recipe.imageUrl} alt={recipe.name} />
+                        </div>
+                        <div className="recipe__header--info">
+                            <div className="recipe__header--info--title">
+                                <h3>{recipe.name}</h3>
+                            </div>
+                            <div className="recipe__header--info--description">
+                                <p>{recipe.summary}</p>
+                            </div>
+                            <div className="recipe__header--info--tags">
+                                {tags.map((tag, index) => {
+                                    return (
+                                        <span key={index} className="tag">
+                                            {tag}
+                                        </span>
+                                    );
+                                })}
+                            </div>
 
-                    <div className="recipe__header--info--rating">
-                        <span className="rating">4.5k people love this</span>
-                    </div>
+                            <div className="recipe__header--info--rating">
+                                <span className="rating">{recipe.rating} / 5</span>
+                            </div>
 
-                    <div className="recipe__header--info--info">
-                        <div className="recipe__header--info--info--time">
-                            <img src={timeIcon} alt="Time" />
-                            <span className="time">{placeholderRecipe.time} mins</span>
-                        </div>
-                        <div className="recipe__header--info--info--difficulty">
-                            <img src={difficultyIcon} alt="Difficulty" />
-                            <span className="difficulty">{placeholderRecipe.difficulty}</span>
-                        </div>
-                        <div className="recipe__header--info--info--calories">
-                            <img src={kcalIcon} alt="Calories" />
-                            <span className="calories">{placeholderRecipe.nurtition.calories} </span>
-                        </div>
-                        <div className="recipe__header--info--info--ingNum">
-                            <img src={ingredientsIcon} alt="Ingredients" />
-                            <span className="ingNum">{Object.keys(placeholderRecipe.ingredients).length} ings</span>
+                            <div className="recipe__header--info--info">
+                                <div className="recipe__header--info--info--time">
+                                    <img src={timeIcon} alt="Time" />
+                                    <span className="time">{recipe.cooking_time}</span>
+                                </div>
+                                <div className="recipe__header--info--info--difficulty">
+                                    <img src={difficultyIcon} alt="Difficulty" />
+                                    <span className="difficulty">{recipe.difficulty}</span>
+                                </div>
+                                <div className="recipe__header--info--info--calories">
+                                    <img src={kcalIcon} alt="Calories" />
+                                    <span className="calories">{recipe.calories}</span>
+                                </div>
+                                <div className="recipe__header--info--info--ingNum">
+                                    <img src={ingredientsIcon} alt="Ingredients" />
+                                    <span className="ingNum">{recipe.ingredients.length} Ingredients</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="recipe__body">
-                <Ingredients ingredients={placeholderRecipe.ingredients} nurtition={placeholderRecipe.nurtition} steps={placeholderRecipe.steps} />
-                <Steps steps={placeholderRecipe.steps} />
-            </div>
+                    <div className="recipe__body">
+                        <Ingredients recipe={recipe} />
+                        <Steps steps={recipe.directions} />
+
+                    </div>
+                </>
+            ) : (
+                <p>Error loading Recipe</p>
+            )}
         </div>
-    )
+    );
 }
 
-
-
-export default Recipe
+export default Recipe;

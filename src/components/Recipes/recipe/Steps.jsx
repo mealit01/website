@@ -23,9 +23,9 @@ function Steps({ steps }) {
                 <Modal onClose={() => setShow(false)} show={show} closeIcon={true} closIcon={expandLess}>
                     <ol className="steps__list">
                         {
-                            steps.map((step, index) => {
+                            steps?.map((step, index) => {
                                 return (
-                                    <li key={index}>{step.description}</li>
+                                    step && <li key={index}>{step}</li>
                                 )
                             })
                         }
@@ -35,9 +35,9 @@ function Steps({ steps }) {
 
             <ol className="steps__list">
                 {
-                    steps.map((step, index) => {
+                    steps?.map((step, index) => {
                         return (
-                            <li key={index}>{step.description}</li>
+                            step && <li key={index}>{step}</li>
                         )
                     })
                 }

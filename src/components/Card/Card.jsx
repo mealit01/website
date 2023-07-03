@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 import timeIcon from '../../assets/images/time.svg';
-import difficultyIcon from '../../assets/images/difficulty.svg';
+import categoryIcon from '../../assets/images/catagory.svg';
 import caloriesIcon from '../../assets/images/kcals.svg';
 import ingredientsIcon from '../../assets/images/ings.svg';
+
+
 
 const Card = ({ item }) => {
     const [show, setShow] = useState(false);
@@ -30,7 +32,7 @@ const Card = ({ item }) => {
             </div>
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Link to={`/recipes/${item._id}`} className="meal-card__img-link">
-                    <img src={item.img} alt={item.name} />
+                    <img src={item.imageUrl} alt={item.name} />
                 </Link>
                 <CSSTransition
                     in={show}
@@ -44,8 +46,8 @@ const Card = ({ item }) => {
                             <span className="time">{item.preparation_time || item.cooking_time} </span>
                         </div>
                         <div className="meal-card__tags--tag">
-                            <img src={difficultyIcon} alt="Difficulty" />
-                            <span className="difficulty">{item.difficulty}</span>
+                            <img src={categoryIcon} alt="Category" />
+                            <span className="difficulty">{item.category}</span>
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={caloriesIcon} alt="Calories" />

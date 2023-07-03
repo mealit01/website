@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import difficultyIcon from '../assets/images/difficulty.svg'
+import categoryIcon from '../assets/images/catagory.svg'
 import ingredientsIcon from '../assets/images/ings.svg'
 import kcalIcon from '../assets/images/kcals.svg'
 import timeIcon from '../assets/images/time.svg'
@@ -15,11 +15,12 @@ function Recipe() {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
-    const [ tags, setTags ] = useState([]);
+    const [tags, setTags] = useState([]);
+    const [saved, setSaved] = useState(false);
 
     const recipeId = location.pathname.split('/')[2];
     const { recipe, loading } = useSelector((state) => state.recipes);
-    
+
     useEffect(() => {
         dispatch(fetchRecipeById(recipeId));
     }, [dispatch, recipeId]);
@@ -35,6 +36,9 @@ function Recipe() {
         }
     }, [recipe, setTags]);
 
+    const handleSave = () => {
+        setSaved(!saved);
+    }
 
     const handleBack = () => {
         //if there's a previous page, go back to it, otherwise go to home
@@ -60,6 +64,9 @@ function Recipe() {
                             </button>
                         </div>
                         <div className="recipe__header--img">
+                            <div className={`meal-card__save ${saved ? 'saved' : ''}`} onClick={handleSave}>
+                                <button className="btn-save" title="Save" onClick={handleSave} />
+                            </div>
                             <img src={recipe.imageUrl} alt={recipe.name} />
                         </div>
                         <div className="recipe__header--info">
@@ -89,12 +96,12 @@ function Recipe() {
                                     <span className="time">{recipe.cooking_time}</span>
                                 </div>
                                 <div className="recipe__header--info--info--difficulty">
-                                    <img src={difficultyIcon} alt="Difficulty" />
-                                    <span className="difficulty">{recipe.difficulty}</span>
+                                    <img src={categoryIcon} alt="Difficulty" />
+                                    <span className="difficulty">{recipe.category}</span>
                                 </div>
                                 <div className="recipe__header--info--info--calories">
                                     <img src={kcalIcon} alt="Calories" />
-                                    <span className="calories">{recipe.calories}</span>
+                                    <span className="calories">{recipe.calories.toFixed(0)} kcal</span>
                                 </div>
                                 <div className="recipe__header--info--info--ingNum">
                                     <img src={ingredientsIcon} alt="Ingredients" />

@@ -7,10 +7,7 @@ const initialState = {
     userToken: token,
     error: null,
     success: false,
-    pantry: [],
-    shoppingList: [],
     bookmarks: [],
-    planner: [],
 };
 
 
@@ -18,11 +15,12 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setCredentials: (state, action) => {
-            state.userToken = action.payload.token;
+        setBookmarks: (state, action) => {
+            state.bookmarks = action.payload.bookmarkedRecipes;
         }
     },
     extraReducers: (builder) => {}
 });
 
-export const { setCredentials } = userSlice.actions;
+export const { setBookmarks } = userSlice.actions;
+export default userSlice.reducer;

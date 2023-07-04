@@ -5,6 +5,7 @@ const userToken = localStorage.getItem('userToken') ? localStorage.getItem('user
 const initialState = {
     userToken,
     pantry: [],
+    allPantry: [],
 };
 
 const pantrySlice = createSlice({
@@ -13,7 +14,16 @@ const pantrySlice = createSlice({
     reducers: {
         setData: (state, action) => {
             state.pantry = action.payload.data.ingredients;
-        }
+            state.allPantry = action.payload.data.ingredients;
+        },
+        setFilter: (state, action) => {
+            if (action.payload === 'all') {
+                state.pantry = state.allPantry;
+            }
+            else {
+                state.pantry = state.allPantry.filter(ingredient => ingredient.category === action.payload);
+            }
+        }  
     },
 });
 

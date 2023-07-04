@@ -17,14 +17,14 @@ function Recipe() {
     const location = useLocation();
     const dispatch = useDispatch();
     const [tags, setTags] = useState([]);
-    const [saved, setSaved] = useState(false);
 
     const recipeId = location.pathname.split('/')[2];
     const { recipe, loading } = useSelector((state) => state.recipes);
     const [toggleBookmark] = useToggleBookmarkMutation();
-    
+
     useEffect(() => {
         dispatch(fetchRecipeById(recipeId));
+        console.log(recipe);
     }, [dispatch, recipeId]);
 
     useEffect(() => {
@@ -38,9 +38,9 @@ function Recipe() {
         }
     }, [recipe, setTags]);
 
-    const handleSave = async () => {
-        await toggleBookmark(recipeId);
-        setSaved(!saved);
+    const handleSave = () => {
+        toggleBookmark(recipeId);
+        console.log(recipeId);
     };
 
     const handleBack = () => {

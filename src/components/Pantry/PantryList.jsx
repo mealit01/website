@@ -32,7 +32,7 @@ function PantryList(){
                 <button className="list__header--btn btn-add dark" onClick={() => setAdd(!add)}></button>
                 {add ? <PantryAdd close={() => setAdd(false)} /> : null }
             </div>
-            {pantry.length > 0 ? <PantryFilter /> : null }
+             <PantryFilter /> 
             <div className="list__items">
                 {
                     isLoading ? <Spinner /> : pantry.length > 0 ? <PantryItems items={pantry} /> : <PantryEmpty />

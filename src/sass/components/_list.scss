@@ -68,6 +68,11 @@
             &:active {
                 transform: scale(0.9);
             }
+
+            &.active {
+                background-color: $gray;
+                color: $white;
+            }
         }
     }
 

@@ -27,7 +27,7 @@ export const searchApi = createApi({
         }),
         fetchFilterOptions: build.query({
             query: () => ({
-                url: 'api/search/filters',
+                url: 'api/recipes/search/filters',
                 method: 'GET'
             }),
             providesTags: (result) => {

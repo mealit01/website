@@ -4,6 +4,7 @@ const initialState = {
     searchQuery: '',
     searchResults: [],
     searchFilters: [],
+    allSearchFilters: [],
     searchFiltersApplied: [],
 };
 
@@ -14,6 +15,10 @@ const searchSlice = createSlice({
         setSearchQuery(state, action) {
             state.searchQuery = action.payload;
         },
+        setSearchFilters(state, action) {
+            state.searchFilters = action.payload.filters;
+            state.allSearchFilters = Object.values(action.payload.filters).flat();
+        },
         addFilter(state, action) {
             state.searchFiltersApplied.push(action.payload);
         },
@@ -23,5 +28,5 @@ const searchSlice = createSlice({
     },
 });
 
-export const { setSearchQuery, addFilter, removeFilter } = searchSlice.actions;
+export const { setSearchQuery, addFilter, removeFilter, setSearchFilters } = searchSlice.actions;
 export default searchSlice.reducer;

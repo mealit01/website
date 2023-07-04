@@ -3,47 +3,51 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addFilter, removeFilter } from '../../state/features/search/searchSlice';
 
 
-function SearchOptions({ type, name }) {
+function SearchOptions({ type, name, filteredFilters }) {
     const dispatch = useDispatch();
-    const { filters } = useSelector(state => state.search);
     const { pantry } = useSelector(state => state.pantry);
+    const filterApplied = useSelector(state => state.search.searchFiltersApplied);
 
     const handleFilter = (e) => {
         const filter = e.target.textContent;
-        if (e.target.classList.contains('active')) {
-            e.target.classList.remove('active');
+        if (filterApplied.includes(filter)) {
             dispatch(removeFilter(filter));
         } else {
-            e.target.classList.add('active');
             dispatch(addFilter(filter));
         }
+        console.log(filterApplied);
     }
 
-  return (
-    <div className="search__options">
-        {
-            name == 'Ingredients' && pantry.length > 0 && (
-                <div className="pantry__filter--options">
-                    <h2 className="pantry__filter--options--title">Choose from your pantry</h2>
-                    <div className="pantry__filter--options--items">
-                        {
-                            pantry.map((item, index) => (
-                                <button key={index} className="pantry__filter--options--btn" onClick={handleFilter}>{item.name}</button>
-                            ))
-                        }
+    return (
+        <div className="search__options">
+            {
+                name == 'Ingredients' && pantry.length > 0 && (
+                    <div className="pantry__filter--options">
+                        <h2 className="pantry__filter--options--title">Choose from your pantry</h2>
+                        <div className="pantry__filter--options--items">
+                            {
+                                pantry.map((item, index) => (
+                                    <button key={index} className={`pantry__filter--options--btn ${filterApplied.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            )
-        }
-        <div className="search__options--buttons">
-        {
-            type.map((item, index) => (
-                <button key={index} className="search__options--btn" onClick={handleFilter}>{item}</button>
-            ))
-        }
+                )
+            }
+            <div className="search__options--buttons search-filter">
+                {filteredFilters?.map((filter, index) => (
+                    <button key={index} className={`search__options--btn ${filterApplied.includes(filter) ? 'active' : ''}`} onClick={handleFilter}>{filter}</button>
+                ))}
+            </div>
+            <div className="search__options--buttons">
+                {
+                    type?.map((item, index) => (
+                        item ? <button key={index} className={`search__options--btn ${filterApplied.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button> : ''
+                    ))
+                }
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default SearchOptions

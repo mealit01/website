@@ -8,13 +8,14 @@ import Idea from '../components/Home/Idea';
 import FavRecipes from '../components/Home/FavRecipes';
 import WhatPeopleThink from '../components/Home/Reviwes/WhatPeopleThink';
 import Poster from '../components/Home/Poster';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
     <div className="home">
       <Navbar />
       <Hero heading="Cooking" subheading="made easy" description="Save time with customize recipe and meal planner with our app's innovative features for enjoyable experience with customize recipe and meal planner.">
-        <button className="btn">Start Cooking Now</button>
+        <Link to="/recipes" className="btn btn--primary">Get Started</Link>
       </Hero>
       <Features />
       <Search />

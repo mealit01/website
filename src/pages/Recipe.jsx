@@ -9,8 +9,9 @@ import Spinner from '../components/Loader/Spinner'
 import Navbar from '../components/Navbar'
 import Ingredients from '../components/Recipes/recipe/Ingredients'
 import Steps from '../components/Recipes/recipe/Steps'
-import { fetchRecipeById } from '../state/features/recipes/recipesActions'
 
+import { fetchRecipeById } from '../state/features/recipes/recipesActions'
+import { useToggleBookmarkMutation } from '../state/features/user/userService'
 function Recipe() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +21,8 @@ function Recipe() {
 
     const recipeId = location.pathname.split('/')[2];
     const { recipe, loading } = useSelector((state) => state.recipes);
-
+    const [toggleBookmark] = useToggleBookmarkMutation();
+    
     useEffect(() => {
         dispatch(fetchRecipeById(recipeId));
     }, [dispatch, recipeId]);
@@ -36,9 +38,10 @@ function Recipe() {
         }
     }, [recipe, setTags]);
 
-    const handleSave = () => {
+    const handleSave = async () => {
+        await toggleBookmark(recipeId);
         setSaved(!saved);
-    }
+    };
 
     const handleBack = () => {
         //if there's a previous page, go back to it, otherwise go to home
@@ -64,7 +67,7 @@ function Recipe() {
                             </button>
                         </div>
                         <div className="recipe__header--img">
-                            <div className={`meal-card__save ${saved ? 'saved' : ''}`} onClick={handleSave}>
+                            <div className={`save ${recipe.bookmarked ? 'saved' : ''}`}>
                                 <button className="btn-save" title="Save" onClick={handleSave} />
                             </div>
                             <img src={recipe.imageUrl} alt={recipe.name} />

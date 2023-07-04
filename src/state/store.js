@@ -22,6 +22,7 @@ const store = configureStore({
         search: SearchReducer,
         recipes: RecipesReducer,
         user: UserReducer,
+
         [authApi.reducerPath]: authApi.reducer,
         [pantryApi.reducerPath]: pantryApi.reducer,
         [shoppingListApi.reducerPath]: shoppingListApi.reducer,

@@ -4,7 +4,16 @@ const baseUrl = process.env.REACT_APP_API_URL;
 
 export const userService = createApi({
     reducerPath: 'userService',
-    baseQuery: fetchBaseQuery({ baseUrl }),
+    baseQuery: fetchBaseQuery({
+        baseUrl,
+        prepareHeaders: (headers, { getState }) => {
+            const token = getState().auth.userToken;
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`);
+                return headers;
+            }
+        }
+    }),
     tagTypes: ['User'],
     endpoints: (builder) => ({
         getBookmarks: builder.query({
@@ -13,8 +22,8 @@ export const userService = createApi({
         }),
 
         toggleBookmark: builder.mutation({
-            query: ({ recipeId }) => ({
-                url: `api/recipe/bookmark/${recipeId}`,
+            query: (recipeId) => ({
+                url: `api/recipes/bookmark/${recipeId}`,
                 method: 'PATCH',
             }),
             invalidatesTags: (result, error, { recipeId }) => [{ type: 'User', id: recipeId }],

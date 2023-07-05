@@ -1,6 +1,22 @@
 .recipes {
     margin: 2.5rem 1.5rem;
 
+    &__content{
+        margin: 2.5rem 0;
+        padding: 2rem;
+        background-color: #EDE9E5;
+
+        &--recent{
+            border-radius: 1rem;
+        }
+
+        &--header{
+            padding: 2rem;
+            font-size: 2rem;
+            color: $gray;
+        }
+    }
+
     @media screen and (min-width: $medium-screen) {
         margin: 2.5rem 3rem;
     }

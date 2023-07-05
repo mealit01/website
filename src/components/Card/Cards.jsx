@@ -12,7 +12,7 @@ const Cards = ({ recipes }) => {
     useEffect(() => {
         const handleResize = () => {
             const cardsPerentWidth = document.querySelector('.cards__content').offsetWidth;
-            const cardWidth = 240;
+            const cardWidth = 230;
             const addedMargin = 50;
             const visibleSlides = cardsPerentWidth / (cardWidth + addedMargin);
             setvisibleSlides(visibleSlides);

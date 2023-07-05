@@ -5,7 +5,14 @@ const initialState = {
     searchResults: [],
     searchFilters: [],
     allSearchFilters: [],
-    searchFiltersApplied: [],
+    searchFiltersApplied: {
+        diet_type: [],
+        category: [],
+        summary: "",
+        ingredients: [],
+        cuisine: [],
+        allergens: [],
+    },
 };
 
 const searchSlice = createSlice({
@@ -20,10 +27,17 @@ const searchSlice = createSlice({
             state.allSearchFilters = Object.values(action.payload.filters).flat();
         },
         addFilter(state, action) {
-            state.searchFiltersApplied.push(action.payload);
+            const filterType = action.payload.filterType;
+            const filterValue = action.payload.filterValue;
+            // add filter to searchFiltersApplied
+            state.searchFiltersApplied[filterType].push(filterValue);
         },
         removeFilter(state, action) {
-            state.searchFiltersApplied = state.searchFiltersApplied.filter((filter) => filter !== action.payload);
+            // remove filter from searchFiltersApplied
+            const filterType = action.payload.filterType;
+            const filterValue = action.payload.filterValue;
+            const filterIndex = state.searchFiltersApplied[filterType].indexOf(filterValue);
+            state.searchFiltersApplied[filterType].splice(filterIndex, 1);
         }
     },
 });

@@ -11,11 +11,16 @@ export const searchApi = createApi({
     endpoints: (build) => ({
         fetchSearchResults: build.query({
             query: ({ searchQuery, searchFiltersApplied }) => ({
-                url: 'api/search',
+                url: 'api/recipes/search',
                 method: 'POST',
                 body: {
-                    searchQuery,
-                    searchFiltersApplied
+                    "text": searchQuery,
+                    "category": searchFiltersApplied.category,
+                    "diet_type": searchFiltersApplied.diet_type,
+                    "ingredients": searchFiltersApplied.ingredients,
+                    "summary": searchFiltersApplied.summary,
+                    "mode": "full_mode",
+                    "no_of_recipes": 10,
                 }
             }),
             providesTags: (result) => {

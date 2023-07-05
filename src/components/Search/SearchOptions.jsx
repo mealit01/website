@@ -9,11 +9,12 @@ function SearchOptions({ type, name, filteredFilters }) {
     const filterApplied = useSelector(state => state.search.searchFiltersApplied);
 
     const handleFilter = (e) => {
-        const filter = e.target.textContent;
-        if (filterApplied.includes(filter)) {
-            dispatch(removeFilter(filter));
+        const filterValue = e.target.textContent;
+        const filterType = name.toLowerCase();
+        if (filterApplied[filterType]?.includes(filterValue)) {
+            dispatch(removeFilter({ filterType, filterValue }));
         } else {
-            dispatch(addFilter(filter));
+            dispatch(addFilter({ filterType, filterValue }));
         }
         console.log(filterApplied);
     }
@@ -27,7 +28,7 @@ function SearchOptions({ type, name, filteredFilters }) {
                         <div className="pantry__filter--options--items">
                             {
                                 pantry.map((item, index) => (
-                                    <button key={index} className={`pantry__filter--options--btn ${filterApplied.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button>
+                                    <button key={index} className={`pantry__filter--options--btn ${filterApplied[name.toLowerCase()]?.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button>
                                 ))
                             }
                         </div>
@@ -36,13 +37,13 @@ function SearchOptions({ type, name, filteredFilters }) {
             }
             <div className="search__options--buttons search-filter">
                 {filteredFilters?.map((filter, index) => (
-                    <button key={index} className={`search__options--btn ${filterApplied.includes(filter) ? 'active' : ''}`} onClick={handleFilter}>{filter}</button>
+                    <button key={index} className={`search__options--btn ${filterApplied[name.toLowerCase()]?.includes(filter) ? 'active' : ''}`} onClick={handleFilter}>{filter}</button>
                 ))}
             </div>
             <div className="search__options--buttons">
                 {
                     type?.map((item, index) => (
-                        item ? <button key={index} className={`search__options--btn ${filterApplied.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button> : ''
+                        item ? <button key={index} className={`search__options--btn ${filterApplied[name.toLowerCase()]?.includes(item) ? 'active' : ''}`} onClick={handleFilter}>{item}</button> : ''
                     ))
                 }
             </div>

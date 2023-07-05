@@ -5,20 +5,19 @@ import SearchBar from '../components/Search/SearchBar'
 import Cards from '../components/Card/Cards'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { useFetchAllRecipesQuery } from '../state/features/recipes/recipesService'
-import { useGetBookmarksQuery } from '../state/features/user/userService'
-import { setRecipes } from '../state/features/recipes/recipesSlice'
+import { useFetchAllRecipesQuery, useFetchForYouRecipesQuery } from '../state/features/recipes/recipesService'
+import { setRecipes, setForYouRecipes } from '../state/features/recipes/recipesSlice'
 import Spinner from '../components/Loader/Spinner'
 
 
 //functional component
 function Recipes() {
   // const recentSearches = useSelector(state => state.user.recentSearches);
-  const { recipes } = useSelector(state => state.recipes);
+  const { recipes, forYouRecipes } = useSelector(state => state.recipes);
   const dispatch = useDispatch();
 
   const { data, isLoading } = useFetchAllRecipesQuery('recipes');
-
+  const { data: dataForYou, isLoading: isLoadingForYou } = useFetchForYouRecipesQuery('recipes');
  
   React.useEffect(() => {
     if (data) {
@@ -26,6 +25,12 @@ function Recipes() {
     }
 
   }, [data, dispatch]);
+
+  React.useEffect(() => {
+    if (dataForYou) {
+      dispatch(setForYouRecipes(dataForYou));
+    }
+  } , [dataForYou, dispatch]);
 
   
   return (
@@ -50,7 +55,7 @@ function Recipes() {
           <div className="recipes__content--header">
             <h3>For you</h3>
           </div>
-          { isLoading ? <Spinner /> : <Cards recipes={recipes} />}
+          { isLoadingForYou ? <Spinner /> : <Cards recipes={forYouRecipes} />}
         </div>
       </div>
     </div>

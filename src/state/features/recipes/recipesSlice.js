@@ -3,6 +3,7 @@ import { fetchRecipeById, fetchMoreRecipes, fetchRecipesBySearch } from './recip
 
 const initialState = {
     recipes: [],
+    forYouRecipes: [],
     recipe: null,
     page: 1,
     limit: 10,
@@ -19,6 +20,9 @@ const recipesSlice = createSlice({
     reducers: {
         setRecipes: (state, action) => {
             state.recipes = action.payload.recipes;
+        },
+        setForYouRecipes: (state, action) => {
+            state.forYouRecipes = action.payload.recipes;
         },
         nextPage: (state) => {
             state.page += 1;
@@ -72,5 +76,5 @@ const recipesSlice = createSlice({
     }
 });
 
-export const { setRecipes, nextPage } = recipesSlice.actions;
+export const { setRecipes, nextPage, setForYouRecipes } = recipesSlice.actions;
 export default recipesSlice.reducer;

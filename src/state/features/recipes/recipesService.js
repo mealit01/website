@@ -27,7 +27,17 @@ export const recipesApi = createApi({
                     ? [ ...result.data.map(({ _id }) => ({ type: 'Recipe', id: _id })), { type: 'Recipes', id: 'LIST' } ]
                     : [ { type: 'Recipes', id: 'LIST' } ],
         }),
+        fetchForYouRecipes: build.query({
+            query: ({ page = 2, limit = 10 }) => ({
+                url: `api/recipes?page=${page}&limit=${limit}`,
+                method: 'GET',
+            }),
+            providesTags: (result) =>
+                result.data
+                    ? [ ...result.data.map(({ _id }) => ({ type: 'Recipe', id: _id })), { type: 'Recipes', id: 'LIST' } ]
+                    : [ { type: 'Recipes', id: 'LIST' } ],
+        }),
     })
 });
 
-export const { useFetchAllRecipesQuery } = recipesApi;
+export const { useFetchAllRecipesQuery, useFetchForYouRecipesQuery } = recipesApi;

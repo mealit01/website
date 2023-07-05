@@ -9,7 +9,7 @@ import Spinner from '../components/Loader/Spinner'
 import Navbar from '../components/Navbar'
 import Ingredients from '../components/Recipes/recipe/Ingredients'
 import Steps from '../components/Recipes/recipe/Steps'
-
+import PrivateRoute from '../components/PrivateRoute'
 import { fetchRecipeById } from '../state/features/recipes/recipesActions'
 import { useToggleBookmarkMutation } from '../state/features/user/userService'
 
@@ -21,6 +21,7 @@ function Recipe() {
     const [saved, setSaved] = useState();
     const recipeId = location.pathname.split('/')[2];
     const { recipe, loading } = useSelector((state) => state.recipes);
+    const { userToken } = useSelector((state) => state.auth);
     const [toggleBookmark] = useToggleBookmarkMutation();
 
     useEffect(() => {
@@ -40,12 +41,12 @@ function Recipe() {
     }, [recipe, setTags]);
 
     useEffect(() => {
-        if (recipe?.bookmarked === true) {
+        if (userToken && recipe?.bookmarked === true) {
             setSaved(true);
         } else {
             setSaved(false);
         }
-    }, [recipe.bookmarked]);
+    }, [recipe?.bookmarked]);
 
     const handleSave = async () => {
         try {
@@ -80,9 +81,12 @@ function Recipe() {
                             </button>
                         </div>
                         <div className="recipe__header--img">
-                            <div className={`save ${saved ? 'saved' : ''}`}>
+                            {userToken  && (
+                                <div className={`save ${saved ? 'saved' : ''}`}>
                                 <button className="btn-save" title="Save" onClick={handleSave} />
                             </div>
+                            )}
+
                             <img src={recipe.imageUrl} alt={recipe.name} />
                         </div>
                         <div className="recipe__header--info">

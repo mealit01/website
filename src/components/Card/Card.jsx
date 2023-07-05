@@ -15,6 +15,7 @@ const Card = ({ item, onClick }) => {
     const [saved, setSaved] = useState(false);
     const [toggleBookmark] = useToggleBookmarkMutation();
     const { bookmarks } = useSelector((state) => state.user);
+    const { userToken } = useSelector((state) => state.auth);
 
     const handleMouseEnter = () => {
         setShow(true);
@@ -40,13 +41,15 @@ const Card = ({ item, onClick }) => {
         } else {
             setSaved(false);
         }
-    }, [item.bookmarked]);
+    }, [item?.bookmarked]);
 
     return (
         <div className="meal-card" onClick={onClick}>
-            <div className={`save ${saved ? 'saved' : ''}`}>
-                <button className="btn-save" title="Save" onClick={handleSave} />
-            </div>
+            {userToken && (
+                <div className={`save ${saved ? 'saved' : ''}`}>
+                    <button className="btn-save" title="Save" onClick={handleSave} />
+                </div>
+            )}
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Link to={`/recipes/${item._id}`} className="meal-card__img-link">
                     <img src={item.imageUrl} alt={item.name} />

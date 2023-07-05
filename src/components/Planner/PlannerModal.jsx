@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useFetchAllRecipesQuery } from '../../state/features/recipes/recipesService'
 import { setRecipes, nextPage } from '../../state/features/recipes/recipesSlice'
 import { fetchMoreRecipes } from '../../state/features/recipes/recipesActions'
-
+import { searchRecipes } from '../../state/features/planner/plannerActions'
 import CardsList from '../Card/CardsList';
 
 import closeIcon from '../../assets/images/close.png'
 
 function PlannerModal({ close, meal }) {
+    const [search, setSearch] = React.useState('');
     const { recipes, page } = useSelector(state => state.recipes);
+    const { searchResults } = useSelector(state => state.planner);
     const { data } = useFetchAllRecipesQuery('recipes');
 
     const dispatch = useDispatch();
@@ -19,6 +21,16 @@ function PlannerModal({ close, meal }) {
         dispatch(nextPage());
         console.log(page);
         dispatch(fetchMoreRecipes(page));
+    }
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        dispatch(searchRecipes(search));
+        console.log(searchResults);
     }
 
     useEffect(() => {
@@ -37,11 +49,11 @@ function PlannerModal({ close, meal }) {
                     </div>
                     <div className="modal__content--body">
                         <div className="modal__content--body--search">
-                            <input type="text" placeholder="Search for a recipe" />
-                            <button className="btn btn-dark">Search</button>
+                            <input type="text" placeholder="Search for a recipe" onChange={handleSearch} />
+                            <button className="btn btn-dark" onClick={handleSearchSubmit}>Search</button>
                         </div>
                         <div className="modal__content--body--results">
-                            <CardsList cards={recipes} meal={meal} />
+                            <CardsList cards={searchResults?.length > 0 ? searchResults : recipes} meal={meal} />
                         </div>
 
                         <div className="modal__content--body--load-more">

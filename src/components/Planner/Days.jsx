@@ -22,17 +22,17 @@ function Days() {
 
     useEffect(() => {
         setDays(setTemp());
+        dispatch(setDay(days[selectedDay].toLocaleDateString()));
     }, []);
     
     useEffect(() => {
         const dayWidth = daysRef.current.children[0].getBoundingClientRect().width;
         daysRef.current.scrollLeft = selectedDay * dayWidth;
-        dispatch(setDay(`${days[selectedDay].getDate()}/${days[selectedDay].getMonth() + 1}/${days[selectedDay].getFullYear()}`));
     }, [selectedDay]);
 
     const changeDay = (index) => {
         setSelectedDay(index);
-        dispatch(setDay(`${days[index].getDate()}/${days[index].getMonth() + 1}/${days[index].getFullYear()}`));
+        dispatch(setDay(days[index].toLocaleDateString()));
     };
 
     return (

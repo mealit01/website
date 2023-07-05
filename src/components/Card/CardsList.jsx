@@ -3,22 +3,24 @@ import Card from './Card'
 
 import { setBreakfast, setLunch, setDinner } from '../../state/features/planner/plannerSlice';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CardsList({ cards, meal }) {
     const dispatch = useDispatch();
+
+    const { activeDay } = useSelector(state => state.planner);
 
     const handleAddToPlanner = (card) => {
         console.log(card, meal);
         switch (meal) {
             case 'breakfast':
-                dispatch(setBreakfast(card));
+                dispatch(setBreakfast({ activeDay, card }));
                 break;
             case 'lunch':
-                dispatch(setLunch(card));
+                dispatch(setLunch({ activeDay, card }));
                 break;
             case 'dinner':
-                dispatch(setDinner(card));
+                dispatch(setDinner({ activeDay, card }));
                 break;
             default:
                 break;

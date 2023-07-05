@@ -7,12 +7,12 @@ import categoryIcon from '../../assets/images/catagory.svg';
 import caloriesIcon from '../../assets/images/kcals.svg';
 import ingredientsIcon from '../../assets/images/ings.svg';
 
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useToggleBookmarkMutation } from '../../state/features/user/userService';
 
 const Card = ({ item, onClick }) => {
     const [show, setShow] = useState(false);
-
+    const [saved, setSaved] = useState(false);
     const [toggleBookmark] = useToggleBookmarkMutation();
     const { bookmarks } = useSelector((state) => state.user);
 
@@ -25,13 +25,26 @@ const Card = ({ item, onClick }) => {
     };
 
     const handleSave = async () => {
-        await toggleBookmark(item._id);
+        try {
+            await toggleBookmark(item._id);
+            setSaved(!saved);
+        } catch (error) {
+            console.log(error);
+        }
         console.log(bookmarks);
     };
 
+    React.useEffect(() => {
+        if (item?.bookmarked === true) {
+            setSaved(true);
+        } else {
+            setSaved(false);
+        }
+    }, [item.bookmarked]);
+
     return (
         <div className="meal-card" onClick={onClick}>
-            <div className={`save ${item.bookmarked ? 'saved' : ''}`}>
+            <div className={`save ${saved ? 'saved' : ''}`}>
                 <button className="btn-save" title="Save" onClick={handleSave} />
             </div>
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>

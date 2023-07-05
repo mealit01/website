@@ -6,7 +6,15 @@ const baseUrl = process.env.REACT_APP_API_URL;
 export const fetchRecipeById = createAsyncThunk(
     'recipes/fetchRecipeById',
     async (id) => {
-        const response = await axios.get(`${baseUrl}api/recipes/getRecipe/${id}`);
+        //add user token if exists
+        const response = localStorage.getItem('userToken') ?
+            await axios.get(`${baseUrl}api/recipes/getRecipe/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('userToken')}`
+                }
+            }) :
+            await axios.get(`${baseUrl}api/recipes/getRecipe/${id}`);
+
         console.log(response.data);
         return response.data;
     }

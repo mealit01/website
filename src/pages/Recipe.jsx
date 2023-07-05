@@ -12,12 +12,13 @@ import Steps from '../components/Recipes/recipe/Steps'
 
 import { fetchRecipeById } from '../state/features/recipes/recipesActions'
 import { useToggleBookmarkMutation } from '../state/features/user/userService'
+
 function Recipe() {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
     const [tags, setTags] = useState([]);
-
+    const [saved, setSaved] = useState();
     const recipeId = location.pathname.split('/')[2];
     const { recipe, loading } = useSelector((state) => state.recipes);
     const [toggleBookmark] = useToggleBookmarkMutation();
@@ -38,10 +39,22 @@ function Recipe() {
         }
     }, [recipe, setTags]);
 
-    const handleSave = () => {
-        toggleBookmark(recipeId);
-        console.log(recipeId);
-    };
+    useEffect(() => {
+        if (recipe?.bookmarked === true) {
+            setSaved(true);
+        } else {
+            setSaved(false);
+        }
+    }, [recipe.bookmarked]);
+
+    const handleSave = async () => {
+        try {
+            await toggleBookmark(recipeId);
+            setSaved(!saved);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const handleBack = () => {
         //if there's a previous page, go back to it, otherwise go to home
@@ -67,7 +80,7 @@ function Recipe() {
                             </button>
                         </div>
                         <div className="recipe__header--img">
-                            <div className={`save ${recipe.bookmarked ? 'saved' : ''}`}>
+                            <div className={`save ${saved ? 'saved' : ''}`}>
                                 <button className="btn-save" title="Save" onClick={handleSave} />
                             </div>
                             <img src={recipe.imageUrl} alt={recipe.name} />

@@ -6,18 +6,26 @@ export const recipesApi = createApi({
     reducerPath: 'recipesApi',
     baseQuery: fetchBaseQuery({
         baseUrl,
+        prepareHeaders: (headers, { getState }) => {
+            const token = getState().auth.userToken || localStorage.getItem('userToken');
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+                return headers;
+            }
+            console.log(headers);
+        },
     }),
-    tagTypes: ['Recipes'],
+    tagTypes: ['Recipes', 'Bookmark', 'User', 'Recipe'], 
     endpoints: (build) => ({
         fetchAllRecipes: build.query({
-            query: ({ page = 1, limit = 10}) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `api/recipes?page=${page}&limit=${limit}`,
-                method: 'GET'
+                method: 'GET',
             }),
             providesTags: (result) =>
-                result.data
-                    ? [...result.data.map(({ _id }) => ({ type: 'Recipes', id: _id })), { type: 'Recipes', id: 'LIST' }]
-                    : [{ type: 'Recipes', id: 'LIST' }],
+                result.data 
+                    ? [ ...result.data.map(({ _id }) => ({ type: 'Recipe', id: _id })), { type: 'Recipes', id: 'LIST' } ]
+                    : [ { type: 'Recipes', id: 'LIST' } ],
         }),
     })
 });

@@ -13,10 +13,10 @@ import Spinner from '../Loader/Spinner'
 function Shoppinglist(){
     const [add, setAdd] = React.useState(false);
     
-    const { loading, shoppingList } = useSelector(state => state.shoppingList);
+    const { shoppingList } = useSelector(state => state.shoppingList);
     const dispatch = useDispatch();
 
-    const { data } = useFetchShoppingListItemsQuery('shoppingListItems');
+    const { data, isLoading } = useFetchShoppingListItemsQuery('shoppingListItems');
 
     React.useEffect(() => {
         if (data) {
@@ -33,7 +33,7 @@ function Shoppinglist(){
             </div>
             <div className="list__items">
                 {
-                    loading ? <Spinner /> : shoppingList.length > 0 ? <ShoppingItems items={shoppingList} /> : <ShoppingEmpty />
+                    isLoading ? <Spinner /> : shoppingList.length > 0 ? <ShoppingItems items={shoppingList} /> : <ShoppingEmpty />
                 }
             </div>
         </div>

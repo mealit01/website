@@ -18,11 +18,7 @@ const plannerSlice = createSlice({
   reducers: {
     setDay: (state, action) => {
         const date = action.payload;
-        state.planner[date] = {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-        };
+        state.planner[date] = state.planner[date] || { breakfast: [], lunch: [], dinner: [] };
         state.activeDay = date;
     },
     setBreakfast: (state, action) => {

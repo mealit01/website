@@ -14,7 +14,7 @@ export const userService = createApi({
             }
         }
     }),
-    tagTypes: ['User'],
+    tagTypes: ['User', 'Recipe'],
     endpoints: (builder) => ({
         getBookmarks: builder.query({
             query: () => 'api/user/GetAllBookmarkedRecipe',
@@ -26,7 +26,11 @@ export const userService = createApi({
                 url: `api/recipes/bookmark/${recipeId}`,
                 method: 'PATCH',
             }),
-            invalidatesTags: (result, error, { recipeId }) => [{ type: 'User', id: recipeId }],
+            //refetch bookmarks after toggle and refetch recipe after toggle
+            invalidatesTags: (result, error, arg) => {
+                console.log('result', result, 'error', error, 'arg', arg);
+                return [{ type: 'User', id: 'LIST' }, { type: 'Recipe', id: arg }]
+            },
         }),
     }),
 });

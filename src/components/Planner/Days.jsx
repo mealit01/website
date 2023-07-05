@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setDay } from '../../state/features/planner/plannerSlice';
 
 const setTemp = () => {
     const tempDays = [];
@@ -16,17 +18,21 @@ function Days() {
     const [selectedDay, setSelectedDay] = useState(days.length / 2);
     const daysRef = useRef(null);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         setDays(setTemp());
     }, []);
-
+    
     useEffect(() => {
         const dayWidth = daysRef.current.children[0].getBoundingClientRect().width;
         daysRef.current.scrollLeft = selectedDay * dayWidth;
+        dispatch(setDay(`${days[selectedDay].getDate()}/${days[selectedDay].getMonth() + 1}/${days[selectedDay].getFullYear()}`));
     }, [selectedDay]);
 
     const changeDay = (index) => {
         setSelectedDay(index);
+        dispatch(setDay(`${days[index].getDate()}/${days[index].getMonth() + 1}/${days[index].getFullYear()}`));
     };
 
     return (

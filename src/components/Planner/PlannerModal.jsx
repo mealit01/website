@@ -41,7 +41,7 @@ function PlannerModal({ close, meal }) {
                             <button className="btn btn-dark">Search</button>
                         </div>
                         <div className="modal__content--body--results">
-                            <CardsList cards={recipes} />
+                            <CardsList cards={recipes} meal={meal} />
                         </div>
 
                         <div className="modal__content--body--load-more">

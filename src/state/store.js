@@ -6,6 +6,7 @@ import ShoppingListReducer from "./features/shoppingList/shoppingListSlice";
 import SearchReducer from "./features/search/searchSlice";
 import RecipesReducer from "./features/recipes/recipesSlice";
 import UserReducer from "./features/user/userSlice";
+import PlannerReducer from "./features/planner/plannerSlice";
 
 import { authApi } from "./features/auth/authService";
 import { pantryApi } from "./features/pantry/pantryService";
@@ -22,7 +23,8 @@ const store = configureStore({
         search: SearchReducer,
         recipes: RecipesReducer,
         user: UserReducer,
-
+        planner: PlannerReducer,
+        
         [authApi.reducerPath]: authApi.reducer,
         [pantryApi.reducerPath]: pantryApi.reducer,
         [shoppingListApi.reducerPath]: shoppingListApi.reducer,

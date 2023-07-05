@@ -10,7 +10,7 @@ import ingredientsIcon from '../../assets/images/ings.svg';
 import { useDispatch,useSelector } from 'react-redux';
 import { useToggleBookmarkMutation } from '../../state/features/user/userService';
 
-const Card = ({ item }) => {
+const Card = ({ item, onClick }) => {
     const [show, setShow] = useState(false);
 
     const [toggleBookmark] = useToggleBookmarkMutation();
@@ -30,7 +30,7 @@ const Card = ({ item }) => {
     };
 
     return (
-        <div className="meal-card">
+        <div className="meal-card" onClick={onClick}>
             <div className={`save ${item.bookmarked ? 'saved' : ''}`}>
                 <button className="btn-save" title="Save" onClick={handleSave} />
             </div>

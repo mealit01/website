@@ -17,10 +17,10 @@ const Cards = ({ recipes }) => {
             const visibleSlides = cardsPerentWidth / (cardWidth + addedMargin);
             setvisibleSlides(visibleSlides);
         }
-       
+
         window.addEventListener('resize', handleResize);
         handleResize();
-    
+
         return () => {
             window.removeEventListener('resize', handleResize);
         }
@@ -47,8 +47,14 @@ const Cards = ({ recipes }) => {
                             })
                         }
                     </Slider>
-                    <ButtonBack className='cards__btn cards__btn--back'></ButtonBack>
-                    <ButtonNext className='cards__btn cards__btn--next'></ButtonNext>
+                    {
+                        recipes?.length > visibleSlides && (
+                            <>
+                                <ButtonBack className='cards__btn cards__btn--back'></ButtonBack>
+                                <ButtonNext className='cards__btn cards__btn--next'></ButtonNext>
+                            </>
+                        )
+                    }
                 </CarouselProvider>
             </div>
         </div>

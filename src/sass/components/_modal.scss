@@ -27,31 +27,59 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-
-    &-header{
+    
+    //scrollbar y
+    overflow-y: hidden;
+    &-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 2rem;
 
-        h2{
+        h2 {
             font-size: 1.8rem;
             text-align: left;
         }
     }
 
-    @media screen and (min-width: 768px){
-       padding: 4rem 4rem;
+    &__content--body {
+        &--search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
 
-         &-header{
-              h2{
+            input {
+                width: 100%;
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 2rem;
+                font-size: 1.6rem;
+                color: $gray;
+                margin-bottom: 2rem;
+                outline-color: transparent;
+                border: none;
+            }
+        }
+
+        &--load-more {
+            margin-top: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 4rem 4rem;
+
+        &-header {
+            h2 {
                 font-size: 2.4rem;
-              }
-         }
+            }
+        }
     }
 }
 
-.search-modal{ //overlay
+.search-modal {
+    //overlay
     position: fixed;
     top: 0;
     left: 0;
@@ -64,7 +92,7 @@
     justify-content: center;
     z-index: 1000;
 
-    &__content{
+    &__content {
         font-size: 1.6rem;
         color: $gray;
         display: flex;
@@ -80,23 +108,23 @@
         scrollbar-width: thin;
         scrollbar-color: $gray $silver;
 
-        &-header{
+        &-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 2rem;
 
-            h2{
+            h2 {
                 font-size: 1.8rem;
                 text-align: left;
             }
         }
 
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 768px) {
             padding: 4rem 4rem;
 
-            &-header{
-                h2{
+            &-header {
+                h2 {
                     font-size: 2.4rem;
                 }
             }

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchRecipeById } from './recipesActions';
+import { fetchRecipeById, fetchMoreRecipes, fetchRecipesBySearch } from './recipesActions';
+
 const initialState = {
     recipes: [],
     recipe: null,
@@ -8,6 +9,8 @@ const initialState = {
     loading: false,
     success: false,
     error: null,
+    search: '',
+    searchResults: [],
 };
 
 const recipesSlice = createSlice({
@@ -17,6 +20,12 @@ const recipesSlice = createSlice({
         setRecipes: (state, action) => {
             state.recipes = action.payload.recipes;
         },
+        nextPage: (state) => {
+            state.page += 1;
+        },
+        setSearch: (state, action) => {
+            state.search = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -32,9 +41,36 @@ const recipesSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message;
                 state.success = false;
-            });
+            })
+            .addCase(fetchMoreRecipes.fulfilled, (state, action) => {
+                state.recipes = [...state.recipes, ...action.payload.recipes];
+                state.loading = false;
+                state.success = true;
+            })
+            .addCase(fetchMoreRecipes.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(fetchMoreRecipes.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+                state.success = false;
+            })
+            .addCase(fetchRecipesBySearch.fulfilled, (state, action) => {
+                state.searchResults = action.payload.recipes;
+                state.loading = false;
+                state.success = true;
+            })
+            .addCase(fetchRecipesBySearch.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(fetchRecipesBySearch.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+                state.success = false;
+            }
+        );
     }
 });
 
-export const { setRecipes, setRecipe } = recipesSlice.actions;
+export const { setRecipes, nextPage } = recipesSlice.actions;
 export default recipesSlice.reducer;

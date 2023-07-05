@@ -244,6 +244,27 @@
     }
 }
 
+.cards-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__content{
+        display: flex;
+      flex-wrap: wrap;
+        align-items: center;
+        // justify-content: center;
+        gap: 2rem;
+        width: 70vw;
+        height: 60vh;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
 .card-enter {
     opacity: 0;
     transform: translateY(100%);

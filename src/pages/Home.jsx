@@ -11,6 +11,10 @@ import Poster from '../components/Home/Poster';
 import { Link } from 'react-router-dom';
 
 function Home() {
+  React.useEffect(() => {
+    //scroll to top
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="home">
       <Navbar />

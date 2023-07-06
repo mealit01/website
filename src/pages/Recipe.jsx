@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import categoryIcon from '../assets/images/catagory.svg'
@@ -9,7 +9,6 @@ import Spinner from '../components/Loader/Spinner'
 import Navbar from '../components/Navbar'
 import Ingredients from '../components/Recipes/recipe/Ingredients'
 import Steps from '../components/Recipes/recipe/Steps'
-import PrivateRoute from '../components/PrivateRoute'
 import { fetchRecipeById } from '../state/features/recipes/recipesActions'
 import { useToggleBookmarkMutation } from '../state/features/user/userService'
 
@@ -28,6 +27,11 @@ function Recipe() {
         dispatch(fetchRecipeById(recipeId));
         console.log(recipe);
     }, [dispatch, recipeId]);
+
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+      }, []);
 
     useEffect(() => {
         if (recipe) {
@@ -81,10 +85,10 @@ function Recipe() {
                             </button>
                         </div>
                         <div className="recipe__header--img">
-                            {userToken  && (
+                            {userToken && (
                                 <div className={`save ${saved ? 'saved' : ''}`}>
-                                <button className="btn-save" title="Save" onClick={handleSave} />
-                            </div>
+                                    <button className="btn-save" title="Save" onClick={handleSave} />
+                                </div>
                             )}
 
                             <img src={recipe.imageUrl} alt={recipe.name} />

@@ -14,6 +14,10 @@ function Bookmarks() {
   const { data, isLoading } = useGetBookmarksQuery('bookmarks');
 
   useEffect(() => {
+    //scroll to top
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     if (data) {
       dispatch(setData(data));
     }

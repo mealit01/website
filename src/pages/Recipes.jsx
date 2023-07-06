@@ -27,6 +27,11 @@ function Recipes() {
   }, [data, dispatch]);
 
   React.useEffect(() => {
+    //scroll to top
+    window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
     if (dataForYou) {
       dispatch(setForYouRecipes(dataForYou));
     }

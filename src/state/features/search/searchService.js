@@ -14,12 +14,14 @@ export const searchApi = createApi({
                 url: 'api/recipes/search',
                 method: 'POST',
                 body: {
-                    "text": searchQuery,
+                    "name": searchQuery,
+                    "summary": searchQuery,
                     "category": searchFiltersApplied.category,
                     "diet_type": searchFiltersApplied.diet_type,
                     "ingredients": searchFiltersApplied.ingredients,
-                    "summary": searchFiltersApplied.summary,
-                    "mode": "full_mode",
+                    "cusine": searchFiltersApplied.cuisine,
+                    "allergens": searchFiltersApplied.allergens,
+                    "mode": "full_model",
                     "no_of_recipes": 10,
                 }
             }),

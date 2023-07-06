@@ -12,37 +12,37 @@ const reviews = [
         id: 1,
         name: 'John Doe',
         img: person1,
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        content: 'It suggests amazing recipes based on the ingredients I have at home. The shopping list feature keeps me organized, and the pantry tracker is a bonus!'
     },
     {
         id: 2,
         name: 'John Doe',
         img: person2,
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        content: 'I love how Mealit helps me utilize my pantry items. Saving recipes and creating a shopping list is easy and convenient.'
     },
     {
         id: 3,
         name: 'John Doe',
         img: person3,
-        content: 'Lorem ipsum dolor sit amet consectetur. Quisquam, voluptatum. '
+        content: 'Mealit simplifies meal planning and recipe ideas. The pantry feature is great for tracking what I have.'
     },
     {
         id: 4,
         name: 'John Doe',
         img: person4,
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. '
+        content: 'Mealit has transformed cooking for my family. The recipe recommendations are spot-on, and the integrated shopping list is a lifesaver.'
     },
     {
         id: 5,
         name: 'John Doe',
         img: person1,
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        content: 'I can\'t imagine my kitchen without Mealit! It makes cooking easier. The recipe suggestions are great, and the shopping list feature is brilliant. The planner is a game-changer'
     },
     {
         id: 6,
         name: 'John Doe',
         img: person5,
-        content: 'Loremectetur adipisicing elit. Quisquam, voluptatum.'
+        content: 'Mealit has made cooking enjoyable. The recipe recommendations are fantastic!'
     }
 ];
 

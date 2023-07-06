@@ -2,7 +2,21 @@ import React from 'react'
 
 function Ingredients({ recipe }) {
     const [nurtition, setNurtition] = React.useState(null);
-    
+    const [haveIngredients, setHaveIngredients] = React.useState({});
+
+    //change onClick to toggle
+    const toggleHaveIngredient = (ingredient) => {
+        setHaveIngredients({
+            ...haveIngredients,
+            [ingredient]: !haveIngredients[ingredient]
+        })
+    }
+
+    //check if haveIngredients is true
+    const checkHaveIngredient = (ingredient) => {
+        return haveIngredients[ingredient];
+    }
+
     React.useEffect(() => {
         if(recipe){
             const nutrient = {
@@ -32,8 +46,8 @@ function Ingredients({ recipe }) {
                         //array of strings
                         recipe.ingredients.map((ingredient, index) => {
                             return (
-                                <li key={index} className="ingredient">
-                                    <span className="ingredient__name">{ingredient}</span>
+                                <li key={index} className="ingredient" onClick={() => toggleHaveIngredient(ingredient)}>
+                                    <span className={`ingredient__name ${checkHaveIngredient(ingredient) ? 'active' : ''}`}>{ingredient}</span>
                                 </li>
                             )
                         })

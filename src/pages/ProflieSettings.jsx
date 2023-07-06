@@ -35,6 +35,11 @@ function ProfileSettings() {
         }
     }, [data, dispatch])
 
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+      }, []);
+
     return (
         <div className="profile-page">
             <Navbar />

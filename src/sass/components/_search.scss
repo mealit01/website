@@ -71,6 +71,28 @@
     background-position: center;
 }
 
+.search__loading{
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+}
+
+.pantry__filter--options{
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    h2{
+        text-align: left;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+    }
+}
+
 .suggestions {
     background-color: $white;
     width: 100%;
@@ -254,5 +276,108 @@
     transition: all .3s ease-in-out;
 }
 
-// Path: src\sass\components\_search-results.scss
-// Compare this snippet from src\sass\abstracts\_variables.scss:
+.search-results{
+    display: flex;
+    // flex-direction: column;
+    margin: 15rem auto;
+    gap: 2rem;
+    width: 80%;
+    .filter{
+        display: flex;
+        width: 20%;
+        height: 115rem;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: $silver;
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+
+        .filter__title{
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .filter__content{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            &--title{
+                font-size: 1.6rem;
+                font-weight: 600;
+                text-transform: capitalize;
+                margin-top: 1rem;
+            }
+            &--checkbox{
+                max-height: 20rem;
+                scroll-behavior: smooth;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: $silver;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: $gray;
+                    border-radius: 1rem;
+                }
+            }
+            &--checkbox-item{
+                display: flex;
+                gap: 0.5rem;
+                
+                &--checkbox{
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: .5rem;
+                    border: 1px solid $ksa;
+                    cursor: pointer;
+                    &.active{
+                        background-color: $ksa;
+                    }
+                }
+                label{
+                    font-size: 1.4rem;
+                    color: $gray;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+    .results{
+        width: 80%;
+
+        &__title{
+            margin-bottom: 2rem;
+            h3{
+                font-size: 2rem;
+                font-weight: 600;
+                color: $gray;
+            }
+            h2{
+                font-size: 3rem;
+                font-weight: 600;
+                color: $ksa;
+            }
+        }
+    }
+
+    // @media screen and (min-width: $medium-screen){
+    //     flex-direction: column;
+    //     margin: 15rem auto;
+    //     gap: 2rem;
+    //     width: 80%;
+
+    //     .filter{
+            
+    //     }
+    //     .results{
+            
+    //     }
+    // }
+}

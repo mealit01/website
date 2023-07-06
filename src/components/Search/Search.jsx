@@ -1,7 +1,6 @@
 import React from 'react'
 
 import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
 
 function Search() {
   return (
@@ -10,7 +9,6 @@ function Search() {
         Try our magic recipe search
       </h2>
         <SearchBar />
-        <SearchResults />
     </div>
   )
 }

@@ -12,6 +12,7 @@ import SetNewPassword from './pages/SetNewPass';
 import Planner from './pages/Planner';
 import Recipes from './pages/Recipes';
 import Recipe from './pages/Recipe';
+import SearchResults from './pages/SearchResults';
 import ShoppingList from './pages/ShoppingList';
 import Pantry from './pages/Pantry';
 import Bookmarks from './pages/Bookmarks';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="recipes" element={<Recipes />} />
         <Route path="recipes/:id" element={<Recipe />} />
+        <Route path="recipes/search" element={<SearchResults />} />
 
         <Route path="planner" element={
           <PrivateRoute>
@@ -57,9 +59,7 @@ function App() {
         } />
 
         <Route path="forgot-password" element={
-          <PrivateRoute>
             <ForgotPassword />
-          </PrivateRoute>
         } />
         <Route path="set-new-password" element={
           <PrivateRoute>

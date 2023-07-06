@@ -17,7 +17,10 @@ const ForgotPassword = () => {
         dispatch(forgotPassword(values));
     };
 
-
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+      }, []);
 
     return (
         <div className="auth-container">

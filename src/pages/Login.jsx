@@ -23,6 +23,10 @@ const Login = () => {
         }
     }, [userInfo, navigate]);
 
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+      }, []);
 
     const handleLogin = (values) => {
         dispatch(login(values));

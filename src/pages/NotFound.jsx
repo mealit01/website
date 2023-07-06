@@ -3,6 +3,10 @@ import Navbar from '../components/NavLinks'
 import { Link } from 'react-router-dom'
 import Img404 from '../assets/images/404.png'
 function NotFound() {
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+      }, []);
     return (
         <div className="not-found">
             <Navbar />

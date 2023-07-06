@@ -290,6 +290,24 @@
             color: $gray;
             font-size: 1.6rem;
             font-weight: 600;
+
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            &:before {
+                //bullet icon
+                content: "";
+                background-image: url("../../assets/images/notChecked.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                display: inline-block;
+                height: 2rem;
+                width: 2rem;
+            }
+
+            &.active:before {
+                background-image: url("../../assets/images/checked.svg");
+            }
         }
     }
 
@@ -368,6 +386,7 @@
 
 .steps {
     margin-top: 5rem;
+
     &__title {
         color: $ksa;
         font-size: 2.4rem;
@@ -382,9 +401,14 @@
         counter-reset: custom-counter;
         list-style-type: none;
         padding-left: 0;
+        overflow-y: scroll;
         scroll-snap-type: y mandatory;
         background-color: #EDE9E5;
         border-radius: 1rem;
+
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+        }
         li {
             counter-increment: custom-counter;
             position: relative;

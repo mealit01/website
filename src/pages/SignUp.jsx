@@ -24,7 +24,13 @@ function SignUp() {
             navigate("/profile");
         }
     }, [userInfo, success, navigate]);
-            
+
+    React.useEffect(() => {
+        //scroll to top
+        window.scrollTo(0, 0);
+    }, []);
+
+
     const handleSignUp = (values) => {
         dispatch(signup(values));
     };

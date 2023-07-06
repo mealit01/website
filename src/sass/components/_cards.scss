@@ -251,7 +251,7 @@
 
     &__content{
         display: flex;
-      flex-wrap: wrap;
+        flex-wrap: wrap;
         align-items: center;
         // justify-content: center;
         gap: 2rem;
@@ -262,6 +262,15 @@
         &::-webkit-scrollbar {
             display: none;
         }
+    }
+
+}
+.list-container{
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
     }
 }
 

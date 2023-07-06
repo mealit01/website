@@ -2,12 +2,16 @@ import { useSelector } from 'react-redux'
 import Navbar from '../components/Navbar'
 import ProfilePic from '../assets/images/profile-pic.svg'
 import { Link } from 'react-router-dom'
-
+import React from 'react'
 import ProfileIcon from '../assets/images/profile.svg'
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth)
 
+  React.useEffect(() => {
+    //scroll to top
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="profile-page">
       <Navbar />

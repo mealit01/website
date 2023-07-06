@@ -16,8 +16,8 @@ const Navbar = () => {
     const userInfo = useSelector((state) => state.auth.userInfo);
     const dispatch = useDispatch();
 
-    const { data, isFetching } = useGetUserDetailsQuery('userDetails',{
-        pollingInterval: 900000, // 15 minutes
+    const { data, isLoading } = useGetUserDetailsQuery('userDetails',{
+        pollingInterval: 900000, // 
         skip: !userInfo,
     });
 
@@ -73,7 +73,7 @@ const Navbar = () => {
 
             <div className={`navbar__links__auth ${userInfo ? "navbar__links__auth__info" : ""}`}>
                 {
-                    isFetching ? (
+                    isLoading ? (
                         <div className="navbar__links__auth__loading">
                             <Spinner width="20px" height="20px" />
                         </div>

@@ -1,44 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setDay } from '../../state/features/planner/plannerSlice';
+import { useGetPlannerDaysQuery } from '../../state/features/planner/plannerService';
+import { setDays } from '../../state/features/planner/plannerSlice';
 
-const setTemp = () => {
-    const tempDays = [];
-    for (let i = -10; i < 10; i++) {
-        let day = new Date();
-        day.setDate(day.getDate() + i);
-        tempDays.push(day);
-    }
-    return tempDays;
-}
 
 function Days() {
-    const [days, setDays] = useState(setTemp());
-    const [selectedDay, setSelectedDay] = useState(days.length / 2);
+    const days = useSelector(state => state.planner.days);
+    const selectedDay = useSelector(state => state.planner.day);
     const daysRef = useRef(null);
-
     const dispatch = useDispatch();
 
+    const { data, isLoading } = useGetPlannerDaysQuery('plannerDays');
+
     useEffect(() => {
-        setDays(setTemp());
-        dispatch(setDay(days[selectedDay].toLocaleDateString()));
-    }, []);
+        if (data) {
+            dispatch(setDays(data));
+        }
+        console.log(data);
+    }, [data, dispatch]);
+  
     
-    useEffect(() => {
-        const dayWidth = daysRef.current.children[0].getBoundingClientRect().width;
-        daysRef.current.scrollLeft = selectedDay * dayWidth;
-    }, [selectedDay]);
+    // useEffect(() => {
+    //     const dayWidth = daysRef.current.children[0].getBoundingClientRect().width;
+    //     daysRef.current.scrollLeft = selectedDay * dayWidth;
+    // }, [selectedDay]);
 
     const changeDay = (index) => {
-        setSelectedDay(index);
-        dispatch(setDay(days[index].toLocaleDateString()));
+        
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
             <div className="days" ref={daysRef}>
-                {days.map((day, index) => (
+                {days?.map((day, index) => (
                     <div
                         key={index}
                         className={`day ${selectedDay === index ? 'active' : ''}`}
@@ -47,7 +46,7 @@ function Days() {
                         <span className="day-name">
                             {day.toLocaleString('default', { weekday: 'short' })}
                         </span>
-                        <span className="day-number">{day.getDate()}</span>
+                        <span className="day-number">{day}</span>
                     </div>
                 ))}
             </div>

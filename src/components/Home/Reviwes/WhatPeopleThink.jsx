@@ -12,7 +12,7 @@ const reviews = [
         id: 1,
         name: 'John Doe',
         img: person1,
-        content: 'It suggests amazing recipes based on the ingredients I have at home. The shopping list feature keeps me organized, and the pantry tracker is a bonus!'
+        content: 'MealIT is perfect for a beginner cook like me. I love how it suggests recipes based on what I have. It\'s like a fun culinary adventure every time I open the app!'
     },
     {
         id: 2,

@@ -11,7 +11,7 @@ import { setData } from '../../state/features/pantry/pantrySlice'
 
 import Spinner from '../Loader/Spinner'
 
-function PantryList(){
+function PantryList() {
     const [add, setAdd] = React.useState(false);
     const { pantry } = useSelector(state => state.pantry);
     const dispatch = useDispatch();
@@ -29,13 +29,22 @@ function PantryList(){
         <div className="list">
             <div className="list__header">
                 <h1 className="list__header--title">Pantry</h1>
-                <button className="list__header--btn btn-add dark" onClick={() => setAdd(!add)}></button>
-                {add ? <PantryAdd close={() => setAdd(false)} /> : null }
+                <button
+                    className="list__header--btn btn-add dark"
+                    onClick={() => setAdd(!add)}>
+                </button>
+                {add ? <PantryAdd close={() => setAdd(false)} /> : null}
             </div>
-             <PantryFilter /> 
+
+            <PantryFilter />
+            
             <div className="list__items">
                 {
-                    isLoading ? <Spinner /> : pantry.length > 0 ? <PantryItems items={pantry} /> : <PantryEmpty />
+                    isLoading
+                        ? <Spinner />
+                        : pantry.length > 0
+                            ? <PantryItems items={pantry} />
+                            : <PantryEmpty />
                 }
             </div>
         </div>

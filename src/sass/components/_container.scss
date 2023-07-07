@@ -87,7 +87,6 @@
 }
 
 .features-container {
-
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 5rem;
@@ -124,9 +123,10 @@
 
     @media screen and (min-width: $large-screen) {
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 3rem;
+        grid-gap: 2.5rem;
         text-align: left;
         margin: 3rem 0;
+        align-items: flex-start;
 
         .feature {
             width: 100%;

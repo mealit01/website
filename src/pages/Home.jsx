@@ -18,7 +18,7 @@ function Home() {
   return (
     <div className="home">
       <Navbar />
-      <Hero heading="Cooking" subheading="made easy" description="Save time with customize recipe and meal planner with our app's innovative features for enjoyable experience with customize recipe and meal planner.">
+      <Hero heading="Cooking" subheading="made easy" description="With MealIT, customize recipes and meal plans quickly and easily. Enjoy personalized cooking and efficient meal planning, saving you time and effort.">
         <Link to="/recipes" className="btn btn--primary">Get Started</Link>
       </Hero>
       <Features />

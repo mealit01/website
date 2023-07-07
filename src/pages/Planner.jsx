@@ -7,6 +7,7 @@ function Planner() {
     //scroll to top
     window.scrollTo(0, 0);
   }, []);
+  
   return (
     <div className="planner">
         <Navbar />

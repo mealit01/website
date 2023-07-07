@@ -7,7 +7,7 @@ function Planner() {
     <div className="container-planner container">
         <h1>Planner</h1>
         <Days />
-        <Meals />
+        {/* <Meals /> */}
     </div>
   )
 }

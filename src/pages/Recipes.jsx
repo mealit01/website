@@ -41,7 +41,7 @@ function Recipes() {
   return (
     <div className="recipes">
       <Navbar />
-      <Hero heading="What are we going to eat today?" description="Save time with customize recipe and meal planner with our app's innovative features for enjoyable experience with customize recipe and meal planner.">
+      <Hero heading="What are we going to eat today?" description="Streamline your culinary journey with MealIT, Experience the joy of personalized cooking and efficient meal planning, saving you precious time and effort.">
         <SearchBar />
       </Hero>
 

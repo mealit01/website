@@ -14,6 +14,7 @@ import { shoppingListApi } from "./features/shoppingList/shoppingListService";
 import { searchApi } from "./features/search/searchService";
 import { recipesApi } from "./features/recipes/recipesService";
 import { userService } from "./features/user/userService";
+import { plannerApi } from "./features/planner/plannerService";
 
 const store = configureStore({
     reducer: {
@@ -31,6 +32,7 @@ const store = configureStore({
         [searchApi.reducerPath]: searchApi.reducer,
         [recipesApi.reducerPath]: recipesApi.reducer,
         [userService.reducerPath]: userService.reducer,
+        [plannerApi.reducerPath]: plannerApi.reducer,
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(
@@ -40,6 +42,7 @@ const store = configureStore({
             searchApi.middleware,
             recipesApi.middleware,
             userService.middleware,
+            plannerApi.middleware,
         ),
 });
 

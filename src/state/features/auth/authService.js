@@ -21,8 +21,14 @@ export const authApi = createApi({
         method: 'GET',
       }),
     }),
+    logoutUser: build.mutation({
+      query: () => ({
+        url: 'api/user/logout',
+        method: 'POST',
+      }),
+    }),
   })
 })
 
 // export react hook
-export const { useGetUserDetailsQuery } = authApi
+export const { useGetUserDetailsQuery, useLogoutUserMutation } = authApi

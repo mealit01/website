@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../../state/features/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import ProfilePic from '../../assets/images/profile-pic.svg'
-
+import { useLogoutUserMutation } from '../../state/features/auth/authService'
 import Profile from '../../assets/images/profile.svg'
 import Bookmark from '../../assets/images/bookmark.svg'
 import Settings from '../../assets/images/settings.svg'
@@ -12,8 +12,10 @@ import Logout from '../../assets/images/logout.svg'
 function ProfileDropdown({ className }) {
     const [isListOpen, setIsListOpen] = useState(false);
     const dispatch = useDispatch();
-
-    const handleLogout = () => {
+    const [logoutUser] = useLogoutUserMutation();
+    
+    const handleLogout = async () => {
+        await logoutUser();
         dispatch(logout());
     };
 

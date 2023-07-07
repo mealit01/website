@@ -15,7 +15,7 @@ export default function Features() {
           </div>
           <div className="feature-text">
             <h3>Enter ingredients</h3>
-            <p>Save time and effort with customize recipe and meal planner with what you </p>
+            <p>Enter your available ingredients into MealIT and watch as it crafts culinary wonders.</p>
           </div>
         </div>
         <div className="feature">
@@ -24,7 +24,7 @@ export default function Features() {
           </div>
           <div className="feature-text">
             <h3>Find best recipe match</h3>
-            <p>Save time and effort with customize recipe and meal planner with what you </p>
+            <p>MealIT matches your ingredients to the perfect recipe, guiding you to create the best dishes from what you already have.</p>
           </div>
         </div>
         <div className="feature">
@@ -33,7 +33,7 @@ export default function Features() {
           </div>
           <div className="feature-text">
             <h3>Add to shopping list</h3>
-            <p>Save time and effort with customize recipe and meal planner.</p>
+            <p> With MealIT's 'Add to Shopping List' feature, keep track of essential ingredients for your future culinary endeavors.</p>
           </div>
         </div>
         <div className="feature">
@@ -41,8 +41,9 @@ export default function Features() {
             <img src={feature4} alt="" />
           </div>
           <div className="feature-text">
-            <h3>Buy online</h3>
-            <p>Save time and effort with customize recipe and meal planner.</p>
+            <h3>Planner</h3>
+            <p> Plan your meals with MealIT's Planner feature. Organize your culinary week ahead, ensuring a delicious menu every day.
+</p>
           </div>
         </div>
       </div>

@@ -20,3 +20,21 @@ export const searchRecipes = createAsyncThunk(
         }
     }
 );
+
+export const getDayRecipes = createAsyncThunk(
+    'recipes/getDayRecipes',
+    async ( day, {getState}) => {
+        const token = getState().auth.userToken || localStorage.getItem('userToken');
+        try{
+            const response = await axios.get(`${baseUrl}api/planner/getDay/${day}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data;
+        }
+        catch(error){
+            return error.response.data.message;
+        }
+    }
+);

@@ -3,11 +3,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetPlannerDaysQuery } from '../../state/features/planner/plannerService';
 import { setDays } from '../../state/features/planner/plannerSlice';
-
+import { getDayRecipes } from '../../state/features/planner/plannerActions';
 
 function Days() {
     const days = useSelector(state => state.planner.days);
-    const selectedDay = useSelector(state => state.planner.day);
+    const { day, activeDay } = useSelector(state => state.planner);
     const daysRef = useRef(null);
     const dispatch = useDispatch();
 
@@ -17,18 +17,25 @@ function Days() {
         if (data) {
             dispatch(setDays(data));
         }
-        console.log(data);
-    }, [data, dispatch]);
-  
-    
-    // useEffect(() => {
-    //     const dayWidth = daysRef.current.children[0].getBoundingClientRect().width;
-    //     daysRef.current.scrollLeft = selectedDay * dayWidth;
-    // }, [selectedDay]);
+    }, [data, dispatch, day]);
 
-    const changeDay = (index) => {
-        
-    };
+    
+
+    useEffect(() => {
+        if (daysRef.current) {
+            daysRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center'
+            });
+        }
+    }, [activeDay, days]);
+
+   
+    const changeDay = (day) => {
+        dispatch(getDayRecipes(day));
+        // console.log(day);
+    }
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -36,20 +43,23 @@ function Days() {
 
     return (
         <>
-            <div className="days" ref={daysRef}>
-                {days?.map((day, index) => (
-                    <div
-                        key={index}
-                        className={`day ${selectedDay === index ? 'active' : ''}`}
-                        onClick={() => changeDay(index)}
-                    >
-                        <span className="day-name">
-                            {day.toLocaleString('default', { weekday: 'short' })}
-                        </span>
-                        <span className="day-number">{day}</span>
-                    </div>
-                ))}
-            </div>
+            {days && (
+                <div className="days">
+                    {days?.map((day, index) => (
+                        <div
+                            ref={activeDay === day.day ? daysRef : null}
+                            key={index}
+                            className={`day ${day.day === activeDay ? 'active' : ''}`}
+                            onClick={() => changeDay(day.day)}
+                        >
+                            <span className="day-name">
+                                {day.dayOfWeek}
+                            </span>
+                            <span className="day-number">{day.day}</span>
+                        </div>
+                    ))}
+                </div>
+            )}
         </>
     );
 }

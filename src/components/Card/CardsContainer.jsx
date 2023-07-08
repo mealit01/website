@@ -9,7 +9,7 @@ function CardsContainer({ cards }) {
                 {
                     cards?.map((card, index) => {
                         return (
-                            <Card item={card} key={index}  />
+                            <Card item={card} key={card._id}  />
                         )
                     })
                 }

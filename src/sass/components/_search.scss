@@ -283,7 +283,6 @@
     gap: 2rem;
     width: 80%;
     .filter{
-        display: flex;
         width: 20%;
         height: 115rem;
         flex-direction: column;
@@ -291,6 +290,7 @@
         background-color: $silver;
         padding: 4rem 2rem;
         border-radius: 1rem;
+        display: none;
 
         .filter__title{
             font-size: 2rem;
@@ -367,17 +367,12 @@
         }
     }
 
-    // @media screen and (min-width: $medium-screen){
-    //     flex-direction: column;
-    //     margin: 15rem auto;
-    //     gap: 2rem;
-    //     width: 80%;
-
-    //     .filter{
-            
-    //     }
-    //     .results{
-            
-    //     }
-    // }
+    @media screen and (min-width: $medium-screen){
+        .filter{
+            display: flex;
+        }
+        .results{
+            width: 80%;
+        }
+    }
 }

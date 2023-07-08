@@ -4,7 +4,8 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import Card from './Card';
-const Cards = ({ recipes }) => {
+
+const Cards = ({ recipes, remove }) => {
 
     const [visibleSlides, setvisibleSlides] = useState();
 
@@ -41,7 +42,7 @@ const Cards = ({ recipes }) => {
                             recipes?.map((item) => {
                                 return (
                                     <Slide index={item._id} key={item._id}>
-                                        <Card item={item} />
+                                        <Card item={item} remove={remove} />
                                     </Slide>
                                 )
                             })

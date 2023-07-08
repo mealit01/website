@@ -1,15 +1,37 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Cards from '../Card/Cards';
 import PlannerModal from './PlannerModal';
 
-import { setBreakfast, setLunch, setDinner } from '../../state/features/planner/plannerSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { getDayRecipes } from '../../state/features/planner/plannerActions';
+import { useRemoveBreakfastMutation,  useRemoveLunchMutation, useRemoveDinnerMutation } from '../../state/features/planner/plannerService';
 
 function Meals() {
     const [showModal, setShowModal] = React.useState(false);
     const [meal, setMeal] = React.useState('');
+    const dispatch = useDispatch();
+    const { breakfast, lunch, dinner,activeDay } = useSelector(state => state.planner);
 
-    const { planner, activeDay } = useSelector(state => state.planner);
+    const [removeBreakfast] = useRemoveBreakfastMutation();
+    const [removeLunch] = useRemoveLunchMutation();
+    const [removeDinner] = useRemoveDinnerMutation();
+
+    const handleRemove = (recipeId) => {
+        switch (meal) {
+            case 'breakfast':
+                dispatch(removeBreakfast({ day: activeDay, recipeId }));
+                break;
+            case 'lunch':
+                dispatch(removeLunch({ day: activeDay, recipeId }));
+                break;
+            case 'dinner':
+                dispatch(removeDinner({ day: activeDay, recipeId }));
+                break;
+            default:
+                break;
+        }
+    }
+
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -17,6 +39,9 @@ function Meals() {
         setMeal(mealType);
     }
 
+    useEffect(() => {
+        dispatch(getDayRecipes(activeDay));
+    }, [activeDay])
 
     return (
         <div className="day-meals">
@@ -26,7 +51,8 @@ function Meals() {
                     <button className="day-meals__header btn-add dark" title="Add a breakfast" onClick={handleShowModal}></button>
                 </div>
                 {
-                    planner[activeDay]?.breakfast.length > 0 ? <Cards nav={false} recipes={planner[activeDay].breakfast} /> : <p className="day-meals__empty">No breakfast added</p>
+                    breakfast?.length > 0 ? <Cards nav={false} recipes={breakfast} remove={handleRemove} />
+                    : <p className="day-meals__empty">No breakfast added</p>
                 }
             </div>
             <div className="day-meals__meal">
@@ -35,7 +61,7 @@ function Meals() {
                     <button className="day-meals__header btn-add dark" title="Add a lunch" onClick={handleShowModal}></button>
                 </div>
                 {
-                    planner[activeDay]?.lunch.length > 0 ? <Cards nav={false} recipes={planner[activeDay].lunch} /> : <p className="day-meals__empty">No lunch added</p>
+                    lunch?.length > 0 ? <Cards nav={false} recipes={lunch} remove={handleRemove} /> : <p className="day-meals__empty">No lunch added</p>
                 }
             </div>
             <div className="day-meals__meal">
@@ -44,7 +70,7 @@ function Meals() {
                     <button className="day-meals__header btn-add dark" title="Add a dinner" onClick={handleShowModal}></button>
                 </div>
                 {
-                    planner[activeDay]?.dinner.length > 0 ? <Cards nav={false} recipes={planner[activeDay].dinner} /> : <p className="day-meals__empty">No dinner added</p>
+                    dinner?.length > 0 ? <Cards nav={false} recipes={dinner} remove={handleRemove} /> : <p className="day-meals__empty">No dinner added</p>
                 }
             </div>
 

@@ -1,8 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-import { setBreakfast, setLunch, setDinner } from '../../state/features/planner/plannerSlice';
-
+import { useAddBreakfastMutation, useAddLunchMutation, useAddDinnerMutation } from '../../state/features/planner/plannerService';
 import { useDispatch, useSelector } from 'react-redux';
 
 function CardsList({ cards, meal }) {
@@ -10,21 +9,27 @@ function CardsList({ cards, meal }) {
 
     const { activeDay } = useSelector(state => state.planner);
 
+    const [addBreakfast] = useAddBreakfastMutation();
+    const [addLunch] = useAddLunchMutation();
+    const [addDinner] = useAddDinnerMutation();
+
     const handleAddToPlanner = (card) => {
-        console.log(card, meal);
-        switch (meal) {
-            case 'breakfast':
-                dispatch(setBreakfast({ activeDay, card }));
-                break;
-            case 'lunch':
-                dispatch(setLunch({ activeDay, card }));
-                break;
-            case 'dinner':
-                dispatch(setDinner({ activeDay, card }));
-                break;
-            default:
-                break;
+        if (meal) {
+            switch (meal) {
+                case 'breakfast':
+                    dispatch(addBreakfast({ day: activeDay, recipeId: card._id }));
+                    break;
+                case 'lunch':
+                    dispatch(addLunch({ day: activeDay, recipeId: card._id }));
+                    break;
+                case 'dinner':
+                    dispatch(addDinner({ day: activeDay, recipeId: card._id }));
+                    break;
+                default:
+                    break;
+            }
         }
+
     }
 
     return (
@@ -33,7 +38,7 @@ function CardsList({ cards, meal }) {
                 {
                     cards?.map((card, index) => {
                         return (
-                            <Card item={card} key={index} onClick={() => handleAddToPlanner(card)} />
+                            <Card item={card} key={card._id} onClick={() => handleAddToPlanner(card)} />
                         )
                     })
                 }

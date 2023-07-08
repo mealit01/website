@@ -27,8 +27,19 @@ export const authApi = createApi({
         method: 'POST',
       }),
     }),
+    changePassword: build.mutation({
+      query: ({ currentPassword, password, passwordConfirm }) => ({
+        url: 'api/user/updatePassword',
+        method: 'PATCH',
+        body: {
+          currentPassword,
+          password,
+          passwordConfirm
+        }
+      }),
+    }),
   })
 })
 
 // export react hook
-export const { useGetUserDetailsQuery, useLogoutUserMutation } = authApi
+export const { useGetUserDetailsQuery, useLogoutUserMutation, useChangePasswordMutation } = authApi

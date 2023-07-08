@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { searchRecipes, getDayRecipes } from "./plannerActions";
 
-const activeDay = new Date().toISOString().split("T")[0];
-
+const activeDay = new Date().getDate();
 const initialState = {
   days: [],
-  day: activeDay,
+  day: '',
+  activeDay: activeDay,
+  dayOfWeek: '',
   breakfast: [],
   lunch: [],
   dinner: [],
@@ -21,15 +22,6 @@ const plannerSlice = createSlice({
     setDays: (state, action) => {
       state.days = action.payload.days;
     },
-    setBreakfast: (state, action) => {
-      state.breakfast = action.payload.day.breakfast;
-    },
-    setLunch: (state, action) => {
-      state.lunch = action.payload.day.lunch;
-    },
-    setDinner: (state, action) => {
-      state.dinner = action.payload.day.dinner;
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -48,7 +40,9 @@ const plannerSlice = createSlice({
         state.success = false;
       })
       .addCase(getDayRecipes.fulfilled, (state, action) => {
-        state.day = action.payload.day;
+        state.day = action.payload.day.day
+        state.dayOfWeek = action.payload.day.dayOfWeek;
+        state.activeDay = action.payload.day.day;
         state.breakfast = action.payload.day.breakfast;
         state.lunch = action.payload.day.lunch;
         state.dinner = action.payload.day.dinner;
@@ -68,6 +62,7 @@ const plannerSlice = createSlice({
 
 export const {
   setDays,
+  setActiveDay,
   setBreakfast,
   setLunch,
   setDinner,

@@ -1,5 +1,4 @@
 .planner {
-    margin: 0 2rem;
     max-width: 90%;
     width: 100rem;
     margin: 0 auto;
@@ -29,7 +28,7 @@
 
         scroll-behavior: smooth;
         display: grid;
-        grid-template-columns: repeat(20, 1fr);
+        grid-template-columns: repeat(21, 1fr);
         grid-template-rows: 1fr;
         grid-gap: 1.5rem;
         width: 100%;

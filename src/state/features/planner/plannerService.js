@@ -22,42 +22,42 @@ export const plannerApi = createApi({
         }),
         addBreakfast: builder.mutation({    
             query: ({day, recipeId}) => ({
-                url: `api/planner/breakfast/${day}/${recipeId}`,
+                url: `api/planner/add/breakfast/${day}/${recipeId}`,
                 method: 'PATCH'
             }),
             invalidatesTags: ['Planner']
         }),
         addLunch: builder.mutation({
             query: ({day, recipeId}) => ({
-                url: `api/planner/lunch/${day}/${recipeId}`,
+                url: `api/planner/add/lunch/${day}/${recipeId}`,
                 method: 'PATCH'
             }),
             invalidatesTags: ['Planner']
         }),
         addDinner: builder.mutation({
             query: ({day, recipeId}) => ({
-                url: `api/planner/dinner/${day}/${recipeId}`,
+                url: `api/planner/add/dinner/${day}/${recipeId}`,
                 method: 'PATCH'
             }),
             invalidatesTags: ['Planner']
         }),
         removeBreakfast: builder.mutation({
             query: ({day, recipeId}) => ({
-                url: `api/planner/breakfast/${day}/${recipeId}`,
+                url: `api/planner/delete/breakfast/${day}/${recipeId}`,
                 method: 'DELETE'
             }),
             invalidatesTags: ['Planner']
         }),
         removeLunch: builder.mutation({
             query: ({day, recipeId}) => ({
-                url: `api/planner/lunch/${day}/${recipeId}`,
+                url: `api/planner/delete/lunch/${day}/${recipeId}`,
                 method: 'DELETE'
             }),
             invalidatesTags: ['Planner']
         }),
         removeDinner: builder.mutation({
             query: ({day, recipeId}) => ({
-                url: `api/planner/dinner/${day}/${recipeId}`,
+                url: `api/planner/delete/dinner/${day}/${recipeId}`,
                 method: 'DELETE'
             }),
             invalidatesTags: ['Planner']

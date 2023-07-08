@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import NotFound from './NotFound';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { useFetchFilterOptionsQuery } from '../state/features/search/searchService';
 import { setSearchFilters } from '../state/features/search/searchSlice';
@@ -11,7 +12,7 @@ function SearchResults() {
     const filters = useSelector(state => state.search.searchFilters);
     const results = useSelector(state => state.search.searchResults);
     const searchQuery = useSelector(state => state.search.searchQuery);
-
+    const navigate = useNavigate();
     const { data } = useFetchFilterOptionsQuery();
     const dispatch = useDispatch();
 
@@ -26,9 +27,7 @@ function SearchResults() {
         window.scrollTo(0, 0);
       }, []);
 
-    if (!results) {
-        return <NotFound />
-    }
+
 
     return (
         <div className="search-results">
@@ -41,7 +40,7 @@ function SearchResults() {
                     {
                         Object.keys(filters)?.map((type, index) => (
                             <>
-                                <h5 key={index} className="filter__content--title">{type.split('_').join(' ')}</h5>
+                                <h5 key={`${type}-title`} className="filter__content--title">{type.split('_').join(' ')}</h5>
                                 <div key={type} className="filter__content--checkbox">
                                     {
                                         filters[type].map((item, index) => (item === '' ? '' :

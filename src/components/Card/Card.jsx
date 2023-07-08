@@ -10,7 +10,7 @@ import ingredientsIcon from '../../assets/images/ings.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToggleBookmarkMutation } from '../../state/features/user/userService';
 
-const Card = ({ item, onClick }) => {
+const Card = ({ item, onClick, remove }) => {
     const [show, setShow] = useState(false);
     const [saved, setSaved] = useState(false);
     const [toggleBookmark] = useToggleBookmarkMutation();
@@ -46,9 +46,17 @@ const Card = ({ item, onClick }) => {
     return (
         <div className="meal-card" onClick={onClick}>
             {userToken && (
-                <div className={`save ${saved ? 'saved' : ''}`}>
-                    <button className="btn-save" title="Save" onClick={handleSave} />
-                </div>
+                <>
+                    <div className={`save ${saved ? 'saved' : ''}`}>
+                        <button className="btn-save" title="Save" onClick={handleSave} />
+                    </div>
+                    {remove && (
+                        <div className="remove">
+                            <button className="btn-remove" title="Remove" onClick={remove} />
+                        </div>
+                    )
+                    }
+                </>
             )}
             <div className="meal-card__img-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Link to={`/recipes/${item._id}`} className="meal-card__img-link">
@@ -71,7 +79,7 @@ const Card = ({ item, onClick }) => {
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={caloriesIcon} alt="Calories" />
-                            <span className="calories">{item.calories.toFixed(0)} kcal</span>
+                            <span className="calories">{item.calories?.toFixed(0)} kcal</span>
                         </div>
                         <div className="meal-card__tags--tag">
                             <img src={ingredientsIcon} alt="Ingredients" />

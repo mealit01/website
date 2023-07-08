@@ -17,6 +17,7 @@ import ShoppingList from './pages/ShoppingList';
 import Pantry from './pages/Pantry';
 import Bookmarks from './pages/Bookmarks';
 import NotFound from './pages/NotFound';
+import ChangePassword from './pages/ChangePassword';
 
 function App() {
   return (
@@ -61,6 +62,13 @@ function App() {
         <Route path="forgot-password" element={
             <ForgotPassword />
         } />
+
+        <Route path="change-password" element={
+          <PrivateRoute>
+            <ChangePassword />
+          </PrivateRoute>
+        } />
+        
         <Route path="set-new-password" element={
           <PrivateRoute>
             <SetNewPassword />

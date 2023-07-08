@@ -3,10 +3,6 @@ import Navbar from '../components/Navbar';
 import PlannerContainer from '../components/Planner/PlannerContainer';
 
 function Planner() {
-  React.useEffect(() => {
-    //scroll to top
-    window.scrollTo(0, 0);
-  }, []);
   
   return (
     <div className="planner">

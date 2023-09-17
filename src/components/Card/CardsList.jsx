@@ -13,23 +13,21 @@ function CardsList({ cards, meal }) {
     const [addLunch] = useAddLunchMutation();
     const [addDinner] = useAddDinnerMutation();
 
-    const handleAddToPlanner = (card) => {
-        if (meal) {
-            switch (meal) {
-                case 'breakfast':
-                    dispatch(addBreakfast({ day: activeDay, recipeId: card._id }));
-                    break;
-                case 'lunch':
-                    dispatch(addLunch({ day: activeDay, recipeId: card._id }));
-                    break;
-                case 'dinner':
-                    dispatch(addDinner({ day: activeDay, recipeId: card._id }));
-                    break;
-                default:
-                    break;
-            }
-        }
+    const handleAddToPlanner = async (card) => {
+        switch (meal) {
+            case 'breakfast':
+                await addBreakfast({ day: activeDay, recipeId: card._id });
+                break;
+            case 'lunch':
+                await addLunch({ day: activeDay, recipeId: card._id });
+                break;
+            case 'dinner':
+                await addDinner({ day: activeDay, recipeId: card._id });
+                break;
+            default:
+                break;
 
+        }
     }
 
     return (

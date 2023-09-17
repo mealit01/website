@@ -2,12 +2,31 @@ import React, { useState, useEffect } from 'react';
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import { useRemoveBreakfastMutation,  useRemoveLunchMutation, useRemoveDinnerMutation } from '../../state/features/planner/plannerService';
+import { useDispatch } from 'react-redux';
 import Card from './Card';
 
-const Cards = ({ recipes, remove }) => {
+
+const Cards = ({ recipes, day, meal }) => {
 
     const [visibleSlides, setvisibleSlides] = useState();
+    const [removeBreakfast] = useRemoveBreakfastMutation();
+    const [removeLunch] = useRemoveLunchMutation();
+    const [removeDinner] = useRemoveDinnerMutation();
+
+    const handleRemove = async (recipeId) => {
+        console.log(recipeId, day, meal);
+        if (meal === 'breakfast') {
+            await removeBreakfast({ recipeId, day });
+        }
+        if (meal === 'lunch') {
+            await removeLunch({ recipeId, day });
+        }
+        if (meal === 'dinner') {
+            await removeDinner({ recipeId, day });
+        }
+    }
+
 
 
     useEffect(() => {
@@ -42,7 +61,8 @@ const Cards = ({ recipes, remove }) => {
                             recipes?.map((item) => {
                                 return (
                                     <Slide index={item._id} key={item._id}>
-                                        <Card item={item} remove={remove} />
+                                        {meal  && <Card item={item} remove={handleRemove} />}
+                                        { !meal && <Card item={item} /> }
                                     </Slide>
                                 )
                             })

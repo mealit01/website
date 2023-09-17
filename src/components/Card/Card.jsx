@@ -52,7 +52,7 @@ const Card = ({ item, onClick, remove }) => {
                     </div>
                     {remove && (
                         <div className="remove">
-                            <button className="btn-remove" title="Remove" onClick={remove} />
+                            <button className="btn-remove" title="Remove" onClick={ () => remove(item._id)} />
                         </div>
                     )
                     }

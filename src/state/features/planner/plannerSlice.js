@@ -22,6 +22,14 @@ const plannerSlice = createSlice({
     setDays: (state, action) => {
       state.days = action.payload.days;
     },
+    setRecipes: (state, action) => {
+      state.day = action.payload.day.day
+      state.dayOfWeek = action.payload.day.dayOfWeek;
+      state.activeDay = action.payload.day.day;
+      state.breakfast = action.payload.day.breakfast;
+      state.lunch = action.payload.day.lunch;
+      state.dinner = action.payload.day.dinner;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,6 +70,7 @@ const plannerSlice = createSlice({
 
 export const {
   setDays,
+  setRecipes,
   setActiveDay,
   setBreakfast,
   setLunch,
